@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use app\Http\Controllers\shopCtroller;
 use App\Http\Controllers\homCtroller;
-use app\Http\cotrollers\shopCtroller;
+use app\Http\Controllers\aboutController;
 
 
 /*
@@ -23,7 +24,7 @@ Route::get('/index',[homCtroller::class,'index']);
 Route::view('/contact','contact');
 
 //Route for go to the page about
-Route::view('/about','about');
+Route::get('/about',[aboutController::class,'about']);
 
 //call controller 
-Route::view('/shop',[shopCtroller::class,'shop']);
+Route::get('/shop',[shopCtroller::class,'shop']);

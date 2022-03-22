@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\category;
 use Illuminate\Http\Request;
 
-class shopCtroller extends Controller
+class aboutController extends Controller
 {
-    public function shop(){
-        
+    public function about(){
         //get all categorie form database
         $categorie=Category::all();
-        return view('shop',compact('categorie'));
+        return view('about',compact('categorie'));
     }
 }
