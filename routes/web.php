@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\shopCtroller;
+use App\Http\Controllers\aboutController;
+use App\Http\Controllers\shopCtroller;
 use App\Http\Controllers\homCtroller;
-use app\Http\Controllers\aboutController;
+
 
 
 /*
@@ -21,7 +22,7 @@ Route::get('/',[homCtroller::class,'index']);
 Route::get('/index',[homCtroller::class,'index']);
 
 //Route for go to the  page contact
-Route::view('/contact','contact');
+Route::get('/contact',[aboutController::class,'contact']);
 
 //Route for go to the page about
 Route::get('/about',[aboutController::class,'about']);
