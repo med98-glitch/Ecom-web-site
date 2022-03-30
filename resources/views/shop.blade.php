@@ -217,7 +217,7 @@
                    <!--sidebar widget start-->
                     <aside class="sidebar_widget">
                         <div class="shop_sidebar_banner mb-50">
-                            <a href="#"><img src="assets/img/bg/banner16.jpg" alt=""></a>
+                            <a href="#"><img src="assets/img/category/category1.jpg" loading="lazy"alt=""alt=""></a>
                         </div>
                         <div class="widget_list widget_categories">
                             <h2>categories</h2>

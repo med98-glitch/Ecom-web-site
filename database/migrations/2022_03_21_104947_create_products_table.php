@@ -21,8 +21,6 @@ class CreateProductsTable extends Migration
             $table->integer('ratting');
             $table->unsignedBigInteger('id_category');
             $table->foreign('id_category')->references('id')->on('categories')->onUpdate('cascade')->onDelete('RESTRICT');
-            $table->unsignedBigInteger('id_image')->unique();
-            $table->foreign('id_image')->references('id')->on('images')->onUpdate('cascade')->onDelete('RESTRICT');
             $table->timestamps();
         });
     }

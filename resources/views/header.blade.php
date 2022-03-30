@@ -4,6 +4,7 @@
     <title>Pallas - eCommerce Bootstrap 4 Template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href={{asset('assets/img/favicon.ico')}}>
 
@@ -19,6 +20,7 @@
 </head>
     <!--header area start-->
     <header class="header_area">
+        
         <!--header top start-->
         <div class="header_top">
             <div class="container">
@@ -77,8 +79,8 @@
                                    <div class="hover_category">
                                         <select class="select_option" name="select" id="categori">
                                             <option selected >All Categories</option>
-                                            @foreach($categorie as $cat)
-                                                <option  value="{{ $cat->id }}"> {{ $cat->name }}</option>  
+                                            @foreach($categorie as $row)<!--Done-->
+                                                <option  value="{{$row['id'] }}"> {{ $row['name'] }}</option>  
                                             @endforeach
                                         </select>
                                    </div>
