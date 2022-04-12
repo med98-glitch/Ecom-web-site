@@ -1,7 +1,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Pallas - eCommerce Bootstrap 4 Template</title>
+    <title>Ecommerce web site</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -75,21 +75,30 @@
                     <div class="col-lg-9">
                         <div class="header_middle_inner">
                             <div class="search-container">
-                               <form action="#">
+                               <form action="{{url('categories')}}" method="GET">
                                    <div class="hover_category">
-                                        <select class="select_option" name="select" id="categori">
+                                        <select class="select_option" name="select" id="categori"  >
                                             <option selected >All Categories</option>
                                             @foreach($categorie as $row)<!--Done-->
-                                                <option  value="{{$row['id'] }}"> {{ $row['name'] }}</option>  
+                                            
+                                            <option  value="{{$row['id'] }}" name='id'><a href='hahada'> {{$row['name'] }}</a></option>
+                                          
                                             @endforeach
                                         </select>
                                    </div>
                                     <div class="search_box">
-                                        <input placeholder="Search product..." type="text">
-                                        <button type="submit"><i class="zmdi zmdi-search"></i></button>
+                                        <input name='sub' placeholder="Search product..." type="text">
+                                        <button type="submit" ><i class="zmdi zmdi-search"></i></button>
                                     </div>
                                 </form>
+                                <?php
+
+                                        if (isset($_POST['submit'])) {
+                                            $id=$_GET['id_categorie'];
+                                        }
+                                ?>
                             </div>
+                        
                             <div class="mini_cart_wrapper">
                                 <a href="javascript:void(0)"><i class="zmdi zmdi-shopping-basket"></i> <span>2items - $213.00</span> </a>
                                 <!--mini cart-->
