@@ -8,20 +8,49 @@ use App\Models\category;
 use App\Models\reduction;
 use App\Models\product;
 use App\Models\image;
+use Illuminate\Support\Facades\DB;
 class GetProducts extends Controller
 {
   
-     public function show($id = 1){
-        $productsByCategorie=product::join('reductions','products.id','=','reductions.id_product')
-        ->where('products.id_category',$id)
-        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
-        ->take(10)->get();
+     public function show(Request $request) {
+       //condition if input it empty
+        if(!empty($request->id)){
+        $id =$request->id;
+        }else{
+        $id='1';
+        }
+        if(!empty($request->name)){
+            $name =$request->name;
+        }else{
+          $name='empty';
+        }
 
-        return view('shop',compact('productsByCategorie'));
-     }
-     public function aa(){
-        //$_GET['id'];
+      
         $categorie=Category::all();
-         return view('shop/',compact('categorie'));
+        //to get products by categorie
+        $productsByCategorie=product::join('reductions','products.id','=','reductions.id_product')
+        ->Where('products.name','like','%'.$name.'%')
+        ->orwhere('products.id_category',$id)
+        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img','products.id_category as catid')
+        ->paginate(1);
+        
+        
+        //count fon this products
+        $count=product::join('reductions','products.id','=','reductions.id_product')
+        ->Where('products.name','like','%'.$name.'%')
+        ->orwhere('products.id_category',$id)
+        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+        ->get()->count();
+        
+        //count of products by categories 
+        $categoriesBynombreProductsproduct=product::join('categories','products.id_category','=','categories.id')
+        ->select('categories.name as name', DB::raw('count(categories.id) as total'))
+        ->groupBy('categories.id')
+        //->selectRaw('count(products.id) as total, group_id')
+        ->get();
+       
+
+        return view('shop',compact('productsByCategorie','categorie','count','categoriesBynombreProductsproduct'));
      }
+    
 }

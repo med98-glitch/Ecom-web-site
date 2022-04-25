@@ -12627,6 +12627,15 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   object-fit: cover;
   margin-right:24px;
 }
+.page-item.active .page-link  {
+  background-color: #ea000d ;
+  border-color: #ea000d;
+  
+}
+.page-item .page-link  {
+  color: black;
+  
+}
 
 /*portfolio page css end*/
 

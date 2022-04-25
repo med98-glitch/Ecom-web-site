@@ -69,34 +69,29 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3">
                         <div class="logo">
-                            <a href="index.html"><img src="assets/img/logo/logo.png" loading="lazy" alt=""></a>
+                            <a href="index.html"><img src="{{URL('assets/img/logo/logo.png')}}" loading="lazy" alt=""></a>
                         </div>
                     </div>
+                    
                     <div class="col-lg-9">
                         <div class="header_middle_inner">
                             <div class="search-container">
                                <form action="{{url('categories')}}" method="GET">
+                                
                                    <div class="hover_category">
-                                        <select class="select_option" name="select" id="categori"  >
-                                            <option selected >All Categories</option>
-                                            @foreach($categorie as $row)<!--Done-->
-                                            
-                                            <option  value="{{$row['id'] }}" name='id'><a href='hahada'> {{$row['name'] }}</a></option>
+                                        <select class="select_option" name="id" id="categori"  >
                                           
+                                            @foreach($categorie as $row)<!--Done-->
+                                            <option  value="{{$row['id'] }}" name='id'> {{$row['name'] }}</option>
                                             @endforeach
                                         </select>
                                    </div>
                                     <div class="search_box">
-                                        <input name='sub' placeholder="Search product..." type="text">
+                                        <input name='name' placeholder="Search product..." type="text"  >
                                         <button type="submit" ><i class="zmdi zmdi-search"></i></button>
                                     </div>
                                 </form>
-                                <?php
-
-                                        if (isset($_POST['submit'])) {
-                                            $id=$_GET['id_categorie'];
-                                        }
-                                ?>
+                              
                             </div>
                         
                             <div class="mini_cart_wrapper">
@@ -153,6 +148,7 @@
                 </div>
             </div>
         </div>
+        
         <!--header center area end-->
 
         <!--header middel start-->
