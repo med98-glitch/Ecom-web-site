@@ -37,15 +37,15 @@ class homCtroller extends Controller
         ->select('reductions.id as id','products.name as name')
         ->get();*/
         $all_product_reduction=product::join('reductions','products.id','=','reductions.id_product')
-        ->join('images','products.id','=','images.id_product')
-        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions')
+  
+        ->select('products.name as name','products.id as id','products.image as img','products.ratting as ratting','products.price as price','reductions.reduction as reductions')
         ->get();
 
 
         //request to get default products in session ajax (prodct by categories)
         $GetAll=product::limit(2)->join('reductions','products.id','=','reductions.id_product')
         //->join('images','products.id','=','images.id_product')
-        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
         ->get();
        
 
@@ -53,21 +53,21 @@ class homCtroller extends Controller
         //left two products
         $leftProduct=product::orderBy('created_at', 'desc')->first()->join('reductions','products.id','=','reductions.id_product')
         //->join('images','products.id','=','images.id_product')
-        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
         ->take(2)->get();
          //right two products
         $righttProduct=product::orderBy('created_at', 'desc')->first()->limit(2)->join('reductions','products.id','=','reductions.id_product')
-        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
         ->skip(2)->take(2)->get();
         //center one products
 
         $cebterProducts=product::orderBy('created_at', 'desc')->first()->limit(2)->join('reductions','products.id','=','reductions.id_product')
-        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
         ->skip(4)->take(1)->get();
 
         //get top ratid elemment defaut value
          $topRatedProduct=product::orderBy('ratting', 'desc')->join('reductions','products.id','=','reductions.id_product')
-         ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+         ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
          ->take(10)->get();
 
          //get top reduction products
@@ -98,7 +98,7 @@ class homCtroller extends Controller
          $GetAll=product::limit(2)->join('reductions','products.id','=','reductions.id_product')
         //->join('images','products.id','=','images.id_product')
         ->where('products.id_category',$pro)
-        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
         ->get();
         return response()->json($GetAll);
          
@@ -113,7 +113,7 @@ class homCtroller extends Controller
        
         $RatedProductByCategorie=product::orderBy('ratting', 'DESC')->join('reductions','products.id','=','reductions.id_product')
         ->where('products.id_category',$categorie)
-        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
         ->take(4)->get();
         return response()->json($RatedProductByCategorie);
       }

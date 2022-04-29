@@ -23,19 +23,58 @@ class shopCtroller extends Controller
         $categorie=Category::all();
 
         $productsByCategorie=product::join('reductions','products.id','=','reductions.id_product')
-        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+        ->select('products.id as id','products.name as name','products.ratting as ratting','products.price as price','reductions.new_price as newprice','reductions.reduction as reductions','products.image as img')
         ->paginate(10);
 
         //default count of products
           //count fon this products
           $count=product::join('reductions','products.id','=','reductions.id_product')
          
-          ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+          ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.new_price as newprice','reductions.reduction as reductions','products.image as img')
           ->get()->count();
-        
-        return view('shop',compact('categorie','productsByCategorie','count','categoriesBynombreProductsproduct'));
+        //name cataegries for shop
+          $nameCategories=Category::all(); 
+          $topRatedProduct=product::orderBy('ratting', 'desc')->join('reductions','products.id','=','reductions.id_product')
+          ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','reductions.new_price as newprice','products.image as img')
+          ->take(10)->get();
+        return view('shop',compact('categorie','productsByCategorie','count','categoriesBynombreProductsproduct','nameCategories','topRatedProduct'));
     }
   
+  //flitter by price range
+  public function fillterbyprice(Request $request){
+    $price1=$request->price1;
+    $price2=$request->price2;
+    //get section of categeries with number of item by categories
+    $categoriesBynombreProductsproduct=product::join('categories','products.id_category','=','categories.id')
+    ->select('categories.name as name','products.id_category as idcat', DB::raw('count(categories.id) as total'))
+    ->groupBy('categories.id')
+    //->selectRaw('count(products.id) as total, group_id')
+    ->get();
+    $categorie=Category::all();
+    //get all categorie form database
+    $categorie=Category::all();
+
+    $productsByCategorie=product::join('reductions','products.id','=','reductions.id_product')
+    ->whereBetween('reductions.new_price',[$price1,$price2])
+    ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.new_price as newprice','reductions.reduction as reductions','products.image as img','products.id_category as catid')
+    ->paginate(10);
+
+    //default count of products
+      //count fon this products
+      $count=product::join('reductions','products.id','=','reductions.id_product')
+      ->whereBetween('reductions.new_price',[$price1,$price2])
+      ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.new_price as newprice','reductions.reduction as reductions','products.image as img')
+      ->get()->count();
+    //name cataegries for shop
+      $nameCategories=Category::all(); 
+
+      //top rated products shop
+      $topRatedProduct=product::orderBy('ratting', 'desc')->join('reductions','products.id','=','reductions.id_product')
+      ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','reductions.new_price as newprice','products.image as img')
+      ->take(10)->get();
+
+    return view('shop',compact('categorie','productsByCategorie','count','categoriesBynombreProductsproduct','nameCategories','topRatedProduct'));
+}
 
 
 
@@ -44,9 +83,15 @@ class shopCtroller extends Controller
       $categorie=Category::all();
       $id = $request->id;
        $productsByCategorie=product::join('reductions','products.id','=','reductions.id_product')
+       ->join('categories','categories.id','=','products.id_category')
        ->where('products.id_category',$id)
-       ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+       ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','reductions.new_price as newprice','products.image as img','categories.name as catNam')
        ->paginate(2);
+
+       $nameCategories=Category::where('id',$id)
+       ->select('categories.name as name')
+       ->get();
+       
 
        $categoriesBynombreProductsproduct=product::join('categories','products.id_category','=','categories.id')
         ->select('categories.name as name','products.id_category as idcat', DB::raw('count(categories.id) as total'))
@@ -55,9 +100,13 @@ class shopCtroller extends Controller
         ->get();
         $count=product::join('reductions','products.id','=','reductions.id_product')
         ->where('products.id_category',$id)
-        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','reductions.new_price as newprice','products.image as img',)
         ->get()->count();
-       return view('shop',compact('productsByCategorie','categorie','categoriesBynombreProductsproduct','count'));
+        //top rated products shop
+        $topRatedProduct=product::orderBy('ratting', 'desc')->join('reductions','products.id','=','reductions.id_product')
+        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','reductions.new_price as newprice','products.image as img')
+        ->take(10)->get();
+       return view('shop',compact('productsByCategorie','categorie','categoriesBynombreProductsproduct','count','nameCategories','topRatedProduct'));
     
     }
 

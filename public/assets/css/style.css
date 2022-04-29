@@ -8156,9 +8156,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .widget_list.widget_filter form input {
   background: none;
   border: none;
+  width: 50px;
   font-size: 12px;
-  float: right;
-  text-align: right;
+
   line-height: 31px;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {

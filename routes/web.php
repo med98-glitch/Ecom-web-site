@@ -6,6 +6,7 @@ use App\Http\Controllers\shopCtroller;
 use App\Http\Controllers\homCtroller;
 use App\Http\Controllers\GetProducts;
 use App\Http\Controllers\product;
+use App\Http\Controllers\Details_products;
 
 
 
@@ -50,7 +51,12 @@ Route::get('shop/categorie?={id}',[shopCtroller::class,'show']);
 //Route::post('categories',[shopCtroller::class,'work']);
 //Route::get('shop?categorie={id}',[GetProducts::class,'show']);
 Route::get('categories',[GetProducts::class,'show']);
+//fillter by price range
+Route::get('fillterbyprice',[shopCtroller::class,'fillterbyprice']);
 //getproducts by categorie on shope page
 Route::post('/getbycategories',[shopCtroller::class,'showproducts']);
 
 Route::get('shop/{id}',[shopCtroller::class,'fillterbycategorie']);
+
+//details produs section
+Route::get('details/{id}',[Details_products::class,'getdaitails']);

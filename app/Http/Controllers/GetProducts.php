@@ -31,15 +31,18 @@ class GetProducts extends Controller
         $productsByCategorie=product::join('reductions','products.id','=','reductions.id_product')
         ->Where('products.name','like','%'.$name.'%')
         ->orwhere('products.id_category',$id)
-        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img','products.id_category as catid')
+        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','reductions.new_price as newprice','products.image as img','products.id_category as catid')
         ->paginate(1);
         
+        $nameCategories=Category::where('id',$id)
+       ->select('categories.name as name')
+       ->get();
         
         //count fon this products
         $count=product::join('reductions','products.id','=','reductions.id_product')
         ->Where('products.name','like','%'.$name.'%')
         ->orwhere('products.id_category',$id)
-        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','reductions.new_price as newprice','products.image as img')
         ->get()->count();
         
         //count of products by categories 
@@ -49,8 +52,12 @@ class GetProducts extends Controller
         //->selectRaw('count(products.id) as total, group_id')
         ->get();
        
+     //top rated products shop 
+     $topRatedProduct=product::orderBy('ratting', 'desc')->join('reductions','products.id','=','reductions.id_product')
+     ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','reductions.new_price as newprice','products.image as img')
+     ->take(10)->get();
 
-        return view('shop',compact('productsByCategorie','categorie','count','categoriesBynombreProductsproduct'));
+        return view('shop',compact('productsByCategorie','categorie','count','categoriesBynombreProductsproduct','nameCategories','topRatedProduct'));
      }
     
 }

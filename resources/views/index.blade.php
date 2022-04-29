@@ -250,7 +250,7 @@
                         @foreach($categorie as $row)
                         <div class="single_category_product">
                             <div class="category_product_thumb">
-                                <a href="{{url('shop')}}"><img src="{{$row['image']}}" loading="lazy"alt="" width="20px"></a>
+                                <a href="{{url('shop/'. $row->id)}}"><img src="{{$row['image']}}" loading="lazy"alt="" width="20px"></a>
                             </div>
                             <div class="category_product_name">
                                 <h2><a href="shop.html">{{$row['name']}}</a></h2>
@@ -304,18 +304,18 @@
 
                                             <div class="single_deals_product">
                                                 <div class="product_thumb">
-                                                    <a href="product-details.html"><img src="{{$row['img']}}" loading="lazy" alt=""></a>
+                                                    <a href={{url('details/'. $row->id)}}><img src="{{$row['img']}}" loading="lazy" alt=""></a>
                                                     <div class="label_product">
                                                         <span class="label_sale">sale</span>
                                                     </div>
                                                     <div class="quick_button">
-                                                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"  title="quick view"> <i class="zmdi zmdi-eye"></i></a>
+                                                        <a href="{{url('details/'. $row->id)}}"  data-bs-target="#modal_box"  title="quick view"> <i class="zmdi zmdi-eye"></i></a>
                                                     </div>
                                                    
                                                 </div>
                                                 <div class="product_content">
                                                     <div class="product_name">
-                                                        <h3><a href="product-details.html">{{$row['name']}}</a></h3>
+                                                        <h3><a href={{url('details/'. $row->id)}}>{{$row['name']}}</a></h3>
                                                     </div>
                                                     <div class="product_rating">
                                                         <ul>
@@ -326,10 +326,21 @@
                                                             <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
                                                         </ul>
                                                     </div>
-                                                     <div class="price_box">
-                                                        <span class="current_price">$65.00</span>
-                                                        <span class="old_price">$70.00</span>
-                                                    </div>
+                                                    <div class="price_box">
+                                                        @php
+                                                         //clalculer le prix du reduction
+                                                            //prix reéle
+                                                            $prixEnitial=$row->price;
+                                                            //prorssentage du reduction
+                                                            $porssantageReduction=$row->reductions;
+                                                            //clacluler prix du reduction
+                                                            $prixReduction=$prixEnitial*$porssantageReduction / 100;
+                                                            //le prix finnalle du reduction
+                                                            $newPrix=$prixEnitial-$prixReduction;
+                                                        @endphp
+                                                       <span class="current_price"><?= $newPrix?> DH</span>
+                                                       <span class="old_price">{{$row['price']}} DH</span>
+                                                   </div>
                                                     <div class="action_links">
                                                         <ul>
                                                            <li class="wishlist"><a title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
@@ -360,11 +371,11 @@
                             @foreach($all_product_reduction as $row)
                             <div class="small_product_items">
                                 <div class="product_thumb">
-                                    <a href="product-details.html"><img src="assets/img/s-product/product3.jpg" loading="lazy" alt=""></a>
+                                    <a href="{{url('details/'. $row->id)}}"><img src="{{$row['img']}}" loading="lazy" alt=""></a>
                                 </div>
                                 <div class="product_content">
                                     <div class="product_name">
-                                        <h3><a href="product-details.html">{{$row['name']}}</a></h3>
+                                        <h3><a href="{{url('details/'. $row->id)}}">{{$row['name']}}</a></h3>
                                     </div>
                                     <div class="product_rating">
                                         <ul>
@@ -392,8 +403,8 @@
                                              //le prix finnalle du reduction
                                              $newPrix=$prixEnitial-$prixReduction;
                                          @endphp
-                                        <span class="current_price"><?= $newPrix?></span>
-                                        <span class="old_price">{{$row['price']}}</span>
+                                        <span class="current_price"><?= $newPrix?> dh</span>
+                                        <span class="old_price">{{$row['price']}} dh</span>
                                     </div>
                                 </div>
                             </div>
@@ -427,17 +438,17 @@
                            @foreach($leftProduct as $row)
                             <div class="single_product">
                                 <div class="product_thumb">
-                                    <a href="product-details.html"><img src="{{$row['img']}}" loading="lazy" alt=""></a>
+                                    <a href="{{url('details/'. $row->id)}}"><img src="{{$row['img']}}" loading="lazy" alt=""></a>
                                     <div class="label_product">
                                         <span class="label_sale">sale</span>
                                     </div>
                                     <div class="quick_button">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"  title="quick view"> <i class="zmdi zmdi-eye"></i></a>
+                                        <a href="{{url('details/'. $row->id)}}"   title="quick view"> <i class="zmdi zmdi-eye"></i></a>
                                     </div>
                                 </div>
                                 <div class="product_content">
                                     <div class="product_name">
-                                        <h3><a href="product-details.html">{{$row['name']}}</a></h3>
+                                        <h3><a href="{{url('details/'. $row->id)}}">{{$row['name']}}</a></h3>
                                     </div>
                                     <div class="product_rating">
                                         <ul>
@@ -481,9 +492,9 @@
                         @foreach($cebterProducts as $row)
                         <div class="single_product product_center">
                             <div class="product_thumb">
-                                <a href="product-details.html"><img src="{{$row['img']}}" loading="lazy" alt=""></a>
+                                <a href="{{url('details/'. $row->id)}}"><img src="{{$row['img']}}" loading="lazy" alt=""></a>
                                 <div class="quick_button">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"  title="quick view"> <i class="zmdi zmdi-eye"></i></a>
+                                    <a href="{{url('details/'. $row->id)}}"   title="quick view"> <i class="zmdi zmdi-eye"></i></a>
                                 </div>
                             </div>
                             <div class="product_content">
@@ -532,17 +543,17 @@
                         @foreach($righttProduct as $row)
                             <div class="single_product">
                                 <div class="product_thumb">
-                                    <a href="product-details.html"><img src="{{$row['img']}}" loading="lazy" alt=""></a>
+                                    <a href="{{url('details/'. $row->id)}}"><img src="{{$row['img']}}" loading="lazy" alt=""></a>
                                     <div class="label_product">
                                         <span class="label_sale">sale</span>
                                     </div>
                                     <div class="quick_button">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"  title="quick view"> <i class="zmdi zmdi-eye"></i></a>
+                                        <a href="{{url('details/'. $row->id)}}" data-bs-toggle="modal" data-bs-target="#modal_box  title="quick view"> <i class="zmdi zmdi-eye"></i></a>
                                     </div>
                                 </div>
                                 <div class="product_content">
                                     <div class="product_name">
-                                        <h3><a href="product-details.html">{{$row['name']}}</a></h3>
+                                        <h3><a href="{{url('details/'. $row->id)}}">{{$row['name']}}</a></h3>
                                     </div>
                                     <div class="product_rating">
                                         <ul>
@@ -642,17 +653,17 @@
                                    @endphp
                                     <div class="single_product">
                                         <div class="product_thumb">
-                                            <a href="product-details.html"><img src="{{$row['img']}}" loading="lazy" alt=""></a>
+                                            <a href="{{url('details/'. $row->id)}}"><img src="{{$row['img']}}" loading="lazy" alt=""></a>
                                             <div class="label_product">
                                                 <span class="label_sale">sale</span>
                                             </div>
                                             <div class="quick_button">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"  title="quick view"> <i class="zmdi zmdi-eye"></i></a>
+                                                <a href="{{url('details/'. $row->id)}}"  title="quick view"> <i class="zmdi zmdi-eye"></i></a>
                                             </div>
                                         </div>
                                         <div class="product_content">
                                             <div class="product_name">
-                                                <h3><a href="product-details.html">{{$row['name']}}</a></h3>
+                                                <h3><a href="{{url('details/'. $row->id)}}">{{$row['name']}}</a></h3>
                                             </div>
                                             <div class="product_rating">
                                                 <ul>
@@ -948,20 +959,20 @@
             $('#cnt').append(`
                             <div class='single_deals_product'>
                                                 <div class='product_thumb'>
-                                                    <a href='product-details.html'><img src='`+ value.img + `' loading='lazy' alt=''></a>
+                                                    <a href='details/`+ value.id + `'><img src='`+ value.img + `' loading='lazy' alt=''></a>
                                                     <div class='label_product'>
                                                         <span class='label_sale'>sale</span>
                                                     </div>
                                     
                                                     <div class='quick_button'>
-                                                        <a href='#' data-bs-toggle='modal' data-bs-target='#modal_box'  title='quick view'> <i class='zmdi zmdi-eye'></i></a>
+                                                        <a href='details/`+ value.id + `' title='quick view'> <i class='zmdi zmdi-eye'></i></a>
                                                     </div>
                                                    
                                                 </div>
                                                 <div class='product_content'>
                                                     <div class='product_name'>
                                                         
-                                                        <h3><a href='product-details.html'> ` + value.name + `</a></h3>
+                                                        <h3><a href='details/`+ value.id + `'> ` + value.name + `</a></h3>
                                                     </div>
                                                     <div class='product_rating'>
                                                        
@@ -971,8 +982,8 @@
                                                         
                                                     </div>
                                                      <div class='price_box'>
-                                                        <span class='current_price'>`+newPrice+`</span>
-                                                        <span class='old_price'>` +price+`</span>
+                                                        <span class='current_price'>`+newPrice+` DH</span>
+                                                        <span class='old_price'>` +price+`DH</span>
                                                     </div>
                                                     <div class='action_links'>
                                                         <ul>
@@ -1039,24 +1050,24 @@
                                <div class='owl-item cloned'>
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a href="product-details.html"><img src="`+ value.img + `" alt="" class='imageAjax'></a>
+                                        <a href='details/`+ value.id + `'><img src="`+ value.img + `" alt="" class='imageAjax'></a>
                                         <div class="label_product">
                                             <span class="label_sale">sale</span>
                                         </div>
                                         <div class="quick_button">
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#modal_box"  title="quick view"> <i class="zmdi zmdi-eye"></i></a>
+                                            <a href='details/`+ value.id + `'   title="quick view"> <i class="zmdi zmdi-eye"></i></a>
                                         </div>
                                     </div>
                                     <div class="product_content">
                                         <div class="product_name">
-                                            <h3><a href="product-details.html">`+ value.name + `</a></h3>
+                                            <h3><a href='details/`+ value.id + `'>`+ value.name + `</a></h3>
                                         </div>
                                         <div class="product_rating">
                                             `+loopRatting()+`
                                         </div>
                                          <div class="price_box">
-                                            <span class="current_price">`+newPrice+ `</span>
-                                            <span class="old_price">`+ value.price + `</span>   
+                                            <span class="current_price">`+newPrice+ ` DH</span>
+                                            <span class="old_price">`+ value.price + ` DH</span>   
                                         </div>
                                         <div class="action_links">
                                             <ul>

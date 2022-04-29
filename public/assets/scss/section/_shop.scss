@@ -138,6 +138,7 @@
     border: 2px solid $secondary_color;
 }
 
+
 .widget_list.widget_filter {
     & form{
         padding-top: 10px;
@@ -145,8 +146,6 @@
             background: none;
             border: none;
             font-size: 12px;
-            float: right;
-            text-align: right;
             line-height: 31px;
             @media #{$desktop-device }{
                 width: 65px;
