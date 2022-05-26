@@ -7,6 +7,8 @@ use App\Models\reduction;
 use App\Models\product;
 use App\Models\image;
 use Illuminate\Http\Request;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class shopCtroller extends Controller
@@ -24,7 +26,7 @@ class shopCtroller extends Controller
 
         $productsByCategorie=product::join('reductions','products.id','=','reductions.id_product')
         ->select('products.id as id','products.name as name','products.ratting as ratting','products.price as price','reductions.new_price as newprice','reductions.reduction as reductions','products.image as img')
-        ->paginate(10);
+        ->paginate(3);
 
         //default count of products
           //count fon this products
@@ -37,7 +39,15 @@ class shopCtroller extends Controller
           $topRatedProduct=product::orderBy('ratting', 'desc')->join('reductions','products.id','=','reductions.id_product')
           ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','reductions.new_price as newprice','products.image as img')
           ->take(10)->get();
-        return view('shop',compact('categorie','productsByCategorie','count','categoriesBynombreProductsproduct','nameCategories','topRatedProduct'));
+
+           //carts
+         $id_user=Auth::id();
+         $products_cards=Cart::where('id_user',$id_user)->get()->count();
+
+         $total_price=Cart::where('id_user',$id_user)
+         ->get()->sum('total_price');
+
+        return view('shop',compact('categorie','productsByCategorie','count','categoriesBynombreProductsproduct','nameCategories','topRatedProduct','products_cards','total_price'));
     }
   
   //flitter by price range
@@ -57,7 +67,7 @@ class shopCtroller extends Controller
     $productsByCategorie=product::join('reductions','products.id','=','reductions.id_product')
     ->whereBetween('reductions.new_price',[$price1,$price2])
     ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.new_price as newprice','reductions.reduction as reductions','products.image as img','products.id_category as catid')
-    ->paginate(10);
+    ->paginate(3);
 
     //default count of products
       //count fon this products
@@ -73,7 +83,16 @@ class shopCtroller extends Controller
       ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','reductions.new_price as newprice','products.image as img')
       ->take(10)->get();
 
-    return view('shop',compact('categorie','productsByCategorie','count','categoriesBynombreProductsproduct','nameCategories','topRatedProduct'));
+     
+
+          //carts
+          $id_user=Auth::id();
+          $products_cards=Cart::where('id_user',$id_user)->get()->count();
+
+           $total_price=Cart::where('id_user',$id_user)
+          ->get()->sum('total_price');
+
+    return view('shop',compact('categorie','productsByCategorie','count','categoriesBynombreProductsproduct','nameCategories','topRatedProduct','total_price','products_cards'));
 }
 
 
@@ -106,7 +125,17 @@ class shopCtroller extends Controller
         $topRatedProduct=product::orderBy('ratting', 'desc')->join('reductions','products.id','=','reductions.id_product')
         ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','reductions.new_price as newprice','products.image as img')
         ->take(10)->get();
-       return view('shop',compact('productsByCategorie','categorie','categoriesBynombreProductsproduct','count','nameCategories','topRatedProduct'));
+
+          //carts
+          $id_user=Auth::id();
+          $products_cards=Cart::where('id_user',$id_user)->get()->count();
+ 
+          $total_price=Cart::where('id_user',$id_user)
+          ->get()->sum('total_price');
+        $total_price=Cart::where('id_user',$id_user)
+        ->get()->sum('total_price');
+
+       return view('shop',compact('productsByCategorie','categorie','categoriesBynombreProductsproduct','count','nameCategories','topRatedProduct','products_cards','total_price'));
     
     }
 

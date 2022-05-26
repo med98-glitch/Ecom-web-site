@@ -1,15 +1,9 @@
-<!doctype html>
-<html class="no-js" lang="en">
-    <?php
+
+@extends('app')
+    @section('content')
+    @php
     $page='details';
-    ?>
-@include('header');
-</head>
-
-<body>
-
-
-
+    @endphp
     <!--breadcrumbs area start-->
     <div class="breadcrumbs_area">
         <div class="container">   
@@ -37,7 +31,7 @@
                     @foreach($prductsdtailsproduct as $row)
                         <div id="img-1" class="zoomWrapper single-zoom">
                             <a href="#">
-                                <img id="zoom1" src="{{URL($row['firsImage'])}}" data-zoom-image="{{URL($row['firsImage'])}}" alt="big-1" loading="lazy" width='600px'>
+                                <img id="zoom1" src="{{URL($row['firsImage'])}}" data-zoom-image="{{URL($row['firsImage'])}}" alt="big-1">
                             </a>
                         </div>
                     @endforeach
@@ -79,6 +73,8 @@
                                 </ul>
                             </div>
                             <div class="price_box">
+                                <input type="hidden" value='{{$row['id']}}' class ='id_products'>
+                                <input type="hidden" value='{{$row->newprice}}' class ='new_price'>
                                 <span class="current_price">{{$row->newprice}} DH</span>
                                 <span class="old_price">{{$row->price}} DH</span>
                                 
@@ -89,11 +85,11 @@
                             
                             <div class="product_variant quantity mt-5">
                                 <label>quantity</label>
-                                <input min="1" max="100" value="1" type="number">
+                                <input min="1" max="100" value="1" type="number" class='qte'>
                             </div>
                              <div class="action_links">
                                 <ul>
-                                    <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+                                    <li class="add_to_cart"><a href="JavaScript:void(0)" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
                                    <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
                                     <li class="compare"><a href="#" title="compare"><i class="zmdi zmdi-swap"></i></a></li>
                                 </ul>
@@ -666,25 +662,4 @@
         </div>
     </div>
     <!--brand area end-->
-
-    
-    @include('footer');
-    
-    
-
- 
-
-<!-- JS
-============================================ -->
-
-<!-- Plugins JS -->
-<script src="assets/js/plugins.js"></script>
-
-<!-- Main JS -->
-<script src="assets/js/main.js"></script>
-
-
-
-</body>
-
-</html>
+@endsection

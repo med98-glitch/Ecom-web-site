@@ -7,6 +7,9 @@ use App\Http\Controllers\homCtroller;
 use App\Http\Controllers\GetProducts;
 use App\Http\Controllers\product;
 use App\Http\Controllers\Details_products;
+use App\Http\Controllers\Logincontroller;
+use App\Http\Controllers\CartController;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -21,9 +24,9 @@ use App\Http\Controllers\Details_products;
 |
 */
 // call cotroller
-Route::get('/',[homCtroller::class,'index']);
+Route::get('/',[homCtroller::class,'index'])/*->middleware('verified')*/;
 
-Route::get('/index',[homCtroller::class,'index']);
+Route::get('/home',[App\Http\Controllers\homCtroller::class,'index'])->name('home');
 
 //Route for go to the  page contact
 Route::get('/contact',[aboutController::class,'contact']);
@@ -32,7 +35,7 @@ Route::get('/contact',[aboutController::class,'contact']);
 Route::get('/about',[aboutController::class,'about']);
 
 //call controller 
-Route::get('shop',[shopCtroller::class,'shop']);
+Route::get('shop',[shopCtroller::class,'shop'])/*->middleware('verified')*/;
 
 
 //first product in index page
@@ -60,3 +63,15 @@ Route::get('shop/{id}',[shopCtroller::class,'fillterbycategorie']);
 
 //details produs section
 Route::get('details/{id}',[Details_products::class,'getdaitails']);
+
+//login and register section
+Route::get('/login',[Logincontroller::class,'login']);
+//Route::get('/register',[Logincontroller::class,'register']);
+Auth::routes(/*['verify' => true]*/);
+
+Route::middleware(['auth'])->group(function () {
+    
+    
+});
+Route::post('/addtocard',[CartController::class,'addProduct']);
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

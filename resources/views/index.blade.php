@@ -1,12 +1,9 @@
-
-<!doctype html>
-<html class="no-js" lang="en">
-<!--to difine the active element in navbar-->
+    @extends('app')
+    @section('content')
      @php
      $page='home';
      @endphp
-@include('header');
-<body>
+
     <!--Offcanvas menu area start-->
 
     <div class="off_canvars_overlay">
@@ -25,6 +22,7 @@
                               <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
                         </div>
                         <div class="welcome_text">
+                           
                            <p>Welcome to <span>Electronics Store</span> </p>
                        </div>
 
@@ -196,7 +194,7 @@
                                 <i class="zmdi zmdi-local-shipping zmdi-hc-fw"></i>
                             </div>
                             <div class="shipping_content">
-                                <p>Free Shipping On Orders Over $99</p>
+                                <p>Livraison gratuite sur les commandes supérieures à 2000 dh</p>
                             </div>
                         </div>
                         <div class="single_shipping">
@@ -204,7 +202,8 @@
                                 <i class="zmdi zmdi-replay-5"></i>
                             </div>
                             <div class="shipping_content">
-                                <p>30 – Day Returns Moneyback Guarantee</p>
+                                <p>
+                                    Garantie de remboursement sous 30 jours</p>
                             </div>
                         </div>
                         <div class="single_shipping last_child">
@@ -212,23 +211,23 @@
                                 <i class="zmdi zmdi-phone-in-talk"></i>
                             </div>
                             <div class="shipping_content">
-                                <p>24/7 Support Online Consultations</p>
+                                <p>Assistance 24h/24 et 7j/7 Consultations en ligne</p>
                             </div>
                         </div>
                     </div>
                     <!--shipping area end-->
                     <div class="slider_area owl-carousel">
-                        <div class="single_slider" data-bgimg="assets/img/slider/slider1.jpg" loading="lazy">
+                        <div class="single_slider" data-bgimg="assets/img/slider/sld-2.jpg" loading="lazy">
                             <div class="slider_content content_position_center">
-                                <h1>New</h1>
-                                <h2>Designer <span style="color: white;"> uniture!</span> </h2>
-                                <span>elite collections! </span>
+                                <h1 style="color: white;">New</h1>
+                                <h2 style="color: white;">Designer <span > uniture!</span> </h2>
+                                <span style="color: white;">elite collections! </span>
                                 <a href="shop.html">shop now</a>
                             </div>
                         </div>
-                        <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/slider2.jpg" loading="lazy">
+                        <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/sd.jpg" loading="lazy">
                             <div class="slider_content content_position_left">
-                                <h1>New</h1>
+                                <h1 >New</h1>
                                 <h2>Designer Funiture! </h2>
                                 <span>elite collections! </span>
                                 <a href="shop.html">shop now</a>
@@ -338,13 +337,16 @@
                                                             //le prix finnalle du reduction
                                                             $newPrix=$prixEnitial-$prixReduction;
                                                         @endphp
+                                                        <input type="hidden" data-value='{{$row['id']}}' class ='id_products'>
+                                                        <input type="hidden" data-value='<?= $newPrix?>' class ='new_price'>
+
                                                        <span class="current_price"><?= $newPrix?> DH</span>
                                                        <span class="old_price">{{$row['price']}} DH</span>
                                                    </div>
                                                     <div class="action_links">
                                                         <ul>
                                                            <li class="wishlist"><a title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                                            <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+                                                            <li class="add_to_cart"><a href="JavaScript:void(0)" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
                                                             <li class="compare"><a href="#" title="compare"><i class="zmdi zmdi-swap"></i></a></li>
                                                         </ul>
                                                     </div>
@@ -567,7 +569,17 @@
                                         </ul>
                                     </div>
                                     <div class="price_box">
-                                        c
+                                        @php
+                                        //clalculer le prix du reduction
+                                           //prix reéle
+                                           $prixEnitial=$row->price;
+                                           //prorssentage du reduction
+                                           $porssantageReduction=$row->reductions;
+                                           //clacluler prix du reduction
+                                           $prixReduction=$prixEnitial*$porssantageReduction / 100;
+                                           //le prix finnalle du reduction
+                                           $newPrix=$prixEnitial-$prixReduction;
+                                       @endphp
                                         <span class="current_price"><?= $newPrix?> DH</span>
                                         <span class="old_price">{{$row['price']}} DH</span>
                                     </div>
@@ -910,186 +922,15 @@
     </div>
     <!--brand area end-->
 
-    @include('footer');
-    <script>
-		$(document).ready(function() {
-      $(".catte").click( function(){
-        $('.catte').not(this).removeClass('active');
-        $(this).addClass('active');
-
-      
-        var catego = $(this).data('value');
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-            });
-        $.ajax({
-            type: "POST",
-            url: "/getbyajax",
-            dataType:'JSON',
-            data: 'catego=' + catego 
-            
-          }).done(function(reponse){
-            $('#cnt').html("")
-           console.log(reponse)
-           $(reponse).each(function (key, value) {
-               //get price
-               var price = value.price;
-               //get reduction
-               var reduction =value.reductions;
-               //calcluer reduction
-               var pricReduction = price * reduction / 100;
-               //new price
-               var newPrice = price - pricReduction
-               //get ratting
-               var ratting = value.ratting;
-              
-               function loopRatting(){
-                let text="<ul>";
-                for(var i=0;i< ratting;i++){
-                    text += "<li><a href='#'><i class=' zmdi zmdi-star-outline'></i></a></li>"
-                }
-                text +="</ul>";
-                return text
-                }
-             
-            
-             
-            $('#cnt').append(`
-                            <div class='single_deals_product'>
-                                                <div class='product_thumb'>
-                                                    <a href='details/`+ value.id + `'><img src='`+ value.img + `' loading='lazy' alt=''></a>
-                                                    <div class='label_product'>
-                                                        <span class='label_sale'>sale</span>
-                                                    </div>
-                                    
-                                                    <div class='quick_button'>
-                                                        <a href='details/`+ value.id + `' title='quick view'> <i class='zmdi zmdi-eye'></i></a>
-                                                    </div>
-                                                   
-                                                </div>
-                                                <div class='product_content'>
-                                                    <div class='product_name'>
-                                                        
-                                                        <h3><a href='details/`+ value.id + `'> ` + value.name + `</a></h3>
-                                                    </div>
-                                                    <div class='product_rating'>
-                                                       
-                                                            
-                                                            `+loopRatting()+`
-                                                          
-                                                        
-                                                    </div>
-                                                     <div class='price_box'>
-                                                        <span class='current_price'>`+newPrice+` DH</span>
-                                                        <span class='old_price'>` +price+`DH</span>
-                                                    </div>
-                                                    <div class='action_links'>
-                                                        <ul>
-                                                           <li class='wishlist'><a title='Add to Wishlist'><i class='fa fa-heart-o' aria-hidden='true'></i></a></li>
-                                                            <li class='add_to_cart'><a href='cart.html' title='add to cart'><i class='zmdi zmdi-shopping-cart-plus'></i> add to cart</a></li>
-                                                            <li class='compare'><a href='#' title='compare'><i class='zmdi zmdi-swap'></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                        </div>`);
-              })
-           
-          })
-           
-        });
-      });
-	</script>
+    
+   
+    
 
 
 
-<script>
-    $(document).ready(function() {
-  $(".caty").click( function(){
-    var categorie = $(this).data('value');
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        });
-    $.ajax({
-        type: "POST",
-        url: "/gatbyCategorie",
-        dataType:'JSON',
-        data: 'categorie=' + categorie 
-        
-      }).done(function(reponse){
-        $('.contenue').html("")
-       console.log(reponse)
-       $(reponse).each(function (key, value) {
-               //get price
-               var price = value.price;
-               //get reduction
-               var reduction =value.reductions;
-               //calcluer reduction
-               var pricReduction = price * reduction / 100;
-               //new price
-               var newPrice = price - pricReduction
-               //get ratting
-               var ratting = value.ratting;
-              
-               function loopRatting(){
-                let text="<ul>";
-                for(var i=0;i< ratting;i++){
-                    text += "<li><a href='#'><i class=' zmdi zmdi-star-outline'></i></a></li>"
-                }
-                text +="</ul>";
-                return text
-                }
-             
-            
-             
-            $('.contenue').append(`
-         
-                               <div class='owl-item cloned'>
-                                <div class="single_product">
-                                    <div class="product_thumb">
-                                        <a href='details/`+ value.id + `'><img src="`+ value.img + `" alt="" class='imageAjax'></a>
-                                        <div class="label_product">
-                                            <span class="label_sale">sale</span>
-                                        </div>
-                                        <div class="quick_button">
-                                            <a href='details/`+ value.id + `'   title="quick view"> <i class="zmdi zmdi-eye"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_name">
-                                            <h3><a href='details/`+ value.id + `'>`+ value.name + `</a></h3>
-                                        </div>
-                                        <div class="product_rating">
-                                            `+loopRatting()+`
-                                        </div>
-                                         <div class="price_box">
-                                            <span class="current_price">`+newPrice+ ` DH</span>
-                                            <span class="old_price">`+ value.price + ` DH</span>   
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                               <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                                <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
-                                                <li class="compare"><a href="#" title="compare"><i class="zmdi zmdi-swap"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>`);
-              })
-       
-       
-      })
-       
-    });
-  });
-</script>
 
-</body>
 
-</html>
+@endsection
+
 
 

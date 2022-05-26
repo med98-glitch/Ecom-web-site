@@ -1,12 +1,9 @@
-<!doctype html>
-<html class="no-js" lang="en">
-    <!--to difine the active element in navbar-->
-    <?php
-     $page='contact';
-     ?>
-@include('header');
-<body>
-    
+@extends('app')
+    @section('content')
+    @php
+    $page='contact';
+    @endphp
+
     <!--Offcanvas menu area start-->
     
     <div class="off_canvars_overlay">
@@ -358,9 +355,4 @@
     </div>
     <!--brand area end-->
 
-@include('footer');
-
-
-</body>
-
-</html>
+@endsection

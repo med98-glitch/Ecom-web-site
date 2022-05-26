@@ -7,6 +7,8 @@ use App\Models\reduction;
 use App\Models\product;
 use App\Models\image;
 use Illuminate\Http\Request;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class homCtroller extends Controller
@@ -85,9 +87,14 @@ class homCtroller extends Controller
           ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
           ->take(10)->get();
 
+         //carts
+         $id_user=Auth::id();
+         $products_cards=Cart::where('id_user',$id_user)->get()->count();
 
+         $total_price=Cart::where('id_user',$id_user)
+         ->get()->sum('total_price');
         return view('index',compact('categorie','products','all_product_reduction','GetAll','leftProduct','righttProduct','cebterProducts','topRatedProduct','topReductionProducts','lastProduct','toppriceproducts'
-        ,'firstencategorie','lastcategories'));
+        ,'firstencategorie','lastcategories','products_cards','total_price'));
         
     }
     //function to get articls by categiries with out reload page

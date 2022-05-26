@@ -1,10 +1,8 @@
-<!doctype html>
-<html class="no-js" lang="en">
-    <?php
+@extends('app')
+    @section('content')
+    @php
     $page='shop';
-    ?>
-@include('header');
-<body>
+    @endphp
     <!--Offcanvas menu area start-->
     
     <div class="off_canvars_overlay">
@@ -172,16 +170,7 @@
            </div>
        </div>
    </div>
-                        <div class="Offcanvas_footer">
-                            <span><a href="#"><i class="fa fa-envelope-o"></i> info@yourdomain.com</a></span>
-                            <ul>
-                                <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li class="pinterest"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        </div>
+                      
                     </div>
                 </div>
             </div>
@@ -217,22 +206,16 @@
                 <div class="col-lg-3 col-md-12">
                    <!--sidebar widget start-->
                     <aside class="sidebar_widget">
-                        <div class="shop_sidebar_banner mb-50">
-                            <a href="#"><img src="{{URL('assets/img/category/category1.jpg')}}" loading="lazy"alt=""alt=""></a>
-                        </div>
                         <div class="widget_list widget_categories">
                             <h2>categories</h2>
                             <ul>
                                
                                @foreach($categoriesBynombreProductsproduct as $row)
-                              
-                               
                                 <li>
                                     <a href="{{url('shop/'.$row['idcat'])}}"  >{{$row['name']}} <span>{{$row['total']}}</span></a> 
                                 </li>
                                
                                 @endforeach
-
                             </ul>
                         </div>
                         <div class="widget_list widget_filter">
@@ -288,7 +271,7 @@
                     <!--shop wrapper start-->
                     <!--shop toolbar start-->
                     <div class="shop_banner">
-                        <img src="{{URL('assets/img/bg/banner29.jpg')}}" alt="">
+                        <img src="{{URL('assets/img/bg/produit.png')}}" alt="">
                     </div>
                     <div class="shop_title">
                         <h1>shop</h1>
@@ -475,8 +458,6 @@
     </div>
     <!--brand area end-->
 
-    
-    @include('footer');
     <script>
 		$(document).ready(function() {
       $(".categor").click( function(){
@@ -587,7 +568,4 @@
 
 	</script>
 
-
-</body>
-
-</html>
+@endsection

@@ -1,14 +1,10 @@
-<!doctype html>
-<html class="no-js" lang="en">
-<!--the define the element active in the nav bar-->
-<?php
-$page='about';
-?>
-<body>
+@extends('app')
+    @section('content')
+    @php
+    $page='about';
+    @endphp
 
-<!-- Main Wrapper Start -->
-  @include('header');
-    
+        
     <!--Offcanvas menu area start-->
     
     <div class="off_canvars_overlay">
@@ -397,13 +393,6 @@ $page='about';
             </div>
         </div>
     </div>
-    <!--brand area end-->
+    <!--brand area end--> 
 
-    @include('footer');
-    
-
-
-
-</body>
-
-</html>
+@endsection
