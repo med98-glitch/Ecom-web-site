@@ -9622,8 +9622,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   width: 100%;
 }
 .table_desc .cart_page table thead tr th {
-  border-bottom: 3px solid #ea000d;
-  border-right: 1px solid #e5e5e5;
+  border-bottom: 3px solid var(--color-principale);
+  border-right: 1px solid var(--color-principale);
   font-size: 16px;
   font-weight: 600;
   text-transform: capitalize;
@@ -12667,7 +12667,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .page-item .page-link  {
   color: black;
-  
+g
 }
 
 .all{

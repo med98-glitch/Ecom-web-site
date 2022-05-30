@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use App\Models\Cart;
 use App\Models\product;
 use Illuminate\Http\Request;
@@ -57,6 +58,16 @@ class CartController extends Controller
             return response()->json(['status' => "login to continue",'icon' => "error",'title' =>"oops...","products_cards" =>$products_cards,"total_price" =>$total_price]);
         }
    
+}
+public function details(){
+    $categorie=Category::all();
+
+          $id_user=Auth::id();
+          $products_cards=Cart::where('id_user',$id_user)->get()->count();
+
+           $total_price=Cart::where('id_user',$id_user)
+          ->get()->sum('total_price');
+    return view('cart',compact('categorie','products_cards','total_price'));
 }
     
 }

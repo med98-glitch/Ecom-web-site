@@ -35,7 +35,7 @@ Route::get('/contact',[aboutController::class,'contact']);
 Route::get('/about',[aboutController::class,'about']);
 
 //call controller 
-Route::get('shop',[shopCtroller::class,'shop'])/*->middleware('verified')*/;
+Route::get('shop',[shopCtroller::class,'shop'])->middleware('verified');
 
 
 //first product in index page
@@ -70,8 +70,10 @@ Route::get('/login',[Logincontroller::class,'login']);
 Auth::routes(/*['verify' => true]*/);
 
 Route::middleware(['auth'])->group(function () {
-    
+    Route::get('details_cart',[CartController::class,'details']);
     
 });
 Route::post('/addtocard',[CartController::class,'addProduct']);
+
+
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

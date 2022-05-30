@@ -21,7 +21,7 @@
         <link rel="stylesheet" href={{asset('assets/css/style.css')}}>
         <link rel="stylesheet" href={{asset('assets/css/shop.css')}}>
      
-    
+        @livewireStyles
     </head>
 </head>
 <body>
@@ -268,6 +268,6 @@
     });
 </script>
 
-
+@livewireScripts
 </body>
 </html>

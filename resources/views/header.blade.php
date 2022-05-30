@@ -17,7 +17,6 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href={{asset('assets/css/style.css')}}>
     <link rel="stylesheet" href={{asset('assets/css/shop.css')}}>
- 
 
 </head>
     <!--header area start-->

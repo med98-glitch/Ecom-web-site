@@ -397,10 +397,10 @@
    @endif
 
                 <div class="shop_toolbar t_bottom">
-                        
-
+                         
+                    @if($productsByCategorie->count() > 0)
                             {{ $productsByCategorie->appends(['id' => $row['catid'] ])->links() }}
-                      
+                    @endif
                 </div>
             
           
@@ -512,7 +512,9 @@
                                     </ul>
                                 </div>
                                     <div class="price_box">
+                                     @if($productsByCategorie->count() > 0)
                                     <span class="current_price">{{$row['price']}}</span>
+                                    @endif
                                     <span class="old_price">$70.00</span>   
                                 </div>
                                 <div class="action_links">
@@ -525,7 +527,9 @@
                             </div>
                             <div class="product_content list_content">
                                 <div class="product_name">
+                                    @if($productsByCategorie->count() > 0)
                                     <h3><a href="product-details.html">{{$row['nama']}}</a></h3>
+                                    @endif
                                 </div>
                                 <div class="product_rating">
                                     <ul>
@@ -537,7 +541,9 @@
                                     </ul>
                                 </div>
                                     <div class="price_box">
+                                    @if($productsByCategorie->count() > 0)
                                     <span class="current_price">{{$row['price']}}</span>
+                                    @endif
                                     <span class="old_price">$70.00</span>   
                                 </div>
                                 <div class="action_links">

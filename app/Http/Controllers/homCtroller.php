@@ -53,19 +53,43 @@ class homCtroller extends Controller
 
         //section get news products
         //left two products
-        $leftProduct=product::orderBy('created_at', 'desc')->first()->join('reductions','products.id','=','reductions.id_product')
-        //->join('images','products.id','=','images.id_product')
-        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
-        ->take(2)->get();
+
+        if(product::count() < 0){
+          $leftProduct=product::orderBy('created_at', 'desc')->first()->join('reductions','products.id','=','reductions.id_product')
+          //->join('images','products.id','=','images.id_product')
+          ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+          ->take(2)->get();
+        }else{
+          $leftProduct=product::join('reductions','products.id','=','reductions.id_product')
+          //->join('images','products.id','=','images.id_product')
+          ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+          ->get();
+        }
+       
+
+
+
+
          //right two products
+         if(product::count() < 0){
         $righttProduct=product::orderBy('created_at', 'desc')->first()->limit(2)->join('reductions','products.id','=','reductions.id_product')
         ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
         ->skip(2)->take(2)->get();
+         }else{
+          $righttProduct=product::join('reductions','products.id','=','reductions.id_product')
+          ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+          ->get();
+         }
         //center one products
-
+        if(product::count() < 0){
         $cebterProducts=product::orderBy('created_at', 'desc')->first()->limit(2)->join('reductions','products.id','=','reductions.id_product')
         ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
         ->skip(4)->take(1)->get();
+        }else{
+          $cebterProducts=product::join('reductions','products.id','=','reductions.id_product')
+          ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+          ->get();
+        }
 
         //get top ratid elemment defaut value
          $topRatedProduct=product::orderBy('ratting', 'desc')->join('reductions','products.id','=','reductions.id_product')
@@ -78,9 +102,15 @@ class homCtroller extends Controller
          ->take(10)->get();
          
          //last products
+         if(product::count() < 0){
          $lastProduct=product::orderBy('created_at', 'desc')->first()->join('reductions','products.id','=','reductions.id_product')
          ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
          ->take(10)->get();
+         }else{
+          $lastProduct=product::join('reductions','products.id','=','reductions.id_product')
+          ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+         ->get();
+         }
          
           //Top price products
           $toppriceproducts=product::orderBy('price', 'asc')->join('reductions','products.id','=','reductions.id_product')
@@ -91,8 +121,8 @@ class homCtroller extends Controller
          $id_user=Auth::id();
          $products_cards=Cart::where('id_user',$id_user)->get()->count();
 
-         $total_price=Cart::where('id_user',$id_user)
-         ->get()->sum('total_price');
+        $total_price=Cart::where('id_user',$id_user)
+        ->get()->sum('total_price');
         return view('index',compact('categorie','products','all_product_reduction','GetAll','leftProduct','righttProduct','cebterProducts','topRatedProduct','topReductionProducts','lastProduct','toppriceproducts'
         ,'firstencategorie','lastcategories','products_cards','total_price'));
         
