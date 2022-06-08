@@ -141,10 +141,7 @@ class shopCtroller extends Controller
 
 
 
-
-
-
-    public function show($id ){
+    public function show($id){
         $productsByCategorie_side_bar=product::join('reductions','products.id','=','reductions.id_product')
         ->where('products.id_category',$id)
         ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')

@@ -266,7 +266,60 @@
       });
 
     });
+
+
+//podification of price and total of cars in page   details products-->
+
+$(document).ready(function() {
+      $(".update").click( function(){
+         
+       var price='1'
+          $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+
+        $.ajax({
+        type: "POST",
+        url: "/deleteUpdateItem",
+        dataType:'JSON',
+        data: 'price= '+ price 
+     
+    }).done(function(response){
+        
+        $('.count_product').html("")
+        $(response).each(function (key, value) {
+     
+            $('.count_product').append(``+ value.products_cards + `_Produit Total:`+value.total_price +`Dh`);
+              })
+
+      })
+      });
+
+    });
+//increment and decrement of cantity of panier
+let addbtn=document.querySelector('#add');
+let subbtn=document.querySelector('#sub');
+let qte=document.querySelector('#qtebox');
+
+addbtn.addEventListener('click',()=>{
+    qte.value=parseInt(qte.value) + 1;
+    if(qte.value > 10){
+        qte.value=10;
+    }
+})
+subbtn.addEventListener('click',()=>{
+    qte.value=parseInt(qte.value) -1;
+    if(qte.value < 1){
+        qte.value=1;
+    }
+})
+
 </script>
+   
+
+
 
 @livewireScripts
 </body>

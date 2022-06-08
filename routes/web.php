@@ -35,7 +35,7 @@ Route::get('/contact',[aboutController::class,'contact']);
 Route::get('/about',[aboutController::class,'about']);
 
 //call controller 
-Route::get('shop',[shopCtroller::class,'shop'])->middleware('verified');
+Route::get('shop',[shopCtroller::class,'shop'])/*->middleware('verified');*/;
 
 
 //first product in index page
@@ -71,6 +71,7 @@ Auth::routes(/*['verify' => true]*/);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('details_cart',[CartController::class,'details']);
+    Route::post('/deleteUpdateItem',[CartController::class,'deleteUpdateItem']);
     
 });
 Route::post('/addtocard',[CartController::class,'addProduct']);

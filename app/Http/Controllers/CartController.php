@@ -67,7 +67,21 @@ public function details(){
 
            $total_price=Cart::where('id_user',$id_user)
           ->get()->sum('total_price');
+        
     return view('cart',compact('categorie','products_cards','total_price'));
+}
+
+//functionn reload panier 
+public function deleteUpdateItem(Request $request)
+
+{
+   
+    $id_user=Auth::id();
+   
+    $total_price=Cart::where('id_user',$id_user)
+    ->get()->sum('total_price');
+    $products_cards=Cart::where('id_user',$id_user)->get()->count();
+    return response()->json(["products_cards" => $products_cards,"total_price"=> $total_price]);
 }
     
 }

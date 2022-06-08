@@ -19,12 +19,13 @@
                         <tbody>
                             @foreach($productsincarts as $row)
                             <tr>
-                               <td class="product_remove"><a href="javascript:void(0);" wire:click="confirmeDelete({{$row->id}})"><i class="fa fa-trash-o"></i></a></td>
+                               <td class="product_remove"><a href="javascript:void(0);" wire:click="confirmeDelete({{$row->id}})" class="update"><i class="fa fa-trash-o"></i></a></td>
                                 <td class="product_thumb"><a href="#"><img src="{{$row->image}}" alt=""></a></td>
                                 <td class="product_name"><a href="#">{{$row->name}}</a></td>
                                 <td class="product-price">{{$row->price}} Dh</td>
-                                <td class="product_quantity"><label>Quantity</label> <input min="1" max="100" value="{{$row->qte}}" type="number"></td>
-                                <td class="product_total">{{$row->total}}</td>
+                                
+                                <td class="product_quantity"><label>Quantity</label><button id="add" type="button" class="increment" wire:click.prevent=' modofiyincrement ({{$row->id}},{{$row->qte}}),{{$row->price}}'>+</button><input class="ml-5"  min="1" max="100" value="{{$row->qte}}" type="number"  readonly="" style="text-align: center;" id='qtebox' class="mt-2"><button id="sub" class="increment" type="button" wire:click.prevent=' modofiyindesinctemntt({{$row->id}},{{$row->qte}})' >-</button></td>
+                                <td class="product_total">{{$row->total}} DH</td>
 
 
                             </tr>
@@ -35,11 +36,13 @@
                         </tbody>
                     </table>   
                         </div>  
+                        <div class="shop_toolbar t_bottom" >
+                        @if($productsincarts->count() > 0)
                         {!! $productsincarts->links() !!}
-                        <div class="cart_submit">
+                        @endif
+                        </div>
+
                             
-                            <button wire:click="number">update cart</button>
-                        </div>      
                     </div>
                  </div>
              </div>
@@ -61,18 +64,18 @@
                             <h3>Cart Totals</h3>
                             <div class="coupon_inner">
                                <div class="cart_subtotal">
-                                   <p>Subtotal</p>
-                                   <p class="cart_amount">£215.00</p>
+                                   <p>Total sans TTC</p>
+                                   <p class="cart_amount"> {{$productpricetotal}} DH</p>
                                </div>
                                <div class="cart_subtotal ">
-                                   <p>Shipping</p>
-                                   <p class="cart_amount"><span>Flat Rate:</span> £255.00</p>
+                                   <p>Total avec TTC</p>
+                                   <p class="cart_amount">{{$priceTTc}} DH</p>
                                </div>
                                <a href="#">Calculate shipping</a>
 
                                <div class="cart_subtotal">
                                    <p>Total</p>
-                                   <p class="cart_amount">£215.00</p>
+                                   <p class="cart_amount">{{$priceTTc}} DH</p>
                                </div>
                                <div class="checkout_btn">
                                    <a href="#">Proceed to Checkout</a>

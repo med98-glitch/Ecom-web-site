@@ -12667,7 +12667,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 }
 .page-item .page-link  {
   color: black;
-g
+
 }
 
 .all{
@@ -12675,6 +12675,13 @@ g
     position:fixed;
     overflow-y:scroll;
     overflow-x:scroll;
+
+}
+.increment{
+  border: 0.5px gray solid;
+  padding: 7px 10px 7px 10px;
+  background-color: black;
+  color: white;
 
 }
 

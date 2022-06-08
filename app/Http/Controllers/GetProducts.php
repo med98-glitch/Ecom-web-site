@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 use App\Models\category;
 use App\Models\reduction;
 use App\Models\product;
@@ -57,7 +58,14 @@ class GetProducts extends Controller
      ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','reductions.new_price as newprice','products.image as img')
      ->take(10)->get();
 
-        return view('shop',compact('productsByCategorie','categorie','count','categoriesBynombreProductsproduct','nameCategories','topRatedProduct'));
+          $id_user=Auth::id();
+          $products_cards=Cart::where('id_user',$id_user)->get()->count();
+
+           $total_price=Cart::where('id_user',$id_user)
+          ->get()->sum('total_price');
+
+
+        return view('shop',compact('productsByCategorie','categorie','count','categoriesBynombreProductsproduct','nameCategories','topRatedProduct','products_cards','total_price'));
      }
     
 }

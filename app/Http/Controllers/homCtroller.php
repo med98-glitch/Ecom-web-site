@@ -54,7 +54,7 @@ class homCtroller extends Controller
         //section get news products
         //left two products
 
-        if(product::count() < 0){
+        if(product::count() > 0){
           $leftProduct=product::orderBy('created_at', 'desc')->first()->join('reductions','products.id','=','reductions.id_product')
           //->join('images','products.id','=','images.id_product')
           ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
@@ -66,12 +66,8 @@ class homCtroller extends Controller
           ->get();
         }
        
-
-
-
-
          //right two products
-         if(product::count() < 0){
+         if(product::count() > 0){
         $righttProduct=product::orderBy('created_at', 'desc')->first()->limit(2)->join('reductions','products.id','=','reductions.id_product')
         ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
         ->skip(2)->take(2)->get();
@@ -81,7 +77,7 @@ class homCtroller extends Controller
           ->get();
          }
         //center one products
-        if(product::count() < 0){
+        if(product::count() > 0){
         $cebterProducts=product::orderBy('created_at', 'desc')->first()->limit(2)->join('reductions','products.id','=','reductions.id_product')
         ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
         ->skip(4)->take(1)->get();

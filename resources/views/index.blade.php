@@ -238,6 +238,8 @@
             </div>
         </div>
     </section>
+      <!--slider area start-->
+
     <!--slider area end-->
 
     <!--category product area start-->

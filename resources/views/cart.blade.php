@@ -246,7 +246,7 @@
     <!--breadcrumbs area end-->
     
      <!--shopping cart area start -->
-     <livewire:cart /> 
+     <livewire:itemcarts /> 
      <!--shopping cart area end -->
     
      <!--brand newsletter area start-->

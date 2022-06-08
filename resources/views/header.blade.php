@@ -121,7 +121,7 @@
                             </div>
                         
                             <div class="mini_cart_wrapper">
-                                <a href="javascript:void(0)"><i class="zmdi zmdi-shopping-basket"></i> 
+                                <a href="{{url('details_cart')}}"><i class="zmdi zmdi-shopping-basket"></i> 
                                     @guest
                                     @if (Route::has('login'))
                                     <span>0_Produit total:0Dh </span> 
