@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use app\Models\product;
+use TCG\Voyager\Facades\Voyager;
 
 class category extends Model
 {
@@ -16,5 +17,10 @@ class category extends Model
     ];
     public function products(){
         return $this->hasMany(product::class,'id');
+    }
+
+    public function getPictureAttribute()
+    {
+        return Voyager::image($this->image);
     }
 }

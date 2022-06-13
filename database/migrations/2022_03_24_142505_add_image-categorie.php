@@ -15,7 +15,7 @@ class AddImageCategorie extends Migration
     {
         Schema::table('categories', function (Blueprint $table) {
             $table->string('image');
-            $table->string('background-image');
+            
         });
     }
 

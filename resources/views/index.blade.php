@@ -251,8 +251,9 @@
                         @foreach($categorie as $row)
                         <div class="single_category_product">
                             <div class="category_product_thumb">
-                                <a href="{{url('shop/'. $row->id)}}"><img src="{{$row['image']}}" loading="lazy"alt="" width="20px"></a>
-                            </div>
+                                <a href="{{url('shop/'. $row->id)}}"><img src="{{$row->picture}}" loading="lazy"alt="" width="20px"></a>
+                                
+                            </div>x
                             <div class="category_product_name">
                                 <h2><a href="shop.html">{{$row['name']}}</a></h2>
                             </div>
@@ -305,7 +306,7 @@
 
                                             <div class="single_deals_product">
                                                 <div class="product_thumb">
-                                                    <a href={{url('details/'. $row->id)}}><img src="{{$row['img']}}" loading="lazy" alt=""></a>
+                                                    <a href={{url('details/'. $row->id)}}><img src="{{$row->picture}}" loading="lazy" alt=""></a>
                                                     <div class="label_product">
                                                         <span class="label_sale">sale</span>
                                                     </div>
@@ -328,21 +329,11 @@
                                                         </ul>
                                                     </div>
                                                     <div class="price_box">
-                                                        @php
-                                                         //clalculer le prix du reduction
-                                                            //prix reéle
-                                                            $prixEnitial=$row->price;
-                                                            //prorssentage du reduction
-                                                            $porssantageReduction=$row->reductions;
-                                                            //clacluler prix du reduction
-                                                            $prixReduction=$prixEnitial*$porssantageReduction / 100;
-                                                            //le prix finnalle du reduction
-                                                            $newPrix=$prixEnitial-$prixReduction;
-                                                        @endphp
+                                                       
                                                         <input type="hidden" data-value='{{$row['id']}}' class ='id_products'>
-                                                        <input type="hidden" data-value='<?= $newPrix?>' class ='new_price'>
+                                                        <input type="hidden" data-value='{{$row['reductions']}}' class ='new_price'>
 
-                                                       <span class="current_price"><?= $newPrix?> DH</span>
+                                                       <span class="current_price">{{$row['reductions']}} DH</span>
                                                        <span class="old_price">{{$row['price']}} DH</span>
                                                    </div>
                                                     <div class="action_links">
@@ -375,7 +366,7 @@
                             @foreach($all_product_reduction as $row)
                             <div class="small_product_items">
                                 <div class="product_thumb">
-                                    <a href="{{url('details/'. $row->id)}}"><img src="{{$row['img']}}" loading="lazy" alt=""></a>
+                                    <a href="{{url('details/'. $row->id)}}"><img src="{{$row->picture}}" loading="lazy" alt=""></a>
                                 </div>
                                 <div class="product_content">
                                     <div class="product_name">
@@ -396,18 +387,7 @@
                                         </ul>
                                     </div>
                                      <div class="price_box">
-                                         @php
-                                          //clalculer le prix du reduction
-                                             //prix reéle
-                                             $prixEnitial=$row->price;
-                                             //prorssentage du reduction
-                                             $porssantageReduction=$row->reductions;
-                                             //clacluler prix du reduction
-                                             $prixReduction=$prixEnitial*$porssantageReduction / 100;
-                                             //le prix finnalle du reduction
-                                             $newPrix=$prixEnitial-$prixReduction;
-                                         @endphp
-                                        <span class="current_price"><?= $newPrix?> dh</span>
+                                        <span class="current_price">{{$row['reductions']}} dh</span>
                                         <span class="old_price">{{$row['price']}} dh</span>
                                     </div>
                                 </div>
@@ -442,7 +422,7 @@
                            @foreach($leftProduct as $row)
                             <div class="single_product">
                                 <div class="product_thumb">
-                                    <a href="{{url('details/'. $row->id)}}"><img src="{{$row['img']}}" loading="lazy" alt=""></a>
+                                    <a href="{{url('details/'. $row->id)}}"><img src="{{$row->picture}}" loading="lazy" alt=""></a>
                                     <div class="label_product">
                                         <span class="label_sale">sale</span>
                                     </div>
@@ -466,18 +446,8 @@
                                         </ul>
                                     </div>
                                      <div class="price_box">
-                                        @php
-                                        //clalculer le prix du reduction
-                                           //prix reéle
-                                           $prixEnitial=$row->price;
-                                           //prorssentage du reduction
-                                           $porssantageReduction=$row->reductions;
-                                           //clacluler prix du reduction
-                                           $prixReduction=$prixEnitial*$porssantageReduction / 100;
-                                           //le prix finnalle du reduction
-                                           $newPrix=$prixEnitial-$prixReduction;
-                                       @endphp
-                                        <span class="current_price"><?= $newPrix?> Dh</span>
+                                       
+                                        <span class="current_price">{{$row['reductions']}} Dh</span>
                                         <span class="old_price">{{$row['price']}} DH</span>
                                     </div>
                                     <div class="action_links">
@@ -496,7 +466,7 @@
                         @foreach($cebterProducts as $row)
                         <div class="single_product product_center">
                             <div class="product_thumb">
-                                <a href="{{url('details/'. $row->id)}}"><img src="{{$row['img']}}" loading="lazy" alt=""></a>
+                                <a href="{{url('details/'. $row->id)}}"><img src="{{$row->picture}}" loading="lazy" alt=""></a>
                                 <div class="quick_button">
                                     <a href="{{url('details/'. $row->id)}}"   title="quick view"> <i class="zmdi zmdi-eye"></i></a>
                                 </div>
@@ -517,18 +487,8 @@
                                     </ul>
                                 </div>
                                 <div class="price_box">
-                                    @php
-                                    //clalculer le prix du reduction
-                                       //prix reéle
-                                       $prixEnitial=$row->price;
-                                       //prorssentage du reduction
-                                       $porssantageReduction=$row->reductions;
-                                       //clacluler prix du reduction
-                                       $prixReduction=$prixEnitial*$porssantageReduction / 100;
-                                       //le prix finnalle du reduction
-                                       $newPrix=$prixEnitial-$prixReduction;
-                                   @endphp
-                                    <span class="current_price"><?= $newPrix?> DH</span>
+                                    
+                                    <span class="current_price">{{$row['reductions']}}DH</span>
                                     <span class="old_price">{{$row['price']}} DH</span>
                                 </div>
                                 <div class="action_links">

@@ -11,6 +11,8 @@ use App\Http\Controllers\Logincontroller;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Auth;
 
+ 
+
 
 
 /*
@@ -78,3 +80,8 @@ Route::post('/addtocard',[CartController::class,'addProduct']);
 
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

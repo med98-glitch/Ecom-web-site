@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->float('price');
+            $table->float('new_price');
             $table->integer('ratting');
             $table->unsignedBigInteger('id_category');
             $table->foreign('id_category')->references('id')->on('categories')->onUpdate('cascade')->onDelete('RESTRICT');
