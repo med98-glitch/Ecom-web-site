@@ -1,64 +1,177 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Application E-commerce PhP/Laravel.
+## I. About the project
+E-commerce website the project for Chamel Info shop. launched at the beginning of 01-03-2022. and it is supposed to end on 05-06-2022. it is now 06-21-2022 but still, en going. the developer in a charge of the development is  "Mohamed ". as a first experience  thanks you Mohammed for your hard work.
+## II. Documents check list
+- [ ] Conception.
+- [x] Specifications (Cahier des charges). 
+- [x] Quotation.
+- [x] Documentation. 
+- [ ] Code Documentation.
+- [ ] Database UML. 
+- [ ] Planification.
+- [ ] User manual.
+- [ ] Formation.
+## III. Pre-Requirement.
+To clone the project and start the project on your personal computer you need to check the existence of the pre-requirements listed below.  "we supposed that you working with Linux as an operating system".
+### 1. MySQL 
+First of all you need to verify the existence of MySQL and verify the version since Knowing the version number helps to determine if a specific feature is available or compatible with your system.
+```
+mysql --version
+```
+If doesn't exist you need to install Mysql database.
+To install it, update the package index on your server if you haven't done so recently: 
+```
+sudo apt update
+sudo apt install mysql-server
+```
+For new installations of MySQL, you will need to run the security script included in the DBMS. This script changes some of the less secure default options for things like remote root logins and sample users.
+```
+sudo mysql_secure_installation
+```
+Once the installation is completed, the MySQL service will start automatically. To check whether the MySQL server is running, type:
+```
+sudo systemctl status mysql
+```
+In order to use a password to connect to MySQL as root, use the following command.
+```
+sudo mysql -uroot -p
+```
+To create a new MySQL user, type:
+```
+CREATE USER 'username' IDENTIFIED BY 'password';
+```
+Replace username and password with a username and password of your choice.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+For more security you can set up a user by specifying the machine hosting the database.
+```
+CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+```
+To grant specific privileges to a user account, use the following syntax:
 
-## About Laravel
+```
+GRANT permission1, permission2 ON database_name.table_name TO 'database_user'@'localhost';
+```
+### 2. PhP/composer 
+You need to install the following packages PHP and cURL. So, for that use the given commands to install both.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```
+sudo apt install curl unzip
+sudo apt install php php-curl
+```
+As we know the Composer to install is not available via the default Ubuntu 22.04 or 20.04 LTS, hence use the cURL command:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```
+curl -sS https://getcomposer.org/installer -o composer-setup.php
+```
+Now, we can use PHP to install the composer setup we have downloaded above while declaring the directory where we want to install it.
+```
+sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+```
+Once you are done with the setting up by running the commands given above, we can check its version.
+```
+composer -V
+```
 
-## Learning Laravel
+### 3. Nginx 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Since Nginx is available in Ubuntu's repositories by default, it is possible to install it from those repositories using the package manager ```apt```.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```
+sudo apt install nginx 
+```
+Now that your web server is running, let's look at some basic management commands.
+To stop your web server, type:
+```
+sudo systemctl stop nginx
+```
+To start the web server when it is stopped, type:
 
-## Laravel Sponsors
+```
+sudo systemctl start nginx
+```
+To stop and then restart the service, type:
+```
+sudo systemctl restart nginx
+```
+If you are only making configuration changes, Nginx may often reload without breaking connections. To do this, type:
+```
+sudo systemctl reload nginx
+```
+## III. run a project locally
+First of all, you need to clone the project from the repository to your machine. since is a private repository you need to have access. you can give access to your developers using different techniques such as adding your public key to your GitHub account or generating a ```Tokens``` for your team. 
+```
+git clone https://tocken@github.com/mednourconsulting/ecommerce
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```
+cd ecommerce
+composer install
+php artisan migrate
+```
+If for any reason the project is not running try clearing the cache.
+```
+cd ecommerce
+composer install
+php artisan migrate
+```
+## IV. Deployement.
+First, make sure that the Nginx service is running. you need to create a config file under the path ```/etc/nginx/conf.d/name_file.conf```
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```
+server{
+    listen 80;
+    #listen [::]:80 default_server;
+    server_name ecommerce.mednour-consulting.com;
+    root /var/www/ecommerce/public;
+    index index.php;
 
-## Contributing
+    charset utf-8;
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
 
-## Code of Conduct
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    error_page 404 /index.php;
+
+    location ~ \.php$ {
+        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+    location ~ /\.(?!well-known).* {
+        deny all;
+    }
+
+
+}
+```
+
+And make sure that you code source is placed under the following path ```/var/www/ecommerce```.
+
+When deploying to production, make sure that you are optimizing Composer's class autoloader map so Composer can quickly find the proper file to load for a given class
+```
+composer install --optimize-autoloader --no-dev
+```
+you should also make sure that you run the config:cache Artisan command during your deployment process
+```
+php artisan config:cache
+```
+
+
+## V. Activating HTTPS Using Certbot with NGINX.
+A web server must possess a signed public-key certificate from a trusted Certificate Authority before it can accept HTTPS requests. Let’s Encrypt is one of the most widely-used of these authorities. It manages a free automated service that distributes basic SSL/TLS certificates to eligible websites. Let’s Encrypt leverages the Automatic Certificate Management Environment (ACME) protocol to automate the certificate granting process through a challenge-response technique. The Let’s Encrypt site provides more comprehensive technical details about domain validation.
+```
+ sudo certbot --nginx -d ecommerce.mednour-consulting.com
+```
+
+## VI. Configuring Firewall Rules with UFW
+
+## Plans for the future.
 
 ## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
