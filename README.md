@@ -172,6 +172,5 @@ A web server must possess a signed public-key certificate from a trusted Certifi
 
 ## VI. Configuring Firewall Rules with UFW
 
-## Plans for the future.
+## VII. Plans for the future.
 
-## Security Vulnerabilities
