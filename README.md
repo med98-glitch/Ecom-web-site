@@ -1,6 +1,6 @@
 # Application E-commerce PhP/Laravel.
 ## I. About the project
-E-commerce website the project for Chamel Info shop. launched at the beginning of 01-03-2022. and it is supposed to end on 05-06-2022. it is now 06-21-2022 but still, en going. the developer in a charge of the development is  "Mohamed ". as a first experience  thanks you Mohammed for your hard work.
+E-commerce website the project for Chamel Info shop. launched at the beginning of 01-03-2022. and it is supposed to end on 05-06-2022. it is now 06-21-2022 but still, en going. the developer in a charge of the development is  "Mohamed laaroussi". as a first experience  thanks you Mohammed for your hard work.
 ## II. Documents check list
 - [ ] Conception.
 - [x] Specifications (Cahier des charges). 
@@ -103,17 +103,17 @@ First of all, you need to clone the project from the repository to your machine.
 ```
 git clone https://tocken@github.com/mednourconsulting/ecommerce
 ```
-
+To run the project type the following command, but be sure that you create the database with a username and password.
 ```
 cd ecommerce
 composer install
+php artisan key:generate
 php artisan migrate
+php artisan serve
 ```
 If for any reason the project is not running try clearing the cache.
 ```
-cd ecommerce
-composer install
-php artisan migrate
+php artisan config:cache
 ```
 ## IV. Deployement.
 First, make sure that the Nginx service is running. you need to create a config file under the path ```/etc/nginx/conf.d/name_file.conf```
@@ -162,7 +162,7 @@ you should also make sure that you run the config:cache Artisan command during y
 ```
 php artisan config:cache
 ```
-
+Rename .env.example file to .envinside your project root and fill the database information. (windows wont let you do it, so you have to open your console cd your project root directory and run mv .env.example .env )
 
 ## V. Activating HTTPS Using Certbot with NGINX.
 A web server must possess a signed public-key certificate from a trusted Certificate Authority before it can accept HTTPS requests. Let’s Encrypt is one of the most widely-used of these authorities. It manages a free automated service that distributes basic SSL/TLS certificates to eligible websites. Let’s Encrypt leverages the Automatic Certificate Management Environment (ACME) protocol to automate the certificate granting process through a challenge-response technique. The Let’s Encrypt site provides more comprehensive technical details about domain validation.
