@@ -95,7 +95,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3">
                         <div class="logo">
-                            <a href="index.html"><img src="{{URL('assets/img/logo/logochamal.jpg')}}" loading="lazy" alt="" width="150px"></a>
+                            <a href="index.html"><img src="{{URL('assets/img/logo/logochamal.png')}}" loading="lazy" alt="" width="200px"></a>
                         </div>
                     </div>
                     
@@ -142,10 +142,36 @@
         <!--header center area end-->
 
         <!--header middel start-->
+        
         <div class="header_bottom sticky-header">
             <div class="container">
+               
                 <div class="row align-items-center">
-                    <div class="col-12">
+                    <div class="col-lg-3">
+                        <div class="categories_menu categori_four">
+                             <div class="categories_title">
+                                 <h2 class="categori_toggle">Categories</h2>
+                             </div>
+                             <div class="categories_menu_toggle">
+                            
+                                    <ul>
+                                        @foreach($firstencategorie as $cat)
+                                        <li><a href="{{url('shop/'. $cat->id)}}"><span><i class="{{$cat->icnos_cod}}"></i></span>{{ $cat->name}}</a></li>
+                                        @endforeach
+                                        
+                                        @foreach($lastcategories as $row)
+                                        <li class="hidden"><a href="shop-left-sidebar.html">{{$row['name']}}</a></li>
+                                        @endforeach
+                                        <li><a href="#" id="more-btn"><i class="fa fa-plus" aria-hidden="true"></i> More Categories</a></li>
+                                    </ul>
+                                
+                                     </li>
+                                  
+                                 </ul>
+                             </div>
+                         </div>
+                    </div>
+                    <div class="col-9">
                         <div class="main_menu header_position">
                             <nav>
                                 <ul>

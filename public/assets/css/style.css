@@ -39,7 +39,7 @@
 /*variables*/
 :root
 {
-  --color-principale:#022858;
+  --color-principale:#3D3A33;
 }
 
 /* transition */
@@ -568,13 +568,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .Offcanvas_menu {
     display: block;
-    margin-bottom: 30px;
+ 
   }
 }
 @media only screen and (max-width: 767px) {
   .Offcanvas_menu {
     display: block;
-    margin-bottom: 25px;
+    
   }
 }
 
@@ -1375,7 +1375,9 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     transition: unset;
   }
 }
-
+#sd2{
+  color: white;
+}
 .cart_img {
   width: 32%;
   margin-right: 20px;
@@ -1488,7 +1490,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /*header middel css end*/
 /* 2.4 main menu css here */
 .header_bottom {
-  background: var(--color-principale);
+  background: rgb(255, 255, 255);
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header_bottom {
@@ -1535,7 +1537,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   transform: perspective(600px) rotateX(0deg);
 }
 .main_menu nav > ul > li:hover > a i {
-  color: #ea000d;
+  color: #DD9300;
 }
 .main_menu nav > ul > li > a {
   display: block;
@@ -1544,14 +1546,14 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   line-height: 59px;
   text-transform: uppercase;
   font-weight: 700;
-  color: #ffffff;
+  color:rgb(0, 0, 0);
 }
 .main_menu nav > ul > li > a i {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   margin-right: 5px;
   font-size: 16px;
-  color: white;
+  color:rgb(0, 0, 0);
 }
 .main_menu nav > ul > li > a i.zmdi-caret-down {
   color: #ffffff;
@@ -1559,7 +1561,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   margin-left: 3px;
 }
 .main_menu nav > ul > li.active > a i {
-  color: #ffffff;
+  color: #000000;
 }
 .main_menu nav > ul > li ul.sub_menu {
   position: absolute;
@@ -3311,12 +3313,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 /*home three css here*/
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .slider_section.mt-30 {
-    margin-top: 25px;
+    margin-top: 0px;
   }
 }
 @media only screen and (max-width: 767px) {
   .slider_section.mt-30 {
-    margin-top: 25px;
+    margin-top: 0px;
   }
 }
 
@@ -4702,7 +4704,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   text-align: center;
 }
 .category_product_carousel .category_product_thumb a img {
-  width: inherit;
+  width: 150px;
   margin: 0 auto;
 }
 
@@ -4950,6 +4952,13 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 
+.single_deals_product #imagebestratiing {
+  width: 100%;
+ 
+}
+#singdl{
+  display: block;
+}
 .single_deals_product {
   display: flex;
   border-bottom: 1px solid #e5e5e5;
@@ -4991,6 +5000,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .single_deals_product .product_content {
   width: 54%;
   padding-left: 20px;
+}
+.single_deals_product #prductscnt{
+  width: 100%;
+  padding-left: 20px;
+  text-align: center;
 }
 @media only screen and (max-width: 767px) {
   .single_deals_product .product_content {

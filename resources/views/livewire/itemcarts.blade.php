@@ -20,7 +20,7 @@
                             @foreach($productsincarts as $row)
                             <tr>
                                <td class="product_remove"><a href="javascript:void(0);" wire:click="confirmeDelete({{$row->id}})" class="update"><i class="fa fa-trash-o"></i></a></td>
-                                <td class="product_thumb"><a href="#"><img src="{{$row->image}}" alt=""></a></td>
+                                <td class="product_thumb"><a href="#"><img src="{{$row->picture}}" alt=""></a></td>
                                 <td class="product_name"><a href="#">{{$row->name}}</a></td>
                                 <td class="product-price">{{$row->price}} Dh</td>
                                 

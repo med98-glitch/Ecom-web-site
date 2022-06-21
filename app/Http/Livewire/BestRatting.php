@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Http\Livewire;
+use App\Models\category;
+use App\Models\product;
+use App\Models\image;
+use Illuminate\Http\Request;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+
+use Livewire\Component;
+
+class BestRatting extends Component
+{
+    public $term = 3;
+
+    public function sendid($id){
+        $this->term=$id;
+    }
+
+    public function render()
+    {
+        $categorie=Category::all();
+        $test=$this->term;
+        $topRatedProduct=product::limit(4)
+        ->where('products.id_category',$test)
+        //->join('images','products.id','=','images.id_product')
+        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
+        ->get();
+        return view('livewire.best-ratting',compact(['categorie','topRatedProduct','test']));
+    }
+}

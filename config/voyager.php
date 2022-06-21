@@ -144,7 +144,11 @@ return [
         ],
 
         'widgets' => [
-
+            'TCG\Voyager\Widgets\UserDimmer',  
+            'TCG\Voyager\Widgets\PageDimmer',  
+            //'App\Widgets\products.php',  
+           
+           
         ],
 
     ],
@@ -226,6 +230,7 @@ return [
         // 'allowed_mimetypes' => '*', //All types can be uploaded
         'allowed_mimetypes' => [
           'image/jpeg',
+          'image/jpg',
           'image/png',
           'image/gif',
           'image/bmp',

@@ -27,13 +27,13 @@ class Itemcarts extends Component
         
        
         $productsincarts=product::join('carts','products.id','=','carts.id_products')
-        ->join('reductions','products.id','=','reductions.id_product')
+        
         ->where('id_user',Auth::id())
-        ->select('carts.id as id','carts.id_products as id_prodicts','products.image as image','products.name as name','reductions.new_price as price','carts.qte as qte','total_price as total')
+        ->select('carts.id as id','carts.id_products as id_prodicts','products.image as image','products.name as name','products.new_price as price','carts.qte as qte','total_price as total')
         ->paginate(2);
         //total pof price with oute ttc
         $productpricetotal=product::join('carts','products.id','=','carts.id_products')
-        ->join('reductions','products.id','=','reductions.id_product')
+        
         ->where('id_user',Auth::id())
         ->sum('carts.total_price');
         //price with TTC
@@ -59,9 +59,8 @@ class Itemcarts extends Component
         }
 
         $productprice=product::join('carts','products.id','=','carts.id_products')
-         ->join('reductions','products.id','=','reductions.id_product')
         ->where('carts.id',$id)
-        ->select('reductions.new_price as price')
+        ->select('products.new_price as price')
         ->first();
         $totalprix=$productprice->price * $newqte;
          DB::table('carts')
@@ -76,9 +75,8 @@ class Itemcarts extends Component
             $newqte = 1;
         }
         $productprice=product::join('carts','products.id','=','carts.id_products')
-        ->join('reductions','products.id','=','reductions.id_product')
         ->where('carts.id',$id)
-        ->select('reductions.new_price as price')
+        ->select('products.new_price as price')
         ->first();
         $totalprix=$productprice->price * $newqte;
          DB::table('carts')

@@ -239,7 +239,7 @@
                                @foreach($topRatedProduct as $row)
                                 <div class="recent_product_list">
                                     <div class="recent_product_thumb">
-                                        <a href="{{url('details/'. $row->id)}}"><img src="{{URL($row['img'])}}" alt=""></a>
+                                        <a href="{{url('details/'. $row->id)}}"><img src="{{$row->picture}}" alt=""></a>
                                     </div>
                                     <div class="recent_product_content">
                                         <h3><a href="{{url('details/'. $row->id)}}">{{$row['name']}}</a></h3>
@@ -320,7 +320,7 @@
            <div class="single_product">
                <div class="product_thumb">
                    
-                   <a href="{{url('details/'. $row->id)}}"><img src="{{URL($row['img'])}}" alt=""  width="390px"></a>
+                   <a href="{{url('details/'. $row->id)}}"><img src="{{$row->picture}}" alt=""  width="390px"></a>
                    <div class="label_product">
                        <span class="label_sale">sale</span>
                    </div>
@@ -330,6 +330,7 @@
                </div>	
                <div class="product_content grid_content">
                    <div class="product_name">
+                    
                        <h3><a href="{{url('details/'. $row->id)}}">{{$row['name']}}</a></h3>
                    </div>
                    <div class="product_rating">
@@ -349,16 +350,17 @@
                    </div>
                    <div class="action_links">
                        <ul>
-                          <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+                    
                            <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
-                           <li class="compare"><a href="#" title="compare"><i class="zmdi zmdi-swap"></i></a></li>
+                           
                        </ul>
                    </div>
                </div>
                <div class="product_content list_content">
-                   <div class="product_name">
-                       <h3><a href="{{url('details/'. $row->id)}}">{{$row['nama']}}</a></h3>
+                   <div class="product_name mt-2">
+                    <h3><a href="{{url('details/'. $row->id)}}">{{$row['name']}}</a></h3>
                    </div>
+                 
                    <div class="product_rating">
                        <ul>
                         @php
@@ -372,7 +374,7 @@
                    </div>
                     <div class="price_box">
                        <span class="current_price">{{$row['newprice']}}</span>
-                       <span class="old_price">{{$row['price']}}</span>   
+                       <span class="old_price">{{$row->price}}</span>   
                    </div>
                    <div class="action_links">
                        <ul>
@@ -441,16 +443,8 @@
                             <a href="#"><img src="{{URL('assets/img/brand/brand1.png')}}" alt=""></a>
                         </div>
                     </div>
-                    <div class="newsletter_inner">
-                        <div class="newsletter_content">
-                            <h2>SUBSCRIBE TO OUR NEWSLETTER</h2>
-                        </div>
-                        <div class="newsletter_form">
-                            <form action="#">
-                                <input placeholder="Email..." type="text">
-                                <button type="submit"><i class="zmdi zmdi-mail-send"></i></button>
-                            </form>
-                        </div>
+                 
+            
                     </div>
                 </div>
             </div>

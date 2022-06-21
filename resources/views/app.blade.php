@@ -55,89 +55,9 @@
     $(this).addClass('active');
 
   
-    var catego = $(this).data('value');
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        });
-    $.ajax({
-        type: "POST",
-        url: "/getbyajax",
-        dataType:'JSON',
-        data: 'catego=' + catego 
-        
-      }).done(function(reponse){
-        $('#cnt').html("")
-       console.log(reponse)
-       $(reponse).each(function (key, value) {
-           //get price
-           var price = value.price;
-           //get reduction
-           var reduction =value.reductions;
-           //calcluer reduction
-           var pricReduction = price * reduction / 100;
-           //new price
-           var newPrice = price - pricReduction
-           //get ratting
-           var ratting = value.ratting;
-          
-           function loopRatting(){
-            let text="<ul>";
-            for(var i=0;i< ratting;i++){
-                text += "<li><a href='#'><i class=' zmdi zmdi-star-outline'></i></a></li>"
-            }
-            text +="</ul>";
-            return text
-            }
-         
-        
-         
-        $('#cnt').append(`
-                        <div class='single_deals_product'>
-                                            <div class='product_thumb'>
-                                                <a href='details/`+ value.id + `'><img src='`+ value.img + `' loading='lazy' alt=''></a>
-                                                <div class='label_product'>
-                                                    <span class='label_sale'>sale</span>
-                                                </div>
-                                
-                                                <div class='quick_button'>
-                                                    <a href='details/`+ value.id + `' title='quick view'> <i class='zmdi zmdi-eye'></i></a>
-                                                </div>
-                                               
-                                            </div>
-                                            <div class='product_content'>
-                                                <div class='product_name'>
-                                                    
-                                                    <h3><a href='details/`+ value.id + `'> ` + value.name + `</a></h3>
-                                                </div>
-                                                <div class='product_rating'>
-                                                   
-                                                        
-                                                        `+loopRatting()+`
-                                                      
-                                                    
-                                                </div>
-                                                 <div class='price_box'>
-                                                    <input type="hidden" value='`+value.id+ `' class ='id_products'>
-                                         <input type="hidden" value=`+newPrice+ ` class ='new_price'>
-                                                    <span class='current_price'>`+newPrice+` DH</span>
-                                                    <span class='old_price'>` +price+`DH</span>
-                                                </div>
-                                                <div class='action_links'>
-                                                    <ul>
-                                                       <li class='wishlist'><a title='Add to Wishlist'><i class='fa fa-heart-o' aria-hidden='true'></i></a></li>
-                                                        <li class='add_to_cart'><a href='JavaScript:void(0)' title='add to cart'><i class='zmdi zmdi-shopping-cart-plus'></i> add to cart</a></li>
-                                                        <li class='compare'><a href='#' title='compare'><i class='zmdi zmdi-swap'></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                    </div>`);
-          })
-       
-      })
-       
-    });
+ 
+  })
+  
   });
 </script>
     
@@ -184,7 +104,7 @@
             
              
             $('.contenue').append(`
-         
+    
                                <div class='owl-item cloned'>
                                 <div class="single_product">
                                     <div class="product_thumb">

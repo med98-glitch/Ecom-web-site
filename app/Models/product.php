@@ -19,4 +19,5 @@ class product extends Model
     {
         return Voyager::image($this->img);
     }
+ 
 }

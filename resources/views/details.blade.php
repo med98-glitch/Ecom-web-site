@@ -31,7 +31,7 @@
                     @foreach($prductsdtailsproduct as $row)
                         <div id="img-1" class="zoomWrapper single-zoom">
                             <a href="#">
-                                <img id="zoom1" src="{{URL($row['firsImage'])}}" data-zoom-image="{{URL($row['firsImage'])}}" alt="big-1">
+                                <img id="zoom1" src="{{$row->picture}}" data-zoom-image="{{$row->picture}}" alt="big-1">
                             </a>
                         </div>
                     @endforeach
@@ -39,8 +39,8 @@
                         <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
                             @foreach($listimages as $row)
                             <li>
-                                <a href="#" class="{{URL($row['img'])}}" data-update="" data-image="{{URL($row['img'])}}" data-zoom-image="{{URL($row['img'])}}" loading="lazy">
-                                    <img src="{{URL($row['img'])}}" alt="zo-th-1" loading="lazy"/>
+                                <a href="#" class="{{$row->picture}}" data-update="" data-image="{{$row->picture}}" data-zoom-image="{{$row->picture}}" loading="lazy">
+                                    <img src="{{$row->picture}}" alt="zo-th-1" loading="lazy"/>
                                 </a>
 
                             </li>
