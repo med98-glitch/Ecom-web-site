@@ -19,12 +19,8 @@
                                         <h3>{{$cat['name']}}</h3>
                                     </a>
                                 </li>
-                               
-                                @endforeach
-                      
-                              
+                                @endforeach        
                             </ul>
-                            
                         </div>
                         <div class="deals_product_wrapper">
                             <div class="tab-content">
@@ -62,18 +58,13 @@
                                                     </ul>
                                                 </div>
                                                 <div class="price_box">
-                                                   
-                                                    <input type="hidden" data-value='{{$row['id']}}' class ='id_products'>
-                                                    <input type="hidden" data-value='{{$row['reductions']}}' class ='new_price'>
-
-                                                   <span class="current_price">{{$row['reductions']}} DH</span>
+                                                    <input type="hidden" id='{!!$row->id!!}' value='{!!$row['reductions']!!}' class ='id_todays_deals'>
+                                                   <span class="current_price prcto">{{$row['reductions']}} DH</span>
                                                    <span class="old_price">{{$row['price']}} DH</span>
                                                </div>
                                                 <div class="action_links">
                                                     <ul>
-                                                       <li class="wishlist"><a title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                                        <li class="add_to_cart"><a href="JavaScript:void(0)" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
-                                                        <li class="compare"><a href="#" title="compare"><i class="zmdi zmdi-swap"></i></a></li>
+                                                       <li class="add_to_cart"  ><a href="JavaScript:void(0)" title="add to cart" class="btn_todays_deals" ><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -126,9 +117,7 @@
                         @endforeach
                     </div>
                    
-                    <div class="sidebar_banner_thumb mt-30">
-                        <a href="shop.html"><img src="assets/img/bg/banner1.jpg" loading="lazy" alt=""></a>
-                    </div>
+                    
                 </div>
             </div>
         </div>

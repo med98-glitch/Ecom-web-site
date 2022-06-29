@@ -7,7 +7,8 @@ use App\Http\Controllers\homCtroller;
 use App\Http\Controllers\GetProducts;
 use App\Http\Controllers\product;
 use App\Http\Controllers\Details_products;
-use App\Http\Controllers\Logincontroller;
+//use App\Http\Controllers\Logincontroller;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,7 +68,7 @@ Route::get('shop/{id}',[shopCtroller::class,'fillterbycategorie']);
 Route::get('details/{id}',[Details_products::class,'getdaitails']);
 
 //login and register section
-Route::get('/login',[Logincontroller::class,'login']);
+Route::get('/login',[LoginController::class,'login']);
 //Route::get('/register',[Logincontroller::class,'register']);
 Auth::routes(/*['verify' => true]*/);
 

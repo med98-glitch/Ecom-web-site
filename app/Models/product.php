@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Facades\Voyager;
 use App\Models\category;
+use App\Models\stock;
+use App\Models\tag;
 
 class product extends Model
 {
@@ -19,5 +21,13 @@ class product extends Model
     {
         return Voyager::image($this->img);
     }
- 
+    //relation ship
+    //products with stock
+    public function stock(){
+       return  $this->hasOne(stock::class);
+    }
+    public function tag()
+    {
+        return $this->hasMany(Tag::class);
+    }
 }

@@ -13,9 +13,9 @@ class CartController extends Controller
     public function addProduct(Request $request){
 
         $product_id=$request->id_products;
-        $qte=$request->qte;
+        $qte=intval($request->qte);
         $price=$request->price;
-        $total_price=$qte * $price;
+        $total_price= $qte * $price;
         
         if(Auth::check())
         {
@@ -61,14 +61,20 @@ class CartController extends Controller
 }
 public function details(){
     $categorie=Category::all();
+        //get categories on side bar 10
+        $firstencategorie=Category::take(10)->get();
 
+        //get last categorie for the side abar
+        $lastcategories=Category::get()->skip(10);
+  
+    
           $id_user=Auth::id();
           $products_cards=Cart::where('id_user',$id_user)->get()->count();
 
            $total_price=Cart::where('id_user',$id_user)
           ->get()->sum('total_price');
         
-    return view('cart',compact('categorie','products_cards','total_price'));
+    return view('cart',compact('categorie','products_cards','total_price','firstencategorie','lastcategories'));
 }
 
 //functionn reload panier 

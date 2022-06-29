@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-5">
                         <div class="widgets_container contact_us">
-                            <a href="index.html"><img src="{{URL('assets/img/logo/logochamal.jpg')}}" width="130px;"  loading="lazy" alt=""></a>
+                            <a href="index.html"><img src="{{URL('assets/img/logo/logochamal.png')}}" width="200px;"  loading="lazy" alt=""></a>
                             <div class="footer_contact">
                                 <ul>
                                     <li><i class="zmdi zmdi-home"></i><span>Addresss:</span> 2 Fauconberg Rd,Chiswick, London</li>
@@ -91,7 +91,7 @@
                <div class="row">
                     <div class="col-lg-6 col-md-7">
                         <div class="copyright_area">
-                            <p>Copyright &copy; 2021 <a href="#"> pallas </a>  All Right Reserved.</p>
+                            <p>Copyright &copy; 2022 <a href="#"> MediaCaris </a>  All Right Reserved.</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">

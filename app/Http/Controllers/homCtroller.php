@@ -80,28 +80,28 @@ class homCtroller extends Controller
 
         //get top ratid elemment defaut value
          $topRatedProduct=product::orderBy('ratting', 'desc')
-         ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
+         ->select('products.name as name','products.id as id','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
          ->take(10)->get();
 
          //get top reduction products
          $topReductionProducts=product::orderBy('new_price','desc')
-         ->select('products.name as name','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
+         ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
          ->take(10)->get();
          
          //last products
          if(product::count() < 0){
          $lastProduct=product::orderBy('created_at', 'desc')->first()
-         ->select('products.name as name','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
+         ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
          ->take(10)->get();
          }else{
           $lastProduct=product::
-          select('products.name as name','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
+          select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
          ->get();
          }
          
           //Top price products
           $toppriceproducts=product::orderBy('price', 'asc')
-          ->select('products.name as name','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
+          ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
           ->take(10)->get();
 
          //carts

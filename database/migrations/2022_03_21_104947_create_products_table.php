@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->float('new_price');
             $table->integer('ratting');
             $table->unsignedBigInteger('id_category');
-            $table->foreign('id_category')->references('id')->on('categories')->onUpdate('cascade')->onDelete('RESTRICT');
+            $table->foreign('id_category')->references('id')->on('categories')->onUpdate('cascade')->onDelete('RESTRICT');   
             $table->timestamps();
         });
     }

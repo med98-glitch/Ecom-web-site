@@ -4,11 +4,6 @@
      $page='home';
      @endphp
 
-    <!--Offcanvas menu area start-->
-
-
-   
-
     <!--slider area start-->
     <section class="slider_section mb-50">
         <div class="container-fluid">
@@ -36,10 +31,6 @@
         </div>   
         
     </section>
-      <!--slider area start-->
-
-    <!--slider area end-->
-
     <!--category product area start-->
     <section class="category_product_area mt-30 mb-50">
         <div class="container">
@@ -52,7 +43,7 @@
                                 <a href="{{url('shop/'. $row->id)}}"><img src="{{$row->picture}}" loading="lazy"alt="" ></a>
                             </div>
                             <div class="category_product_name">
-                                <h2><a href="shop.html">{{$row['name']}}</a></h2>
+                                <h2><a href="shop.html" >{{$row['name']}}</a></h2>
                             </div>
                         </div>
                         @endforeach
@@ -63,18 +54,14 @@
         </div>
     </section>
     <!--category product area end-->
-
-    <!--deals product section area start-->
     <livewire:todays-deals /> 
-    <!--deals product section area end-->
 
-    <!--new product area start-->
     <div class="new_product_area mb-50">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="section_title">
-                        <h2>New <span>Products</span></h2>
+                        <h2>New <span >Products</span></h2>
                     </div>
                 </div>    <div class="new_product_wrapper">
             </div>
@@ -109,15 +96,14 @@
                                         </ul>
                                     </div>
                                      <div class="price_box">
-                                       
-                                        <span class="current_price">{{$row['reductions']}} Dh</span>
+                                        <input type="hidden" id='{{$row->id}}' value='{{$row['reductions']}}' class ='id_'>
+                                        <input type="hidden" value='{{$row->id}}' class ='idprod'>
+                                        <span class="current_price ">{{$row['reductions']}} Dh</span>
                                         <span class="old_price">{{$row['price']}} DH</span>
                                     </div>
                                     <div class="action_links">
                                         <ul>
-                                           <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                            <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
-                                            <li class="compare"><a href="#" title="compare"><i class="zmdi zmdi-swap"></i></a></li>
+                                            <li class="add_to_cart"><a href="JavaScript:void(0)" title="add to cart" class="add_"><i class="zmdi zmdi-shopping-cart-plus"></i><input type="hidden" value='{{$row['id']}}' > add to cart</a> </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -150,15 +136,14 @@
                                     </ul>
                                 </div>
                                 <div class="price_box">
-                                    
+                                    <input type="hidden"  value='{{$row['reductions']}}' class ='price_center'>
+                                    <input type="hidden"  value='{{$row->id}}' class ='id_center'>
                                     <span class="current_price">{{$row['reductions']}}DH</span>
                                     <span class="old_price">{{$row['price']}} DH</span>
                                 </div>
                                 <div class="action_links">
-                                    <ul>
-                                       <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                        <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
-                                        <li class="compare"><a href="#" title="compare"><i class="zmdi zmdi-swap"></i></a></li>
+                                    <ul>               
+                                        <li class="add_to_cart "><a href="JavaScript:void(0)" title="add to cart" class="id_btn_center"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -194,15 +179,13 @@
                                         </ul>
                                     </div>
                                     <div class="price_box">
-                                        
-                                        <span class="current_price">{{$row->new_price}} DH</span>
+                                        <input type="hidden" id='{{$row->id}}' value='{{$row['reductions']}}' class ='idall'>
+                                        <span class="current_price">{{$row->reductions}} DH</span>
                                         <span class="old_price">{{$row['price']}} DH</span>
                                     </div>
                                     <div class="action_links">
                                         <ul>
-                                           <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                            <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
-                                            <li class="compare"><a href="#" title="compare"><i class="zmdi zmdi-swap"></i></a></li>
+                                            <li class="add_to_cart"><a href="JavaScript:void(0)" title="add to cart" class="addto_"><i class=" zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -222,7 +205,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="single_banner">
                         <div class="banner_thumb">
-                            <a href="shop.html"><img src="assets/img/bg/banner2.jpg" loading="lazy" alt=""></a>
+                            <a href="shop.html"><img src="assets/img/bg/ab.jpg" loading="lazy" alt=""></a>
                         </div>
 
                     </div>
@@ -230,7 +213,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="single_banner">
                         <div class="banner_thumb">
-                            <a href="shop.html"><img src="assets/img/bg/banner3.jpg" loading="lazy" alt=""></a>
+                            <a href="shop.html"><img src="assets/img/bg/ac.jpg" loading="lazy" alt=""></a>
                         </div>
 
                     </div>
@@ -240,9 +223,7 @@
     </div>
     <!--banner area end-->
 
-    <!--home product area start-->
     <livewire:best-ratting/> 
-    <!--home product area end-->
 
     <!--banner area start-->
     <div class="banner_area mb-50">
@@ -251,7 +232,7 @@
                 <div class="col-12">
                     <div class="single_banner">
                         <div class="banner_thumb">
-                            <a href="shop.html"><img src="assets/img/bg/banner4.jpg" loading="lazy" alt=""></a>
+                            <a href="shop.html"><img src="assets/img/bg/ad.jpg" loading="lazy" height="200px" alt=""></a>
                         </div>
 
                     </div>
@@ -260,8 +241,6 @@
         </div>
     </div>
     <!--banner area end-->
-
-
     <!--custom product area start-->
     <section class="custom_product_area mb-50">
         <div class="container">
@@ -277,11 +256,11 @@
                            
                             <div class="small_product_items">
                                 <div class="product_thumb">
-                                    <a href="product-details.html"><img src="{{$row->picture}}" loading="lazy" alt=""></a>
+                                    <a href="{{url('details/'. $row->id)}}"><img src="{{$row->picture}}" loading="lazy" alt=""></a>
                                 </div>
                                 <div class="product_content">
                                     <div class="product_name">
-                                        <h3><a href="product-details.html">{{$row['name']}}</a></h3>
+                                        <h3><a href="{{url('details/'. $row->id)}}">{{$row['name']}}</a></h3>
                                     </div>
                                     <div class="product_rating">
                                         <ul>
@@ -295,8 +274,8 @@
                                         </ul>
                                     </div>
                                      <div class="price_box">
-                                        <span class="current_price">{{$row->new_price}}</span>
-                                        <span class="old_price">{{$row['price']}}</span>
+                                        <span class="current_price">{{$row->reductions}} DH</span>
+                                        <span class="old_price">{{$row['price']}} DH</span>
                                     </div>
                                 </div>
                             </div>
@@ -315,11 +294,11 @@
                            
                             <div class="small_product_items">
                                 <div class="product_thumb">
-                                    <a href="product-details.html"><img src="{{$row->picture}}" loading="lazy" alt=""></a>
+                                    <a href="{{url('details/'. $row->id)}}"><img src="{{$row->picture}}" loading="lazy" alt=""></a>
                                 </div>
                                 <div class="product_content">
                                     <div class="product_name">
-                                        <h3><a href="product-details.html">{{$row['name']}}</a></h3>
+                                        <h3><a href="{{url('details/'. $row->id)}}">{{$row['name']}}</a></h3>
                                     </div>
                                     <div class="product_rating">
                                         <ul>
@@ -333,8 +312,8 @@
                                         </ul>
                                     </div>
                                      <div class="price_box">
-                                        <span class="current_price">{{$row->new_price}}</span>
-                                        <span class="old_price">{{$row['price']}}</span>
+                                        <span class="current_price">{{$row->reductions}} DH</span>
+                                        <span class="old_price">{{$row['price']}} DH</span>
                                     </div>
                                 </div>
                             </div>
@@ -354,11 +333,11 @@
                             
                             <div class="small_product_items">
                                 <div class="product_thumb">
-                                    <a href="product-details.html"><img src="{{$row->picture}}" loading="lazy" alt=""></a>
+                                    <a href="{{url('details/'. $row->id)}}"><img src="{{$row->picture}}" loading="lazy" alt=""></a>
                                 </div>
                                 <div class="product_content">
                                     <div class="product_name">
-                                        <h3><a href="product-details.html">{{$row['name']}}</a></h3>
+                                        <h3><a href="{{url('details/'. $row->id)}}">{{$row['name']}}</a></h3>
                                     </div>
                                     <div class="product_rating">
                                         <ul>
@@ -372,8 +351,8 @@
                                         </ul>
                                     </div>
                                      <div class="price_box">
-                                        <span class="current_price">{{$row->new_price}}</span>
-                                        <span class="old_price">{{$row['price']}}</span>
+                                        <span class="current_price">{{$row->reductions}} DH</span>
+                                        <span class="old_price">{{$row['price']}} DH</span>
                                     </div>
                                 </div>
                             </div>
@@ -385,7 +364,6 @@
         </div>
     </section>
     <!--custom product area end-->
-
 
     <!--brand newsletter area start-->
     <div class="brand_newsletter_area">

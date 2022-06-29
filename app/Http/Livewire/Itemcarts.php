@@ -24,12 +24,17 @@ class Itemcarts extends Component
          
 
         
-        
+          //get categories on side bar 10
+          $firstencategorie=Category::take(10)->get();
+
+          //get last categorie for the side abar
+          $lastcategories=Category::get()->skip(10);
+  
        
         $productsincarts=product::join('carts','products.id','=','carts.id_products')
         
         ->where('id_user',Auth::id())
-        ->select('carts.id as id','carts.id_products as id_prodicts','products.image as image','products.name as name','products.new_price as price','carts.qte as qte','total_price as total')
+        ->select('carts.id as id','carts.id_products as id_prodicts','products.image as img','products.name as name','products.new_price as price','carts.qte as qte','total_price as total')
         ->paginate(2);
         //total pof price with oute ttc
         $productpricetotal=product::join('carts','products.id','=','carts.id_products')
@@ -41,7 +46,7 @@ class Itemcarts extends Component
         ->where('id_user',Auth::id())
         ->sum(DB::raw('carts.qte * products.priceTTC'))
          ;
-        return view('livewire.itemcarts',compact('productsincarts','priceTTc','productpricetotal'));
+        return view('livewire.itemcarts',compact('productsincarts','priceTTc','productpricetotal','firstencategorie','lastcategories'));
     }
     public function confirmeDelete($id)
     {

@@ -24,7 +24,7 @@ class Details_products extends Controller
         $prductsdtailsproduct=product::
         join('categories','categories.id','=','products.id_category')
         ->where('products.id',$id)
-        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.description as desc','products.new_price as newprice','products.image as img','categories.name as namecategorie')
+        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.description as desc','products.Caracteristique as carq','products.new_price as newprice','products.image as img','categories.name as namecategorie')
         ->get();
         
         $listimages=image::
