@@ -107,6 +107,7 @@ To run the project type the following command, but be sure that you create the d
 ```
 cd ecommerce
 composer install
+mv .env.example .env
 php artisan key:generate
 php artisan migrate
 php artisan serve
