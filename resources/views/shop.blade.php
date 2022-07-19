@@ -108,8 +108,10 @@
 
                             <button data-role="grid_list" type="button"  class="btn-list" data-bs-toggle="tooltip" title="List"></button>
                         </div>
+                        
+                        <!--sekection fillter
                         <div class=" niceselect_option">
-
+                         
                             <form class="select_option" action="#">
                                 <select name="orderby" id="short">
 
@@ -121,9 +123,8 @@
                                     <option value="6">Product Name: Z</option>
                                 </select>
                             </form>
-
-
                         </div>
+                         --->
                         <div class="page_amount">
                    
                             <p>Nombre items trouver : {{$count}}</p>
@@ -133,9 +134,32 @@
                     <!--shop toolbar end-->
 
      
-
+                    <?php
+                    function qte($qte){
+                        if($qte == 0){
+                        ?>
+                          <div class="label_product">
+                            <span class="label_sale" style="background-color: red;">Not in stock</span>
+                        </div>
+                        <?php
+                        }elseif ($qte <= 5) {
+                            ?>
+                            
+                            <div class="label_product">
+                            <span class="label_sale" style="background-color: gold;color:black;">Stock limité</span>
+                        </div>
+                        <?php
+                        } else {
+                            ?>
+                            <div class="label_product">
+                            <span class="label_sale" style="background-color: rgb(10, 102, 240);">En stock</span>
+                        </div>
+                        <?php
+                        }
+                        }
+                        ?>
        
-     <?php ?>
+  
      @if($productsByCategorie->count() > 0) 
      <div class="row no-gutters shop_wrapper">
         @foreach($productsByCategorie as $row)
@@ -144,9 +168,9 @@
                <div class="product_thumb">
                    
                    <a href="{{url('details/'. $row->id)}}"><img src="{{$row->picture}}" alt=""  width="390px"></a>
-                   <div class="label_product">
-                       <span class="label_sale">sale</span>
-                   </div>
+                  @php
+                  qte($row->qte)
+                  @endphp
                    <div class="quick_button">
                        <a href="{{url('details/'. $row->id)}}"   title="quick view"> <i class="zmdi zmdi-eye"></i></a>
                    </div>
@@ -168,13 +192,14 @@
                        </ul>
                    </div>
                     <div class="price_box">
-                       <span class="current_price">{{$row['newprice']}}</span>
-                       <span class="old_price">{{$row['price']}}</span>   
+                        <input type="hidden" id='{{$row->id}}' value='{{$row['newprice']}}' class ='price_id'>
+                       <span class="current_price">{{$row['newprice']}} Dh</span>
+                       <span class="old_price">{{$row['price']}} Dh</span>   
                    </div>
                    <div class="action_links">
                        <ul>
                     
-                           <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+                           <li class="add_to_cart "><a href="JavaScript:void(0)" class="add_to_card_shop" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
                            
                        </ul>
                    </div>
@@ -219,15 +244,13 @@
    <div class="alert alert-danger" role="alert">
     Aucun produit trouvé
   </div>
-   @endif
-
+   @endif 
+              @if($productsByCategorie->count() > 0)
                 <div class="shop_toolbar t_bottom">
                          
-                    @if($productsByCategorie->count() > 0)
                             {{ $productsByCategorie->appends(['id' => $row['catid'] ])->links() }}
-                    @endif
                 </div>
-            
+                @endif
           
                     <!--shop toolbar end-->
                     <!--shop wrapper end-->
@@ -245,25 +268,25 @@
                 <div class="col-12">
                     <div class="brand_container owl-carousel">
                         <div class="single_brand">
-                            <a href="#"><img src="{{URL('assets/img/brand/brand.png')}}" alt=""></a>
+                            <a href="#"><img src="{{URL('assets/img/brand/1.png')}}" alt=""></a>
                         </div>
                         <div class="single_brand">
-                            <a href="#"><img src="{{URL('assets/img/brand/brand1.png')}}" alt=""></a>
+                            <a href="#"><img src="{{URL('assets/img/brand/2.png')}}" alt=""></a>
                         </div>
                         <div class="single_brand">
-                            <a href="#"><img src="{{URL('assets/img/brand/brand2.png')}}" alt=""></a>
+                            <a href="#"><img src="{{URL('assets/img/brand/3.png')}}" alt=""></a>
                         </div>
                         <div class="single_brand">
-                            <a href="#"><img src="{{URL('assets/img/brand/brand3.png')}}" alt=""></a>
+                            <a href="#"><img src="{{URL('assets/img/brand/4.png')}}" alt=""></a>
                         </div>
                         <div class="single_brand">
-                            <a href="#"><img src="{{URL('assets/img/brand/brand4.png')}}" alt=""></a>
+                            <a href="#"><img src="{{URL('assets/img/brand/5.png')}}" alt=""></a>
                         </div>
                         <div class="single_brand">
-                            <a href="#"><img src="{{URL('assets/img/brand/brand5.png')}}" alt=""></a>
+                            <a href="#"><img src="{{URL('assets/img/brand/6.png')}}" alt=""></a>
                         </div>
                         <div class="single_brand">
-                            <a href="#"><img src="{{URL('assets/img/brand/brand1.png')}}" alt=""></a>
+                            <a href="#"><img src="{{URL('assets/img/brand/1.png')}}" alt=""></a>
                         </div>
                     </div>
                  

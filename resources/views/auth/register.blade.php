@@ -1,15 +1,18 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
-@php
-$page='login';
-@endphp
-@include('layouts.headerlogin');
-<div class="container">
-    <div class="row justify-content-center" style="margin-top:5%;">
-        <div class="col-md-8">
+
+<div class="container-xxl" >
+    <div class="card m-auto d-flex " >
+    <div class="row d-flex align-items-center ">
+    <div class="col bgcol">
+    <img src="assets/img/bg/register.jpg" alt="image" width="500px" >
+    </div>
+    
+    <div class="col-md-6 col-sm-12 "  >
+        <div class="col-md-10">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header mb-5" style="background-color:#FFC727;">{{ __('Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -44,7 +47,7 @@ $page='login';
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-fphorm-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -67,7 +70,7 @@ $page='login';
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn_login">
+                                <button type="submit" class="btn btn_login" style="background-color:#FFC727;">
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -78,6 +81,7 @@ $page='login';
         </div>
     </div>
 </div>
-@include('layouts.footerlogin');
+</div>
+</div>
 
 @endsection

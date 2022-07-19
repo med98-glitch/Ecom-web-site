@@ -1,16 +1,22 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 @php
 $page='login';
 @endphp
-@include('layouts.headerlogin');
 
-<div class="container">
-    <div class="row justify-content-center" style="margin-top:5%;" >
-        <div class="col-md-8">
+
+<div class="container-xxl" >
+    <div class="card m-auto d-flex " >
+    <div class="row d-flex align-items-center ">
+    <div class="col bgcol">
+    <img src="assets/img/bg/6300830.jpg" alt="image" width="500px" >
+    </div>
+    
+    <div class="col-md-6 col-sm-12 "  >
+        <div class="col-md-10">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header mb-5" style="background-color:#FFC727;">{{ __('Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -58,12 +64,12 @@ $page='login';
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn text-white btn_login">
+                                <button type="submit" class="btn"  style="background-color: #FFC727">
                                     {{ __('Login') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class=" btn-link m-3" href="{{ route('password.request') }}">
+                                    <a class=" btn-link m-3 text-black" href="{{ route('password.request') }}">
                                         {{ __('Mot de passe oublié?') }}
                                     </a>
                                 @endif
@@ -75,8 +81,10 @@ $page='login';
         </div>
     </div>
 </div>
+</div>
+</div>
 
-    @include('layouts.footerlogin');
+ 
 
 
 @endsection

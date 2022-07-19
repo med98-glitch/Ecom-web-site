@@ -48,33 +48,33 @@ class homCtroller extends Controller
         if(product::count() > 0){
           $leftProduct=product::orderBy('created_at', 'desc')->first()
           //->join('images','products.id','=','images.id_product')
-          ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
+          ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img','products.qte as qte')
           ->take(2)->get();
         }else{
           $leftProduct=product::
           //->join('images','products.id','=','images.id_product')
-          select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
+          select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img','products.qte as qte')
           ->get();
         }
        
          //right two products
          if(product::count() > 0){
         $righttProduct=product::orderBy('created_at', 'desc')->first()->limit(2)
-        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
+        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img','products.qte as qte')
         ->skip(2)->take(2)->get();
          }else{
           $righttProduct=product::
-          select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
+          select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img','products.qte as qte')
           ->get();
          }
         //center one products
         if(product::count() > 0){
         $cebterProducts=product::orderBy('created_at', 'desc')->first()->limit(2)
-        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
+        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img','products.qte as qte')
         ->skip(4)->take(1)->get();
         }else{
           $cebterProducts=product::
-          select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
+          select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img','products.qte as qte')
           ->get();
         }
 

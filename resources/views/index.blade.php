@@ -55,7 +55,7 @@
     </section>
     <!--category product area end-->
     <livewire:todays-deals /> 
-
+          
     <div class="new_product_area mb-50">
         <div class="container">
             <div class="row">
@@ -73,9 +73,9 @@
                             <div class="single_product">
                                 <div class="product_thumb">
                                     <a href="{{url('details/'. $row->id)}}"><img src="{{$row->picture}}" loading="lazy" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">sale</span>
-                                    </div>
+                                    @php
+                                    qte($row->qte)
+                                    @endphp
                                     <div class="quick_button">
                                         <a href="{{url('details/'. $row->id)}}"   title="quick view"> <i class="zmdi zmdi-eye"></i></a>
                                     </div>
@@ -116,6 +116,9 @@
                         <div class="single_product product_center">
                             <div class="product_thumb">
                                 <a href="{{url('details/'. $row->id)}}"><img src="{{$row->picture}}" loading="lazy" alt=""></a>
+                                @php
+                                qte($row->qte)
+                                @endphp
                                 <div class="quick_button">
                                     <a href="{{url('details/'. $row->id)}}"   title="quick view"> <i class="zmdi zmdi-eye"></i></a>
                                 </div>
@@ -156,9 +159,11 @@
                             <div class="single_product">
                                 <div class="product_thumb">
                                     <a href="{{url('details/'. $row->id)}}"><img src="{{$row->picture}}" loading="lazy" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">sale</span>
-                                    </div>
+                                 
+                                        @php
+                                        qte($row->qte)
+                                        @endphp
+                               
                                     <div class="quick_button">
                                         <a href="{{url('details/'. $row->id)}}" data-bs-toggle="modal" data-bs-target="#modal_box  title="quick view"> <i class="zmdi zmdi-eye"></i></a>
                                     </div>

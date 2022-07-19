@@ -16,9 +16,34 @@
                                     </a>
                                  </li>
                                     @endforeach
-                        </ul>
-                    </div>
-                </div>
+                              </ul>
+                             </div>
+                              </div>
+                              <?php
+                              //fonction to get qantity if all products
+                              function qtebestratting($qte){
+                            if($qte == 0){
+                            ?>
+                              <div class="label_product">
+                                <span class="label_sale" style="background-color: red;">Not in stock</span>
+                            </div>
+                            <?php
+                            }elseif ($qte <= 5) {
+                                ?>
+                                
+                                <div class="label_product">
+                                <span class="label_sale" style="background-color: gold;color:black;">Stock limité</span>
+                            </div>
+                            <?php
+                            } else {
+                                ?>
+                                <div class="label_product">
+                                <span class="label_sale" style="background-color: rgb(10, 102, 240);">En stock</span>
+                            </div>
+                            <?php
+                            }
+                            }
+                            ?>
                               <div class="row">
                                 
                                 @foreach($topRatedProduct as $row)
@@ -26,9 +51,9 @@
                                         <div class="single_deals_product" id='singdl'>
                                             <div class="product_thumb " id="imagebestratiing">
                                                 <a href={{url('details/'. $row->id)}}><img src="{{$row->picture}}" loading="lazy"  alt="" class="center"></a>
-                                                <div class="label_product">
-                                                    <span class="label_sale">sale</span>
-                                                </div>
+                                                    @php
+                                                    qtebestratting($row->qte)
+                                                    @endphp
                                                 <div class="quick_button">
                                                     <a href="{{url('details/'. $row->id)}}"  data-bs-target="#modal_box"  title="quick view"> <i class="zmdi zmdi-eye"></i></a>
                                                 </div>

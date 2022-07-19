@@ -26,7 +26,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
-                   
                    <div class="product-details-tab">
                     @foreach($prductsdtailsproduct as $row)
                         <div id="img-1" class="zoomWrapper single-zoom">
@@ -97,7 +96,6 @@
                             <div class="product_meta">
                                 <span>Category: <a href="#">{{$row->namecategorie}}</a></span>
                             </div>
-                            
                         </form>
                         <div class="priduct_social">
                             <ul>

@@ -20,13 +20,12 @@
                             @foreach($productsincarts as $row)
                             <tr>
                                <td class="product_remove"><a href="javascript:void(0);" wire:click="confirmeDelete({{$row->id}})" class="update"><i class="fa fa-trash-o"></i></a></td>
-                                <td class="product_thumb"><a href="#"><img src="{{$row->picture}}" alt=""></a></td>
+                                <td class="product_thumb"><a href="#"><img src="{{$row->picture}}" width="100px" alt=""></a></td>
                                 <td class="product_name"><a href="#">{{$row->name}}</a></td>
                                 <td class="product-price">{{$row->price}} Dh</td>
                                 
                                 <td class="product_quantity"><label>Quantity</label><button id="add" type="button" class="increment" wire:click.prevent=' modofiyincrement ({{$row->id}},{{$row->qte}}),{{$row->price}}'>+</button><input class="ml-5"  min="1" max="100" value="{{$row->qte}}" type="number"  readonly="" style="text-align: center;" id='qtebox' class="mt-2"><button id="sub" class="increment" type="button" wire:click.prevent=' modofiyindesinctemntt({{$row->id}},{{$row->qte}})' >-</button></td>
                                 <td class="product_total">{{$row->total}} DH</td>
-
 
                             </tr>
 
@@ -78,7 +77,7 @@
                                    <p class="cart_amount">{{$priceTTc}} DH</p>
                                </div>
                                <div class="checkout_btn">
-                                   <a href="#">Proceed to Checkout</a>
+                                   <a href="{{url('/checkout')}}">Proceed to Checkout</a>
                                </div>
                             </div>
                         </div>

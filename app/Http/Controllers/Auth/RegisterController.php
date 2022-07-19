@@ -9,6 +9,10 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
+use App\Models\category;
+
 class RegisterController extends Controller
 {
     /*
@@ -55,7 +59,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
- 
+
     /**
      * Create a new user instance after a valid registration.
      *

@@ -29,18 +29,18 @@ class shopCtroller extends Controller
         $categorie=Category::all();
 
         $productsByCategorie=product::
-        select('products.id as id','products.name as name','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img')
+        select('products.id as id','products.name as name','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img','products.qte as qte')
         ->paginate(10);
 
         //default count of products
           //count fon this products
           $count=product::
-          select('products.name as name','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img')
+          select('products.name as name','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img','products.qte as qte')
           ->get()->count();
         //name cataegries for shop
           $nameCategories=Category::all(); 
           $topRatedProduct=product::orderBy('ratting', 'desc')
-          ->select('products.name as name','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img')
+          ->select('products.name as name','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img','products.qte as qte')
           ->take(10)->get();
 
            //carts
@@ -69,18 +69,18 @@ class shopCtroller extends Controller
     //get all categorie form database
     $categorie=Category::all();
     $count=product::
-          select('products.name as name','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img')
+          select('products.name as name','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img','products.qte as qte')
           ->get()->count();
     $productsByCategorie=product::
     whereBetween('products.new_price',[$price1,$price2])
-    ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img','products.id_category as catid')
+    ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img','products.id_category as catid','products.qte as qte')
     ->paginate(10);
 
     //default count of products
       //count fon this products
       $count=product::join('reductions','products.id','=','reductions.id_product')
       ->whereBetween('reductions.new_price',[$price1,$price2])
-      ->select('products.name as name','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img')
+      ->select('products.name as name','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img','products.qte as qte')
       ->get()->count();
     //name cataegries for shop
       $nameCategories=Category::all(); 
@@ -115,7 +115,7 @@ class shopCtroller extends Controller
        $productsByCategorie=product::
        join('categories','categories.id','=','products.id_category')
        ->where('products.id_category',$id)
-       ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img','categories.name as catNam')
+       ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img','categories.name as catNam','products.qte as qte')
        ->paginate(10);
 
        $nameCategories=Category::where('id',$id)
@@ -130,11 +130,11 @@ class shopCtroller extends Controller
         ->get();
         $count=product::
         where('products.id_category',$id)
-        ->select('products.name as name','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img',)
+        ->select('products.name as name','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img','products.qte as qte')
         ->get()->count();
         //top rated products shop
         $topRatedProduct=product::orderBy('ratting', 'desc')
-        ->select('products.name as name','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img')
+        ->select('products.name as name','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img','products.qte as qte')
         ->take(10)->get();
 
           //carts
@@ -159,7 +159,7 @@ class shopCtroller extends Controller
     public function show($id){
         $productsByCategorie_side_bar=product::join('reductions','products.id','=','reductions.id_product')
         ->where('products.id_category',$id)
-        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img')
+        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img','products.qte as qte')
         ->take(10)->get();
 
         return view('shop',compact('productsByCategorie'));
@@ -170,7 +170,7 @@ class shopCtroller extends Controller
       
         $productsByCategorie=product::join('reductions','products.id','=','reductions.id_product')
         ->orwhere('products.id_category',$idCat)
-        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img','products.id_category as catid')
+        ->select('products.name as name','products.ratting as ratting','products.price as price','reductions.reduction as reductions','products.image as img','products.id_category as catid','products.qte as qte')
         ->paginate(10);
         return response()->json($productsByCategorie);
     }

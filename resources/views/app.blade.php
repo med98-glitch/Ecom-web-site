@@ -25,6 +25,7 @@
     </head>
 </head>
 <body>
+       
        <!---all contenet her-->
        @include('header')
 
@@ -243,10 +244,46 @@
       })
       });
     });
-  
-    
+  //add to card in  shp page
+        const inputsshop = document.querySelectorAll('.price_id')
+        const btnstshop = document.querySelectorAll('.add_to_card_shop')
+        for (let i = 0; i < btnstshop.length; i++) {
+          btnstshop[i].addEventListener('click', () => {
+        let price = inputsshop[i].value;
+        let id_pr = inputsshop[i].getAttribute('id');
+        let qte=1;
+        $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
 
-//podification of price and total of cars in page   details products-->
+        $.ajax({
+        type: "POST",
+        url: "/addtocard",
+        dataType:'JSON',
+        data: 'price= '+ price +'&qte=' + qte +'&id_products=' + id_pr
+     
+    }).done(function(response){
+        
+        Swal.fire({
+       
+        icon: response.icon,
+        title: response.title,
+        text: response.status,
+        showConfirmButton: false,
+        timer: 1500
+        })
+        $('.count_product').html("")
+        $(response).each(function (key, value) {
+  
+            $('.count_product').append(``+ value.products_cards + `_Produit Total:`+value.total_price +`Dh`);
+              })
+      })
+    })
+}
+
+//Modification of price and total of cars in page   details products-->
 
 $(document).ready(function() {
       $(".update").click( function(){

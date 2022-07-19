@@ -1,12 +1,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Ecommerce web site</title>
+    <title>Chamal Info</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
-    <link href={{asset('assets/img/logo/logochamal.png')}} rel="shortcut icon">
+    <link rel="icon" href="{{asset('assets/img/logo/logomini.png')}}" >
 
     <!-- CSS
     ========================= -->
@@ -45,6 +45,9 @@
                                 @else
                                 <li class="top_links"><a href="#"><i class="zmdi zmdi-account"></i> {{ Auth::user()->name  }} <i class="zmdi zmdi-caret-down"></i></a>
                                     <ul class="dropdown_links">
+                                        <li><a  href="{{url('profile')}}">
+                                            Profile </a>
+                                     </li>
                                         <li><a  href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
@@ -53,6 +56,7 @@
                                                 @csrf
                                             </form>
                                         </li>
+                                        
                                     
                                     </ul>
                                 
@@ -147,6 +151,9 @@
                                                                     </form>
                                                                 </div>
                                                             </li>
+                                                            <li>
+                                                                <a href="javascript:void(0)">Profile</a>
+                                                             </li>  
                                                         @endguest
                                                            
                                                         </ul>

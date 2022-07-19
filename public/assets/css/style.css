@@ -43,7 +43,15 @@
   --color-principale:#3D3A33;
   --second-color:#DD9300;
 }
-
+.bgcol{
+  background-image: url('assets/img/bg/6300830.jpg');
+}
+#cardlogin{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
 /* transition */
 /* flex */
 /* transform */
@@ -1091,8 +1099,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   }
 }
 .btn_login{
-  background-color: var(--color-principale);
-  color:white;
+background-color: #FFC727;
+  color:rgb(245, 245, 245);
 }
 
 
@@ -10563,11 +10571,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   border-radius: 3px;
 }
 .dashboard_tab_button ul li a:hover {
-  background: #ea000d;
+  background: var(--second-color);
   color: #ffffff;
 }
 .dashboard_tab_button ul li a.active {
-  background: #ea000d;
+  background: var(--second-color);
 }
 
 .main_content_area {

@@ -27,16 +27,39 @@
                                 <div class="tab-pane fade show active" id="Funiture" role="tabpanel">
                                     <div class="deals_product_list">
                                     <div id='cnt'>
-                                        
-                                        
+                                        <?php
+                                        //fonction to get qantity if all products
+                                        function qte($qte){
+                                      if($qte == 0){
+                                      ?>
+                                        <div class="label_product">
+                                          <span class="label_sale" style="background-color: red;">Not in stock</span>
+                                      </div>
+                                      <?php
+                                      }elseif ($qte <= 5) {
+                                          ?>
+                                          
+                                          <div class="label_product">
+                                          <span class="label_sale" style="background-color: gold;color:black;">Stock limité</span>
+                                      </div>
+                                      <?php
+                                      } else {
+                                          ?>
+                                          <div class="label_product">
+                                          <span class="label_sale" style="background-color: rgb(10, 102, 240);">En stock</span>
+                                      </div>
+                                      <?php
+                                      }
+                                      }
+                                      ?>
                                         @foreach($GetAll as $row)
 
                                         <div class="single_deals_product">
                                             <div class="product_thumb">
                                                 <a href={{url('details/'. $row->id)}}><img src="{{$row->picture}}" loading="lazy" alt=""></a>
-                                                <div class="label_product">
-                                                    <span class="label_sale">sale</span>
-                                                </div>
+                                                @php
+                                                qte($row->qte)
+                                                @endphp
                                                 <div class="quick_button">
                                                     <a href="{{url('details/'. $row->id)}}"  data-bs-target="#modal_box"  title="quick view"> <i class="zmdi zmdi-eye"></i></a>
                                                 </div>

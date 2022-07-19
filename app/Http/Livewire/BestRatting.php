@@ -14,7 +14,7 @@ use Livewire\Component;
 
 class BestRatting extends Component
 {
-    public $term = 3;
+    public $term ;
 
     public function sendid($id){
         $this->term=$id;
@@ -24,11 +24,19 @@ class BestRatting extends Component
     {
         $categorie=Category::all();
         $test=$this->term;
-        $topRatedProduct=product::limit(4)
-        ->where('products.id_category',$test)
-        //->join('images','products.id','=','images.id_product')
-        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
-        ->get();
+        if(isset ($test)){
+            $topRatedProduct=product::limit(4)
+            ->where('products.id_category',$test)
+            //->join('images','products.id','=','images.id_product')
+            ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img','products.qte as qte')
+            ->get();
+        }else
+        {
+            $topRatedProduct=product::limit(4)
+            ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img','products.qte as qte')
+            ->get();
+        }
+       
         return view('livewire.best-ratting',compact(['categorie','topRatedProduct','test']));
     }
 }
