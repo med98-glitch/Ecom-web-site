@@ -107,6 +107,7 @@ To run the project type the following command, but be sure that you create the d
 ```
 cd ecommerce
 composer install
+mv .env.example .env
 php artisan key:generate
 php artisan migrate
 php artisan serve
@@ -153,16 +154,30 @@ server{
 ```
 
 And make sure that you code source is placed under the following path ```/var/www/ecommerce```.
+Rename .env.example file to .envinside your project root and fill the database information. (windows wont let you do it, so you have to open your console cd your project root directory and run mv .env.example .env )
+```
+mv .env.example .env
+nano .env
+```
+```
+APP_NAME=NameOfYourApp (this is used in emails and other things, so your company name?)
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://ecommerce.mednour-consulting.com/
+```
+and run php artisan key:generate so it will create a new APP_KEY. of course all of your db credentials, email credentials, etc., need to match the production server, as well as everything else that your project uses.
+
+you should also make sure that you run the config:cache Artisan command during your deployment process
+```
+php artisan config:cache
+```
 
 When deploying to production, make sure that you are optimizing Composer's class autoloader map so Composer can quickly find the proper file to load for a given class
 ```
 composer install --optimize-autoloader --no-dev
 ```
-you should also make sure that you run the config:cache Artisan command during your deployment process
-```
-php artisan config:cache
-```
-Rename .env.example file to .envinside your project root and fill the database information. (windows wont let you do it, so you have to open your console cd your project root directory and run mv .env.example .env )
+
+
 
 ## V. Activating HTTPS Using Certbot with NGINX.
 A web server must possess a signed public-key certificate from a trusted Certificate Authority before it can accept HTTPS requests. Let’s Encrypt is one of the most widely-used of these authorities. It manages a free automated service that distributes basic SSL/TLS certificates to eligible websites. Let’s Encrypt leverages the Automatic Certificate Management Environment (ACME) protocol to automate the certificate granting process through a challenge-response technique. The Let’s Encrypt site provides more comprehensive technical details about domain validation.
