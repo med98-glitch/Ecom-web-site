@@ -221,14 +221,13 @@
                        </ul>
                    </div>
                     <div class="price_box">
-                       <span class="current_price">{{$row['newprice']}}</span>
-                       <span class="old_price">{{$row->price}}</span>   
+                       <span class="current_price">{{$row['newprice']}} DH</span>
+                       <input type="hidden" id='{{$row->id}}' value='{{$row['newprice']}}' class ='price_id'>
+                       <span class="old_price">{{$row->price}} DH</span>   
                    </div>
                    <div class="action_links">
                        <ul>
-                          <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                           <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
-                           <li class="compare"><a href="#" title="compare"><i class="zmdi zmdi-swap"></i></a></li>
+                        <li class="add_to_cart "><a href="JavaScript:void(0)" class="add_to_card_shop" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
                        </ul>
                    </div>
 

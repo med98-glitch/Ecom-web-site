@@ -12,13 +12,9 @@ use App\Http\Controllers\checkout;
 //use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Order;
 use App\Http\Controllers\CartController;
+use App\Mail\OrderMail;
 use Illuminate\Support\Facades\Auth;
-
-
-
-
-
-
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,7 +77,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/deleteUpdateItem', [CartController::class, 'deleteUpdateItem']);
     Route::get('/profile', [profileController::class, 'index']);
     Route::get('/checkout', [checkout::class, 'index']);
-    Route::POST('addorder',[Order::class,'addorder']);
+    Route::POST('addorder', [Order::class, 'addorder']);
 });
 Route::post('/addtocard', [CartController::class, 'addProduct']);
 
@@ -92,4 +88,9 @@ Route::post('/addtocard', [CartController::class, 'addProduct']);
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+});
+//route for email
+Route::get('/email', function () {
+    Mail::to('mohamedrossi2000@gmail.com')->send(new OrderMail());
+    return  new OrderMail();
 });

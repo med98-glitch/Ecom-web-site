@@ -27,6 +27,16 @@
                     </div>    
                </div>
             </div>
+            @if(Session::get('success'))
+              <div class="alert alert-success">
+                {{Session::get('success')}}
+              </div>
+            @endif
+            @if(Session::get('fail'))
+              <div class="alert alert-fail">
+                {{Session::get('fail')}}
+              </div>
+            @endif
             <form action="{{url('/addorder')}}" method="POST">
                 @csrf
             <div class="checkout_form">
@@ -76,7 +86,8 @@
                                     <label> Email Address   <span>*</span></label>
                                       <input type="email" name="email" value="{{old('email')}}">
                                       <span style="color: red;">@error('email'){{$message}} @enderror</span> 
-                                </div> 
+                                </div>
+                              
           	    	    	    	    	    	    
                             </div>
                        
@@ -98,6 +109,7 @@
                                             <td> {{$row->name}} <strong> x {{$row->qte}}</strong></td>
                                             <td> {{$row->pricebyone * $row->qte}}</td>
                                         </tr>
+                                        <input type="hidden" name="products" value="{{$order}}">
                                        @endforeach
                                     </tbody>
                                     <tfoot>

@@ -17,7 +17,11 @@
                                 <li><a href="#downloads" data-bs-toggle="tab" class="nav-link">Downloads</a></li>
                                 <li><a href="#address" data-bs-toggle="tab" class="nav-link">Addresses</a></li>
                                 <li><a href="#account-details" data-bs-toggle="tab" class="nav-link">Account details</a></li>
-                                <li><a href="login.html" class="nav-link">logout</a></li>
+                                <li><a  href="{{ route('logout') }}" class="nav-link"
+                                    onclick="event.preventDefault();
+                                                  document.getElementById('logout-form').submit();">
+                                     {{ __('Logout') }}
+                                 </a></li>
                             </ul>
                         </div>    
                     </div>
