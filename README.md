@@ -109,6 +109,12 @@ cd ecommerce
 sudo composer install
 sudo mv .env.example .env
 sudo php artisan key:generate
+```
+go to : sudo nano config/database.php and change the username and password 
+
+run this commandes:
+```
+php artisan migrate
 php artisan serve
 ```
 If for any reason the project is not running try clearing the cache.
