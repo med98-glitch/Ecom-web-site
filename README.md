@@ -106,10 +106,9 @@ git clone https://tocken@github.com/mednourconsulting/ecommerce
 To run the project type the following command, but be sure that you create the database with a username and password.
 ```
 cd ecommerce
-composer install
-mv .env.example .env
-php artisan key:generate
-php artisan migrate
+sudo composer install
+sudo mv .env.example .env
+sudo php artisan key:generate
 php artisan serve
 ```
 If for any reason the project is not running try clearing the cache.
@@ -154,7 +153,7 @@ server{
 ```
 
 And make sure that you code source is placed under the following path ```/var/www/ecommerce```.
-Rename .env.example file to .envinside your project root and fill the database information. (windows wont let you do it, so you have to open your console cd your project root directory and run mv .env.example .env )
+Rename .env.example file to .env inside your project root and fill the database information. (windows wont let you do it, so you have to open your console cd your project root directory and run mv .env.example .env )
 ```
 mv .env.example .env
 nano .env
