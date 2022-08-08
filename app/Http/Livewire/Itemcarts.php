@@ -16,6 +16,7 @@ class Itemcarts extends Component
 {
 
     public $number = 100;
+   
 
     //total of price 
     //public $total = product::
@@ -50,8 +51,9 @@ class Itemcarts extends Component
     public function confirmeDelete($id)
     {
         $itemcart = Cart::find($id);
-
+        if ($itemcart != null) {
         $itemcart->delete();
+        }
     }
     //function to update panier
 
@@ -61,7 +63,6 @@ class Itemcarts extends Component
         if ($newqte > 10) {
             $newqte = 10;
         }
-
         $productprice = product::join('carts', 'products.id', '=', 'carts.id_products')
             ->where('carts.id', $id)
             ->select('products.new_price as price')

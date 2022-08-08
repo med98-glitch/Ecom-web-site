@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href={{asset('assets/img/favicon.ico')}}>
+        <link rel="shortcut icon" href={{asset('assets/img/logo/lg.ico')}}>
     
         <!-- CSS
         ========================= -->
@@ -48,6 +48,9 @@
    
    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <script>
+
+   //update profile 
+
     $(document).ready(function() {
   $(".catte").click( function(){
     $('.catte').not(this).removeClass('active');
@@ -76,15 +79,22 @@
         data: 'price= '+ valid +'&qte=' + qte +'&id_products=' + idVal
      
     }).done(function(response){
-        
-        Swal.fire({
-       
-        icon: response.icon,
-        title: response.title,
-        text: response.status,
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
         showConfirmButton: false,
-        timer: 1500
-        })
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: response.icon,
+        title: response.status,
+      })
         $('.count_product').html("")
         $(response).each(function (key, value) {
   
@@ -115,14 +125,22 @@
      
     }).done(function(response){
         
-        Swal.fire({
-       
-        icon: response.icon,
-        title: response.title,
-        text: response.status,
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
         showConfirmButton: false,
-        timer: 1500
-        })
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: response.icon,
+        title: response.status,
+      })
         $('.count_product').html("")
         $(response).each(function (key, value) {
   
@@ -132,12 +150,14 @@
     })
 }
         //add to card in the todaysdelas
+        $(document).ready(function() {
+        const inputsprice = document.querySelectorAll('.priceinput')
         const inputstoday = document.querySelectorAll('.id_todays_deals')
         const btnstoday = document.querySelectorAll('.btn_todays_deals')
         for (let i = 0; i < btnstoday.length; i++) {
           btnstoday[i].addEventListener('click', () => {
-        let valid = inputstoday[i].value;
-        let idVal = inputstoday[i].getAttribute('id');
+        let id = inputstoday[i].value;
+        let price = inputsprice[i].value;;
         let qte=1;
         $.ajaxSetup({
         headers: {
@@ -149,18 +169,25 @@
         type: "POST",
         url: "/addtocard",
         dataType:'JSON',
-        data: 'price= '+ valid +'&qte=' + qte +'&id_products=' + idVal
+        data: 'price= '+ price +'&qte=' + qte +'&id_products=' + id
      
     }).done(function(response){
-        
-        Swal.fire({
-       
-        icon: response.icon,
-        title: response.title,
-        text: response.status,
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
         showConfirmButton: false,
-        timer: 1500
-        })
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: response.icon,
+        title: response.status,
+      })
         $('.count_product').html("")
         $(response).each(function (key, value) {
   
@@ -169,12 +196,59 @@
       })
     })
 }
-        
-    
+});
+        //add to card in the todaysdelas
+        $(document).ready(function() {
+        const price_best = document.querySelectorAll('.new_price_bestratting')
+        const id_best = document.querySelectorAll('.id_products_bestratting')
+        const btn_best = document.querySelectorAll('.btn_ratting')
+        for (let i = 0; i < btn_best.length; i++) {
+          btn_best[i].addEventListener('click', () => {
+        let id_ = id_best[i].value;
+        let price_ = price_best[i].value;;
+        let qte=1;
+        $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+
+        $.ajax({
+        type: "POST",
+        url: "/addtocard",
+        dataType:'JSON',
+        data: 'price= '+ price_ +'&qte=' + qte +'&id_products=' + id_
+     
+    }).done(function(response){
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: response.icon,
+        title: response.status,
+      })
+        $('.count_product').html("")
+        $(response).each(function (key, value) {
+  
+            $('.count_product').append(``+ value.products_cards + `_Produit Total:`+value.total_price +`Dh`);
+              })
+      })
+    })
+}
+});
 
   //add to card in details page
   $(document).ready(function() {
-      $(".add_to_cart").click( function(){
+      $(".add_to_card_details_page").click( function(){
          
         var id_products = $('.id_products').val();
         var price = $('.new_price').val();
@@ -193,14 +267,22 @@
      
     }).done(function(response){
         
-        Swal.fire({
-        icon: response.icon,
-        title: response.title,
-        text: response.status,
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
         showConfirmButton: false,
-       
-        timer: 1500
-        })
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: response.icon,
+        title: response.status,
+      })
         $('.count_product').html("")
         $(response).each(function (key, value) {
             $('.count_product').append(``+ value.products_cards + `_Produit Total:`+value.total_price +`Dh`);
@@ -229,20 +311,28 @@
      
     }).done(function(response){
         
-        Swal.fire({
-        icon: response.icon,
-        title: response.title,
-        text: response.status,
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
         showConfirmButton: false,
-       
-        timer: 1500
-        })
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: response.icon,
+        title: response.status,
+      })
         $('.count_product').html("")
         $(response).each(function (key, value) {
             $('.count_product').append(``+ value.products_cards + `_Produit Total:`+value.total_price +`Dh`);
-              })
-      })
-      });
+            })
+          })
+       });
     });
   //add to card in  shp page
         const inputsshop = document.querySelectorAll('.price_id')
@@ -265,15 +355,67 @@
         data: 'price= '+ price +'&qte=' + qte +'&id_products=' + id_pr
      
     }).done(function(response){
-        
-        Swal.fire({
-       
-        icon: response.icon,
-        title: response.title,
-        text: response.status,
+        const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
         showConfirmButton: false,
-        timer: 1500
-        })
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: response.icon,
+        title: response.status,
+      })
+      $('.count_product').html("")
+        $(response).each(function (key, value) {
+  
+            $('.count_product').append(``+ value.products_cards + `_Produit Total:`+value.total_price +`Dh`);
+              })
+      })
+    })
+}
+  //add to card in  related product
+        const inputsshoprelated = document.querySelectorAll('.idprice')
+        const btnstshoprelated= document.querySelectorAll('.add_to_card_raltedproduct')
+        for (let i = 0; i < btnstshoprelated.length; i++) {
+          btnstshoprelated[i].addEventListener('click', () => {
+        let price_related = inputsshoprelated[i].value;
+        let id_pr = inputsshoprelated[i].getAttribute('id');
+        let qte=1;
+        $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+
+        $.ajax({
+        type: "POST",
+        url: "/addtocard",
+        dataType:'JSON',
+        data: 'price= '+ price_related +'&qte=' + qte +'&id_products=' + id_pr
+     
+    }).done(function(response){
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: response.icon,
+        title: response.status,
+      })
         $('.count_product').html("")
         $(response).each(function (key, value) {
   
@@ -284,11 +426,11 @@
 }
 
 //Modification of price and total of cars in page   details products-->
-
-$(document).ready(function() {
-      $(".update").click( function(){
-         
-       var price='1'
+const deletebutton= document.querySelectorAll('.update')
+const id_item_card= document.querySelectorAll('.item_card')
+for (let i = 0; i < deletebutton.length; i++) {
+  deletebutton[i].addEventListener('click', () => {
+  let id_item =id_item_card[i].getAttribute('id'); 
           $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -299,36 +441,166 @@ $(document).ready(function() {
         type: "POST",
         url: "/deleteUpdateItem",
         dataType:'JSON',
-        data: 'price= '+ price 
-     
+        data:'id_item=' + id_item
+        
     }).done(function(response){
+        
+        Swal.fire({
+        title: 'Succes',
+        text: 'Element doit étre supprimmé',
+        showConfirmButton: false,
+        timer: 1500
+        })
         
         $('.count_product').html("")
         $(response).each(function (key, value) {
-     
             $('.count_product').append(``+ value.products_cards + `_Produit Total:`+value.total_price +`Dh`);
               })
           })
       });
 
+    };
+
+    //update profile
+    $(document).ready(function() {
+      $(".upd").click( function(){
+         
+       const name=$('.name').val();
+       const email=$('.email').val();
+       if(email === '' || email == null){
+        Swal.fire({
+       title: 'Error',
+       text: 'email is required',
+       showConfirmButton: false,
+       timer: 1500
+       })
+       }else if(email.length < 10){
+        Swal.fire({
+       title: 'Error',
+       text: 'email must be 10 caractére',
+       showConfirmButton: false,
+       timer: 1500
+       })
+       }else if(name === '' || name == null){
+        Swal.fire({
+       title: 'Error',
+       text: 'name is required',
+       showConfirmButton: false,
+       timer: 1500
+       })
+       }else if(name.length < 5){
+        Swal.fire({
+       title: 'Error',
+       text: 'name must be 5 caractére or more',
+       showConfirmButton: false,
+       timer: 1500
+       })
+       }else{
+        $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+        $.ajax({
+        type: "POST",
+        url: "/updateinfo",
+        dataType:'JSON',
+        data: 'name= '+ name + '&email=' + email
+      
+    }).done(function(response){
+        
+        Swal.fire({
+        icon: 'success',
+        title: 'success',
+        text: 'votre profile updated',
+        showConfirmButton: false,
+        timer: 1500
+        })
+        })
+       }
+      });
     });
+    //update pqsszord
+    $(document).ready(function() {
+      $(".updatepass").click( function(){
+         
+       const pass=$('.pass').val();
+       const passA=$('.passA').val();
+       if(pass === '' || pass == null){
+        Swal.fire({
+       title: 'Error',
+       text: 'password is empty',
+       showConfirmButton: false,
+       timer: 1500
+       })
+       }else if(passA === '' || passA == null){
+        Swal.fire({
+       title: 'Error',
+       text: 'confirmation password is required',
+       showConfirmButton: false,
+       timer: 1500
+       })
+       }else if(pass.length < 5){
+        Swal.fire({
+       title: 'Error',
+       text: 'password doit étre 5 caractére ou plus',
+       showConfirmButton: false,
+       timer: 1500
+       })
+       }else if(pass != passA){
+        Swal.fire({
+       title: 'Error',
+       text: 'confirmation password invalid',
+       showConfirmButton: false,
+       timer: 1500
+       })
+       }else{
+        $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+        $.ajax({
+        type: "POST",
+        url: "/updatepassword",
+        dataType:'JSON',
+        data: 'pass= '+ pass + '&passA=' + passA
+      
+    }).done(function(response){
+        
+        Swal.fire({
+        icon: 'success',
+        title: 'success',
+        text: 'your password updated',
+        showConfirmButton: false,
+        timer: 1500
+        })
+        })
+       }
+      });
+    });
+
 //increment and decrement of cantity of panier
     let addbtn=document.querySelector('#add');
     let subbtn=document.querySelector('#sub');
     let qte=document.querySelector('#qtebox');
-
+    if(addbtn){
     addbtn.addEventListener('click',()=>{
         qte.value=parseInt(qte.value) + 1;
         if(qte.value > 10){
             qte.value=10;
         }
     })
+  }
+  if(subbtn){
     subbtn.addEventListener('click',()=>{
         qte.value=parseInt(qte.value) -1;
         if(qte.value < 1){
             qte.value=1;
         }
     })
+  }
+
 
 </script>
    

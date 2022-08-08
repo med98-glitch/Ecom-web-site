@@ -81,7 +81,8 @@
                                                     </ul>
                                                 </div>
                                                 <div class="price_box">
-                                                    <input type="hidden" id='{!!$row->id!!}' value='{!!$row['reductions']!!}' class ='id_todays_deals'>
+                                                    <input type="hidden"  value='{{{$row->id}}}' class ='id_todays_deals'>
+                                                    <input type="hidden"  value='{{{$row->reductions}}}' class ='priceinput'>
                                                    <span class="current_price prcto">{{$row['reductions']}} DH</span>
                                                    <span class="old_price">{{$row['price']}} DH</span>
                                                </div>

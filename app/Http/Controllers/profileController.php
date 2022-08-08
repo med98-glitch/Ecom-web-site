@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 use App\Models\category;
+use App\Models\User;
+use App\Models\order;
 use Illuminate\Http\Request;
 
 
@@ -24,7 +26,12 @@ class profileController extends Controller
         //get last categorie for the side abar
         $lastcategories=Category::get()->skip(10);
 
-       
-        return view('profile',compact('categorie','products_cards','total_price','firstencategorie','lastcategories'));
+       $infouser=User::where('id',Auth::id())
+       ->select('name','email','password')
+       ->get();
+       $orders=order::where('id_user',Auth::id())
+       ->select('created_at as date','statu','total')
+       ->get();
+        return view('profile',compact('categorie','products_cards','total_price','firstencategorie','lastcategories','infouser','orders'));
     }
 }

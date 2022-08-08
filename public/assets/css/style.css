@@ -40,7 +40,7 @@
 /*variables*/
 :root
 {
-  --color-principale:#3D3A33;
+  --color-principale:#065380;
   --second-color:#DD9300;
 }
 .bgcol{
@@ -5159,6 +5159,7 @@ background-color: #FFC727;
   border-left: 1px solid #e5e5e5;
   border-right: 1px solid #e5e5e5;
   border-bottom: 1px solid #e5e5e5;
+  height: 450px;
 }
 .small_product_wrapper button {
   position: absolute;
@@ -9905,6 +9906,17 @@ background-color: #FFC727;
   margin-bottom: 0;
 }
 .user-actions h3 a {
+  color: var(--second-color);
+}
+.user-actions p {
+  font-size: 13px;
+  font-weight: 400;
+  background-color: #f7f6f7;
+  padding: 15px 10px;
+  border-top: 3px solid var(--second-color);
+  margin-bottom: 0;
+}
+.user-actions p a {
   color: var(--second-color);
 }
 

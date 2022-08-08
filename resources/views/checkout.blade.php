@@ -33,7 +33,7 @@
               </div>
             @endif
             @if(Session::get('fail'))
-              <div class="alert alert-fail">
+              <div class="alert alert-danger">
                 {{Session::get('fail')}}
               </div>
             @endif
@@ -93,7 +93,6 @@
                        
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        
                             <h3>Your order</h3> 
                             <div class="order_table table-responsive">
                                 <table>
@@ -114,7 +113,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>total net</th>
+                                          <th>total net</th>
                                             <td>{{$productpricetotal}}</td>
                                         </tr>
                                         <tr class="order_total">
@@ -127,7 +126,7 @@
                                 </table>     
                             </div>
                             <div class="col-12 mb-20">
-                                <button type="submit" class="btn btn-warning">Apply coupon</button>
+                                <button type="submit" class="btn btn-warning">Commander maintenent</button>
                             </div>
                              
                     </div>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
-    <link rel="icon" href="{{asset('assets/img/logo/logomini.png')}}" >
+    <link rel="icon" href="{{asset('assets/img/logo/logochamal-.png')}}" >
 
     <!-- CSS
     ========================= -->
@@ -89,7 +89,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3">
                         <div class="logo">
-                            <a href="{{url('/')}}"><img src="{{URL('assets/img/logo/logochamal.png')}}" loading="lazy" alt="" width="200px"></a>
+                            <a href="{{url('/')}}"><img src="{{URL('assets/img/logo/logochamal-.png')}}" loading="lazy" alt="" width="200px"></a>
                         </div>
                         
                     </div>
@@ -151,9 +151,9 @@
                                                                     </form>
                                                                 </div>
                                                             </li>
-                                                            <li>
-                                                                <a href="javascript:void(0)">Profile</a>
-                                                             </li>  
+                                                            <li><a  href="{{url('profile')}}">
+                                                                Profile </a>
+                                                         </li> 
                                                         @endguest
                                                            
                                                         </ul>

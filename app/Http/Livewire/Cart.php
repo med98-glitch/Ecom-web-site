@@ -18,6 +18,7 @@ class Cart extends Component
     public $carttest;
     public $categories;
     public $number=100;
+    
     public function render()
     {
          $this->categorie=Category::all();

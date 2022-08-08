@@ -16,6 +16,12 @@ class Order extends Controller
 {
     public function addorder(Request $request)
     {
+        //total price of products
+        $priceTTc_total = product::join('carts', 'products.id', '=', 'carts.id_products')
+        ->where('id_user', Auth::id())
+        ->sum(DB::raw('carts.qte * products.priceTTC'));
+        if($priceTTc_total != 0)
+        {
         $request->validate([
             'firstName' => 'required|min:3',
             'lastName' => 'required|min:3',
@@ -33,16 +39,19 @@ class Order extends Controller
             'phone' => $request->input('phone'),
             'total' => $request->input('total'),
             'created_at' => new \dateTime,
+            'statu'=> 'procissing',
         ]);
+        $priceTTc_total = product::join('carts', 'products.id', '=', 'carts.id_products')
+            ->where('id_user', Auth::id())
+            ->sum(DB::raw('carts.qte * products.priceTTC'));
+        
         //details product of email
         $order = Cart::join('products', 'products.id', '=', 'carts.id_products')
             ->where('id_user', Auth::id())
             ->select('products.name as name', 'carts.qte as qte', 'products.priceTTC as pricebyone', 'carts.total_price as total')
             ->get();
-        //total price of products
-        $priceTTc_total = product::join('carts', 'products.id', '=', 'carts.id_products')
-            ->where('id_user', Auth::id())
-            ->sum(DB::raw('carts.qte * products.priceTTC'));
+        $deteorder=Cart::where('id_user',Auth::id())->delete();
+        
         Mail::to($request->input('email'))->send(new OrderMail($request->input('firstName'),$request->input('lastName'),$order,$request->input('phone'),$request->adresse,$priceTTc_total));
         //Mail::to('chaima.dbibih@gmail.com')->send(new OrderMail($request->input('firstName'),$request->input('lastName'),$order,$request->input('phone'),$request->adresse,$priceTTc_total));
 
@@ -51,6 +60,11 @@ class Order extends Controller
         }else{
            return back()->with('fail','something went wrong');
         }
+       }else{
+         
+            return back()->with('fail','Vous pauver ajouter un produit sur votre cart');
+        
+       }
     }
   
 }

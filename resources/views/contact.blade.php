@@ -52,81 +52,46 @@
                 </div>
                 <div class="col-lg-6 col-md-12">
                    <div class="contact_message form">
-                        <h3>Tell us your project</h3>   
-                        <form id="contact-form" method="POST"  action="assets/mail.php">
+                        <h3>Tell us your project</h3> 
+                        @if(Session::get('success'))
+                        <div class="alert alert-success">
+                          {{Session::get('success')}}
+                        </div>
+                      @endif
+                      @if(Session::get('fail'))
+                        <div class="alert alert-danger">
+                          {{Session::get('fail')}}
+                        </div>
+                      @endif  
+                        <form  method="POST"  action="{{url('/sendemail')}}">
+                            @csrf
                             <p>  
                                <label> Your Name (required)</label>
-                                <input name="name" placeholder="Name *" type="text"> 
+                                <input name="name" placeholder="Name *" type="text" >
+                                <span style="color: red;">@error('name'){{$message}} @enderror</span>
                             </p>
                             <p>       
                                <label>  Your Email (required)</label>
                                 <input name="email" placeholder="Email *" type="email">
+                                <span style="color: red;">@error('email'){{$message}} @enderror</span>
                             </p>
                             <p>          
                                <label>  Subject</label>
                                 <input name="subject" placeholder="Subject *" type="text">
+                                <span style="color: red;">@error('subject'){{$message}} @enderror</span>
                             </p>    
                             <div class="contact_textarea">
                                 <label>  Your Message</label>
-                                <textarea placeholder="Message *" name="message"  class="form-control2" ></textarea>     
+                                <textarea placeholder="Message *" name="message"  class="form-control2" ></textarea> 
+                                <span style="color: red;">@error('message'){{$message}} @enderror</span>    
                             </div>   
                             <button type="submit"> Send</button>  
-                            <p class="form-messege"></p>
                         </form> 
-
                     </div> 
                 </div>
             </div>
         </div>    
     </div>
-
-    <!--contact area end-->
-
- 
-    
-   <!--brand newsletter area start-->
-    <div class="brand_newsletter_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="brand_container owl-carousel">
-                        <div class="single_brand">
-                            <a href="#"><img src="assets/img/brand/brand.png" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="assets/img/brand/brand1.png" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="assets/img/brand/brand2.png" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="assets/img/brand/brand3.png" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="assets/img/brand/brand4.png" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="assets/img/brand/brand5.png" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="assets/img/brand/brand1.png" alt=""></a>
-                        </div>
-                    </div>
-                    <div class="newsletter_inner">
-                        <div class="newsletter_content">
-                            <h2>SUBSCRIBE TO OUR NEWSLETTER</h2>
-                        </div>
-                        <div class="newsletter_form">
-                            <form action="#">
-                                <input placeholder="Email..." type="text">
-                                <button type="submit"><i class="zmdi zmdi-mail-send"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--brand area end-->
+    <hr>
 
 @endsection

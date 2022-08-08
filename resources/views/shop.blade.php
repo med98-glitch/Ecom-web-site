@@ -5,6 +5,7 @@
     @endphp
   
     <!--breadcrumbs area start-->
+  
     <div class="breadcrumbs_area">
         <div class="container">   
             <div class="row">
@@ -199,8 +200,7 @@
                    <div class="action_links">
                        <ul>
                     
-                           <li class="add_to_cart "><a href="JavaScript:void(0)" class="add_to_card_shop" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
-                           
+                           <li class="add_to_cart "><a href="JavaScript:void(0)" class="add_to_card_shop" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>           
                        </ul>
                    </div>
                </div>
@@ -298,7 +298,8 @@
     <!--brand area end-->
 
     <script>
-		$(document).ready(function() {
+
+		/*$(document).ready(function() {
       $(".categor").click( function(){
     
         var catego = $(this).data('value');
@@ -410,7 +411,7 @@
            
         });
       });
-
+*/
 	</script>
 
 @endsection

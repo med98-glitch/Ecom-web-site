@@ -17,7 +17,7 @@ class CartController extends Controller
         $qte = intval($request->qte);
         $price = intval($request->price);
         $total_price = $qte * $price;
-
+        $qte_product=product::where('id',$product_id)->first();
         if (Auth::check()) {
             $prod_check = product::where('id', $product_id)->first();
 
@@ -29,7 +29,11 @@ class CartController extends Controller
                     $total_price = Cart::where('id_user', $id_user)
                         ->get()->sum('total_price');
                     return response()->json(['status' => "products it all ready existe", 'icon' => "warning", 'title' => "warning...", "products_cards" => $products_cards, "total_price" => $total_price]);
-                } else {
+                }elseif($qte_product->qte == 0){
+                    $id_user = Auth::id();
+                    $products_cards = Cart::where('id_user', $id_user)->get()->count();
+                    return response()->json(['status' => "products not in stock", 'icon' => "warning", 'title' => "warning...", "products_cards" => $products_cards, "total_price" => $total_price]);
+                }else {
                     $cartItem = new Cart();
                     $cartItem->id_products = $product_id;
                     $cartItem->id_user = Auth::id();
@@ -76,12 +80,17 @@ class CartController extends Controller
     public function deleteUpdateItem(Request $request)
 
     {
-
+        $id=$request->id_item;
         $id_user = Auth::id();
-
+        $itemcart = Cart::find($id);
+        
+        $itemcart->delete();
+        
         $total_price = Cart::where('id_user', $id_user)
-            ->get()->sum('total_price');
+         ->get()->sum('total_price');
         $products_cards = Cart::where('id_user', $id_user)->get()->count();
-        return response()->json(["products_cards" => $products_cards, "total_price" => $total_price]);
+        $message='item doit étre supprimé a ce cart';
+  
+        return response()->json(["products_cards" => $products_cards, "total_price" => $total_price,'message'=>$message]);
     }
 }

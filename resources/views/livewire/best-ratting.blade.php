@@ -4,7 +4,7 @@
             <div class="col-12">
                <div class="product_header">
                     <div class="section_title">
-                        <h2>Best Ratting<span>Products</span> {{$test}}</h2>
+                        <h2>Best Ratting<span>Products</span></h2>
                     </div>
                      <div class="product_tab_button">
                         <ul class="nav" role="tablist">
@@ -76,8 +76,8 @@
                                                 </div>
                                                 <div class="price_box">
                                                    
-                                                    <input type="hidden" data-value='{{$row['id']}}' class ='id_products'>
-                                                    <input type="hidden" data-value='{{$row['reductions']}}' class ='new_price'>
+                                                    <input type="hidden" value='{{$row['id']}}' class ='id_products_bestratting'>
+                                                    <input type="hidden" value='{{$row['reductions']}}' class ='new_price_bestratting'>
 
                                                    <span class="current_price">{{$row['reductions']}} DH</span>
                                                    <span class="old_price">{{$row['price']}} DH</span>
@@ -85,15 +85,14 @@
                                                 <div class="action_links">
                                                     <ul>
                                                     
-                                                        <li class="add_to_cart"><a href="JavaScript:void(0)" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
-                                                                                                         </ul>
+                                                        <li class="add_to_cart"><a href="JavaScript:void(0)" class="btn_ratting" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                         @endforeach
-                                    </div>
-                                        
-        </div>
-    </div>
+                                    </div>      
+                    </div>
+         </div>
 </section>
