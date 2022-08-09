@@ -18,14 +18,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="shortcut icon" href={{asset('assets/img/logo/lg.ico')}}>
+    <link rel="shortcut icon" href={{asset('assets/img/logo/logochamal-.png')}}>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{URL('assets/img/logo/logomini.png')}}" width="100px;">
+                    <img src="{{URL('assets/img/logo/logochamal-.png')}}" width="100px;">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

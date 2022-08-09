@@ -56,9 +56,9 @@ class Order extends Controller
         //Mail::to('chaima.dbibih@gmail.com')->send(new OrderMail($request->input('firstName'),$request->input('lastName'),$order,$request->input('phone'),$request->adresse,$priceTTc_total));
 
         if($query){
-          return back()->with('success','Your order have been successfuly');
+          return back()->with('success','Votre commande a été envoyée avec succès');
         }else{
-           return back()->with('fail','something went wrong');
+           return back()->with('fail','quelque chose s est mal passé');
         }
        }else{
          

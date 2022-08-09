@@ -4,7 +4,7 @@
             <div class="col-12">
                <div class="product_header">
                     <div class="section_title">
-                        <h2>Best Ratting<span>Products</span></h2>
+                        <h2>MEILLEUR DÉRATISATION PAR <span>CATEGORIE</span></h2>
                     </div>
                      <div class="product_tab_button">
                         <ul class="nav" role="tablist">
@@ -85,7 +85,7 @@
                                                 <div class="action_links">
                                                     <ul>
                                                     
-                                                        <li class="add_to_cart"><a href="JavaScript:void(0)" class="btn_ratting" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+                                                        <li class="add_to_cart"><a href="JavaScript:void(0)" class="btn_ratting" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> Ajouter au panier</a></li>
                                                     </ul>
                                                 </div>
                                             </div>

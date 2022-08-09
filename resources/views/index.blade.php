@@ -12,17 +12,19 @@
                     <div class="slider_area slider_four owl-carousel">
                         <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/shopping-bag-cart.jpg">
                             <div class="slider_content slider_content_four content_position_center">
-                                <h1>Surround Sound </h1>
-                                <span>Investing in a new sound system  <br> can really improve your TV viewing </span>
-                                <h2><span>Starting from </span> $123.00</h2>
-                                <a href="shop.html">shop now</a>
+                                <h1> Meilleurs prix.</h1>
+                                <span>
+                                   
+                                  Prix imbattables sur vos produits préférés</span>
+                                <h4>Achetez plus pour moins cher</h4>
+                                <a href="shop.html">Acheter</a>
                             </div>
                         </div>
                         <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/gg.jpg">
                             <div class="slider_content slider_content_four content_position_left " id='dr2'>
-                                <h1>Go Portable <br> Get Productive </h1>
-                                <span>Check out the Laptop Collection </span>
-                                <a href="shop.html">shop now</a>
+                                <h1>le bon choix</h1>
+                                <span>bienvenue sur chamal info choisissez votre produit maintenant </span>
+                                <a href="shop.html">Acheter</a>
                             </div>
                         </div>
                     </div>
@@ -61,7 +63,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section_title">
-                        <h2>New <span >Products</span></h2>
+                        <h2>NOUVEAUX  <span >PRODUITS</span></h2>
                     </div>
                 </div>    <div class="new_product_wrapper">
             </div>
@@ -103,7 +105,7 @@
                                     </div>
                                     <div class="action_links">
                                         <ul>
-                                            <li class="add_to_cart"><a href="JavaScript:void(0)" title="add to cart" class="add_"><i class="zmdi zmdi-shopping-cart-plus"></i><input type="hidden" value='{{$row['id']}}' > add to cart</a> </li>
+                                            <li class="add_to_cart"><a href="JavaScript:void(0)" title="add to cart" class="add_"><i class="zmdi zmdi-shopping-cart-plus"></i><input type="hidden" value='{{$row['id']}}' > Ajouter au panier </a> </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -146,7 +148,7 @@
                                 </div>
                                 <div class="action_links">
                                     <ul>               
-                                        <li class="add_to_cart "><a href="JavaScript:void(0)" title="add to cart" class="id_btn_center"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+                                        <li class="add_to_cart "><a href="JavaScript:void(0)" title="add to cart" class="id_btn_center"><i class="zmdi zmdi-shopping-cart-plus"></i> Ajouter au panier</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -190,7 +192,7 @@
                                     </div>
                                     <div class="action_links">
                                         <ul>
-                                            <li class="add_to_cart"><a href="JavaScript:void(0)" title="add to cart" class="addto_"><i class=" zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+                                            <li class="add_to_cart"><a href="JavaScript:void(0)" title="add to cart" class="addto_"><i class=" zmdi zmdi-shopping-cart-plus"></i> Ajouter au panier</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -253,12 +255,11 @@
                 <div class="col-lg-4">
                     <div class="small_product_area">
                         <div class="section_title">
-                            <h2>Top Reduction  <span>Products</span></h2>
+                            <h2>meilleur  <span>prix</span></h2>
                         </div>
                         <div class="small_product_wrapper">
                              <!--top reduction products-->
                             @foreach($topReductionProducts as $row)
-                           
                             <div class="small_product_items">
                                 <div class="product_thumb">
                                     <a href="{{url('details/'. $row->id)}}"><img src="{{$row->picture}}" loading="lazy" alt=""></a>
@@ -291,11 +292,11 @@
                 <div class="col-lg-4">
                     <div class="small_product_area">
                         <div class="section_title">
-                            <h2>last <span>Products</span></h2>
+                            <h2>DERNIERS  <span>PRODUITS</span></h2>
                         </div>
                         <div class="small_product_wrapper">
                             <!--last products-->
-                            @foreach($topReductionProducts as $row)
+                            @foreach($latestpr as $row)
                            
                             <div class="small_product_items">
                                 <div class="product_thumb">
@@ -330,7 +331,7 @@
                 <div class="col-lg-4">
                     <div class="small_product_area">
                         <div class="section_title">
-                            <h2>Top price <span>Products</span></h2>
+                            <h2>prix le  <span>plus bas</span></h2>
                         </div>
                         <div class="small_product_wrapper">
                             <!--top price products-->

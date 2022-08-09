@@ -1,7 +1,7 @@
 @component('mail::message')
 Bien venue sur chamal info
 <br>
-Message from:{{$name}}
+message de:{{$name}}
 <br>
 email: {{$adresse}}
 <hr>

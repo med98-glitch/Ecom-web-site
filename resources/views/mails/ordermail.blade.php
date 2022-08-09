@@ -7,9 +7,9 @@ Bonjour M. {{$name}} {{$lastName}}
 <table class="table table-striped" style="text-align: center">
     <thead>
       <tr>
-        <th scope="col">name of product</th>
+        <th scope="col">nom du produit</th>
         <th scope="col"></th>
-        <th scope="col">price</th>
+        <th scope="col">Prix</th>
       </tr>
     </thead>
     <tbody class="text-center">

@@ -1,10 +1,11 @@
-@extends('layout')
+@extends('../layouts/app')
 
 @section('content')
 @php
 $page='login';
 @endphp
-@include('layouts.headerlogin');
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -37,7 +38,7 @@ $page='login';
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn_login">
+                                <button type="submit" class="btn btn_login btn-warning">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
                             </div>

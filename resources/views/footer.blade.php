@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-5">
                         <div class="widgets_container contact_us">
-                            <a href="index.html"><img src="{{URL('assets/img/logo/logochamal.png')}}" width="200px;"  loading="lazy" alt=""></a>
+                            <a href="index.html"><img src="{{URL('assets/img/logo/logochamal-.png')}}" width="150px;"  loading="lazy" alt=""></a>
                             <div class="footer_contact">
                                 <ul>
                                     <li><i class="zmdi zmdi-home"></i><span>Addresss:</span> 2 Fauconberg Rd,Chiswick, London</li>
@@ -22,13 +22,13 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
                                 <div class="widgets_container widget_menu">
-                                    <h3>CUSTOMER SERVICE</h3>
+                                    <h3>Service Clients</h3>
                                     <div class="footer_menu">
                                         <ul>
-                                            <li><a href="#">Shipping & Returns</a></li>
-                                            <li><a href="#"> Secure Shopping</a></li>
-                                            <li><a href="#">International Shipping</a></li>
-                                            <li><a href="#"> Affiliates</a></li>
+                                            <li><a href="#">Expédition & retours</a></li>
+                                            <li><a href="#"> Achats sécurisés</a></li>
+                                            <li><a href="#"> Validation des commandes</a></li>
+                                            <li><a href="#"> Support du client(7j/7j) </a></li>
                                           
                                         </ul>
                                     </div>
@@ -36,16 +36,15 @@
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <div class="widgets_container widget_menu">
-                                    <h3>Information</h3>
+                                    <h3>Pages</h3>
                                     <div class="footer_menu">
                                         <ul>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="#">Delivery infomation</a></li>
-                                            <li><a href="#">Privacy Policy</a></li>
-                                            <li><a href="#"> Travel</a></li>
+                                            <li><a href="about.html">ACCEUIL</a></li>
+                                            <li><a href="#">BOUTIQUE</a></li>
+                                            <li><a href="#">QUI <SOMMES-NOUS></SOMMES-NOUS></a></li>
+                                            <li><a href="#"> CONTACTEZ-NOUS</a></li>
                                         </ul>
                                     </div>
-
                                 </div>
                             </div>
                         </div>

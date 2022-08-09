@@ -82,7 +82,7 @@
                                 {!!$row->desc!!}</p>
                             </div>
                             <div class="product_variant quantity mt-5">
-                                <label>quantity</label>
+                                <label>Quantité</label>
                                 <input min="1" max="10" value="1" type="number" class='qte'>
                             </div>
                              <div class="action_links">
@@ -91,7 +91,7 @@
                                 </ul>
                             </div>
                             <div class="product_meta">
-                                <span>Category: <a href="#">{{$idcat->name}}</a></span>
+                                <span>Catégorie: <a href="#">{{$idcat->name}}</a></span>
                             </div>
                         </form>
                         <div class="priduct_social">
@@ -182,7 +182,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="section_title">
-                        <h2>Related Products</h2>
+                        <h2>Relationnel produits</h2>
                     </div>
                     <div class="product_carousel product_column4 owl-carousel">
                         @foreach($relatedproduct as $row)
@@ -219,7 +219,7 @@
                                 </div>
                                 <div class="action_links">
                                   <ul>
-                                        <li class="add_to_cart"><a href="JavaScript:void(0)" title="add to cart" class="add_to_card_raltedproduct" ><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+                                        <li class="add_to_cart"><a href="JavaScript:void(0)" title="add to cart" class="add_to_card_raltedproduct" ><i class="zmdi zmdi-shopping-cart-plus"></i> Ajouter au panier </a></li>
                                   </ul>
                                 </div>
                             </div>

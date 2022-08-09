@@ -11,11 +11,11 @@
                         <table>
                         <thead>
                             <tr>
-                                <th class="product_remove">Delete</th>
+                                <th class="product_remove">effacer</th>
                                 <th class="product_thumb">Image</th>
                                 <th class="product_name">Product</th>
                                 <th class="product-price">Price</th>
-                                <th class="product_quantity">Quantity</th>
+                                <th class="product_quantity">Quantité</th>
                                 <th class="product_total">Total</th>
                             </tr>
                         </thead>
@@ -28,7 +28,7 @@
                                 <td class="product_thumb"><a href="#"><img src="{{$row->picture}}" width="100px" alt=""></a></td>
                                 <td class="product_name"><a href="#">{{$row->name}}</a></td>
                                 <td class="product-price">{{$row->price}} Dh</td>
-                                <td class="product_quantity"><label>Quantity</label><button id="add" type="button" class="increment" wire:click.prevent=' modofiyincrement ({{$row->id}},{{$row->qte}}),{{$row->price}}'>+</button><input class="ml-5"  min="1" max="100" value="{{$row->qte}}" type="number"  readonly="" style="text-align: center;" id='qtebox' class="mt-2"><button id="sub" class="increment" type="button" wire:click.prevent=' modofiyindesinctemntt({{$row->id}},{{$row->qte}})' >-</button></td>
+                                <td class="product_quantity"><label>Quantité</label><button id="add" type="button" class="increment" wire:click.prevent=' modofiyincrement ({{$row->id}},{{$row->qte}}),{{$row->price}}'>+</button><input class="ml-5"  min="1" max="100" value="{{$row->qte}}" type="number"  readonly="" style="text-align: center;" id='qtebox' class="mt-2"><button id="sub" class="increment" type="button" wire:click.prevent=' modofiyindesinctemntt({{$row->id}},{{$row->qte}})' >-</button></td>
                                 <td class="product_total">{{$row->total}} DH</td>
 
                             </tr>            
@@ -46,7 +46,7 @@
                     </div>
                     @else
                     <div class="alert alert-warning" role="alert">
-                      Aucin produit dans ce cart
+                        Aucun produit dans ce panier
                     </div>
                     @endif
                  </div>
@@ -58,15 +58,15 @@
                         <div class="coupon_code left">
                             <h3>Coupon</h3>
                             <div class="coupon_inner">   
-                                <p>Enter your coupon code if you have one.</p>                                
+                                <p>Entrez votre code promo si vous en avez un.</p>                                
                                 <input placeholder="Coupon code" type="text">
-                                <button type="submit">Apply coupon</button>
+                                <button type="submit">Appliquer Coupon</button>
                             </div>    
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="coupon_code right">
-                            <h3>Cart Totals</h3>
+                            <h3>Totaux du panier</h3>
                             <div class="coupon_inner">
                                <div class="cart_subtotal">
                                    <p>Total sans TTC</p>
@@ -76,14 +76,13 @@
                                    <p>Total avec TTC</p>
                                    <p class="cart_amount">{{$priceTTc}} DH</p>
                                </div>
-                               <a href="#">Calculate shipping</a>
 
                                <div class="cart_subtotal">
                                    <p>Total</p>
                                    <p class="cart_amount">{{$priceTTc}} DH</p>
                                </div>
                                <div class="checkout_btn">
-                                   <a href="{{url('/checkout')}}">Proceed to Checkout</a>
+                                   <a href="{{url('/checkout')}}">Passer à la caisse</a>
                                </div>
                             </div>
                         </div>

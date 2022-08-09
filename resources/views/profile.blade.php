@@ -13,13 +13,13 @@
                     <!-- Nav tabs -->
                     <div class="dashboard_tab_button">
                         <ul role="tablist" class="nav flex-column dashboard-list">
-                            <li><a href="#dashboard" data-bs-toggle="tab" class="nav-link active">Dashboard</a></li>
+                            <li><a href="#dashboard" data-bs-toggle="tab" class="nav-link active">Tableau de bord</a></li>
                             <li> <a href="#orders" data-bs-toggle="tab" class="nav-link">Orders</a></li>
-                            <li><a href="#account-details" data-bs-toggle="tab" class="nav-link">Account details</a></li>
+                            <li><a href="#account-details" data-bs-toggle="tab" class="nav-link">Détails du compte</a></li>
                             <li><a  href="{{ route('logout') }}" class="nav-link"
                                 onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
-                                 {{ __('Logout') }}
+                                 {{ __('Se déconnecter') }}
                              </a></li>
                         </ul>
                     </div>    
@@ -28,7 +28,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content dashboard_content">
                         <div class="tab-pane fade show active" id="dashboard">
-                            <h3>Dashboard </h3>
+                            <h3>Tableau de bord </h3>
                             <p>From your account dashboard. you can easily check &amp; view your <a href="#">recent orders</a>, manage your <a href="#">shipping and billing addresses</a> and <a href="#">Edit your password and account details.</a></p>
                         </div>
                      
@@ -71,15 +71,15 @@
                         </div>
                        
                         <div class="tab-pane fade" id="account-details">
-                            <h3>Update your Account info</h3>
+                            <h3>Mettre à jour les informations de votre compte</h3>
                             <div class="login">
                                 <div class="login_form_container">
                                     <div class="account_login_form">
                                         <form action="#">
                                           @foreach($infouser as $row)
-                                            <label>Name</label>
+                                            <label>Nom</label>
                                             <input type="text" name="name" class="name" value="{{$row->name}}">
-                                            <label>Email</label>
+                                            <label>E-mail</label>
                                             <input type="text" name="email-name" class="email" value="{{$row->email}}">
                                             <div class="save_button primary_btn default_button">
                                             <button type="button" class="upd" >Save</button>

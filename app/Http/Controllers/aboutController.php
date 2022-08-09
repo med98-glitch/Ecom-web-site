@@ -62,9 +62,9 @@ class aboutController extends Controller
     Mail::to('mohamedrossi2000@gmail.com')->send(new contactmail($request->input('email'),$request->input('name'),$request->input('subject'),$request->message));
    // Mail::to('mohamedrossi2000@gmail.com')->send(new contactmail($request->input('email'),$request->input('name'),$request->input('subject'),$request->message));
    if($request){
-    return back()->with('success','Your order have been successfuly');
+    return back()->with('success','votre message envoyé avec succès');
    }else{
-    return back()->with('fail','Your order have been successfuly');
+    return back()->with('fail','échec de l envoi du message');
    }
     }
 }

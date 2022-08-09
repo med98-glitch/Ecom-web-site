@@ -87,6 +87,10 @@ class homCtroller extends Controller
          $topReductionProducts=product::orderBy('new_price','desc')
          ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
          ->take(10)->get();
+         //get top reduction products
+         $latestpr=product::orderBy('created_at','desc')
+         ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as reductions','products.image as img')
+         ->take(10)->get();
          
          //last products
          if(product::count() < 0){
@@ -111,7 +115,7 @@ class homCtroller extends Controller
         $total_price=Cart::where('id_user',$id_user)
         ->get()->sum('total_price');
         return view('index',compact('categorie','products','all_product_reduction','GetAll','leftProduct','righttProduct','cebterProducts','topRatedProduct','topReductionProducts','lastProduct','toppriceproducts'
-        ,'firstencategorie','lastcategories','products_cards','total_price'));
+        ,'firstencategorie','lastcategories','products_cards','total_price','latestpr'));
         
     }
     //function to get articls by categiries with out reload page

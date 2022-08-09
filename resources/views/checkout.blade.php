@@ -47,12 +47,12 @@
                             <div class="row">
 
                                 <div class="col-lg-6 mb-20">
-                                    <label>First Name <span>*</span></label>
+                                    <label> Prénom <span>*</span></label>
                                     <input type="text" name="firstName" value="{{old('firstName')}}">  
                                     <span style="color: red;">@error('firstName'){{$message}} @enderror</span>  
                                 </div>
                                 <div class="col-lg-6 mb-20">
-                                    <label>Last Name  <span>*</span></label>
+                                    <label>Nom<span>*</span></label>
                                     <input type="text" name="lastName" value="{{old('lastName')}}">
                                     <span style="color: red;">@error('lastName'){{$message}} @enderror</span>
                                 </div>
@@ -84,7 +84,7 @@
                                 </div> 
                                  <div class="col-lg-6 mb-20">
                                     <label> Email Address   <span>*</span></label>
-                                      <input type="email" name="email" value="{{old('email')}}">
+                                      <input type="email" laceholder="Adresse du l'envoi" name="email" value="{{old('email')}}">
                                       <span style="color: red;">@error('email'){{$message}} @enderror</span> 
                                 </div>
                               
@@ -98,7 +98,7 @@
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>Product</th>
+                                            <th>Produit</th>
                                             <th>Total</th>
                                         </tr>
                                     </thead>

@@ -44,7 +44,7 @@
                             </ul>
                         </div>
                         <div class="widget_list widget_filter">
-                            <h2>Filter by price</h2>
+                            <h2>FILTRER PAR PRIX</h2>
                             <form action="{{url('fillterbyprice')}}" method='GET'> 
                                 <div id="slider-range"></div>
                                 <div class='slider_input'>
@@ -58,7 +58,7 @@
                         
                         
                         <div class="widget_list recent_product">
-                            <h2>Top Rated Products</h2>
+                            <h2> PRODUITS LES PLUS ÉVALUÉS</h2>
                             <div class="recent_product_container">
                                
                                @foreach($topRatedProduct as $row)
@@ -80,8 +80,8 @@
                                             </ul>
                                         </div>
                                         <div class="price_box">
-                                            <span class="current_price">{{$row['newprice']}}</span>
-                                            <span class="old_price">{{$row['price']}}</span>   
+                                            <span class="current_price">{{$row['newprice']}} DH</span>
+                                            <span class="old_price">{{$row['price']}} DH</span>   
                                         </div>
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@
                     <!--shop toolbar start-->
                     
                     <div class="shop_title">
-                        <h1>shop</h1>
+                        <h1>Boutique</h1>
                     </div>
                     <div class="shop_toolbar_wrapper">
                         <div class="shop_toolbar_btn">
@@ -128,7 +128,7 @@
                          --->
                         <div class="page_amount">
                    
-                            <p>Nombre items trouver : {{$count}}</p>
+                            <p>Nombre  éléments trouver : {{$count}}</p>
                          
                         </div>
                     </div>
@@ -200,7 +200,7 @@
                    <div class="action_links">
                        <ul>
                     
-                           <li class="add_to_cart "><a href="JavaScript:void(0)" class="add_to_card_shop" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>           
+                           <li class="add_to_cart "><a href="JavaScript:void(0)" class="add_to_card_shop" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> Ajouter au panier </a></li>           
                        </ul>
                    </div>
                </div>

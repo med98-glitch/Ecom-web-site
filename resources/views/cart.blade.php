@@ -16,7 +16,7 @@
                     <div class="breadcrumb_content">
                         <ul>
                             <li><a href="index.html">home</a></li>
-                            <li>Shopping Cart</li>
+                            <li>Panier</li>
                         </ul>
                     </div>
                 </div>

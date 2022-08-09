@@ -43,7 +43,8 @@ class TodaysDeals extends Component
                 ->get();
         }
         $all_product_reduction = product::select('products.name as name', 'products.id as id', 'products.image as img', 'products.ratting as ratting', 'products.price as price', 'products.new_price as reductions')
-            ->get();
+        ->orderBy('ratting', 'desc')
+        ->get();
         return view('livewire.todays-deals', compact(['categorie', 'GetAll', 'all_product_reduction']));
     }
 }

@@ -36,7 +36,7 @@ class GetProducts extends Controller
         $productsByCategorie=product::
         Where('products.name','like','%'.$name.'%')
         ->orwhere('products.id_category',$id)
-        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img','products.id_category as catid')
+        ->select('products.name as name','products.id as id','products.ratting as ratting','products.price as price','products.new_price as newprice','products.image as img','products.id_category as catid','products.qte as qte')
         ->paginate(10);
         
         $nameCategories=Category::where('id',$id)

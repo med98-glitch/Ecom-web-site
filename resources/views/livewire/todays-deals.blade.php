@@ -4,7 +4,7 @@
             <div class="col-lg-9">
                 <div class="deals_product_container">
                     <div class="section_title">
-                        <h2>Today’s <span>Deals</span></h2>
+                        <h2>Derniers <span>produits</span></h2>
                     </div>
                     <div class="deals_product_inner">
                         <div class="deals_tab_list">
@@ -88,7 +88,7 @@
                                                </div>
                                                 <div class="action_links">
                                                     <ul>
-                                                       <li class="add_to_cart"  ><a href="JavaScript:void(0)" title="add to cart" class="btn_todays_deals" ><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+                                                       <li class="add_to_cart"  ><a href="JavaScript:void(0)" title="add to cart" class="btn_todays_deals" ><i class="zmdi zmdi-shopping-cart-plus"></i> Ajouter au panier</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -106,7 +106,7 @@
             <div class="col-lg-3">
                 <div class="small_product_area">
                     <div class="section_title">
-                        <h2>BEST  <span>SELLERS</span></h2>
+                        <h2>meilleur  <span>dératisation</span></h2>
                     </div>
                     <div class="small_product_wrapper">
                         @foreach($all_product_reduction as $row)
@@ -140,8 +140,6 @@
                         </div>
                         @endforeach
                     </div>
-                   
-                    
                 </div>
             </div>
         </div>

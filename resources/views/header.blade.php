@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicon -->
-    <link rel="icon" href="{{asset('assets/img/logo/logochamal-.png')}}" >
+    <link rel="icon" href="{{asset('assets/img/logo/logochamal.jpg')}}" >
 
     <!-- CSS
     ========================= -->
@@ -89,7 +89,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-3">
                         <div class="logo">
-                            <a href="{{url('/')}}"><img src="{{URL('assets/img/logo/logochamal-.png')}}" loading="lazy" alt="" width="200px"></a>
+                            <a href="{{url('/')}}"><img src="{{URL('assets/img/logo/logochamal-.png')}}" loading="lazy" alt="" width="150px"></a>
                         </div>
                         
                     </div>
@@ -106,7 +106,7 @@
                                               <a href="javascript:void(0)"><i class="ion-android-close"></i></a>  
                                         </div>
                                         <div class="welcome_text">
-                                           <p>Welcome to <span>Electronics Store</span> </p>
+                                           <p>Bienvenue à <span>Chamal info</span> </p>
                                        </div>
                                        
                                         <div class="top_right">
@@ -167,14 +167,14 @@
                                 
                                                 <div class="hover_category">
                                                      <select class="select_option" name="id" id="categori"  >
-                                                         <option selected >All cataegorirees</option>
+                                                         <option selected >Toutes catégories</option>
                                                          @foreach($categorie as $row)<!--Done-->       
                                                          <option  value="{{$row['id'] }}" name='id'> {{$row['name'] }}</option>
                                                          @endforeach
                                                      </select>
                                                 </div>
                                                  <div class="search_box">
-                                                     <input name='name' placeholder="Search product..." type="text"  >
+                                                     <input name='name' placeholder="recherche..." type="text"  >
                                                      <button type="submit" ><i class="zmdi zmdi-search"></i></button>
                                                  </div>
                                              </form>
@@ -186,10 +186,10 @@
                                                 <a href="{{url('details_cart')}}"><i class="zmdi zmdi-shopping-basket"></i> 
                                                     @guest
                                                     @if (Route::has('login'))
-                                                    <span>0_Produit total:0Dh </span> 
+                                                    <span>0_Produits Total:0Dh </span> 
                                                     @endif
                                                     @else
-                                                    <span class="count_product">{{$products_cards}}_Produit Total:{{$total_price}}DH</span>
+                                                    <span class="count_product">{{$products_cards}}_Produits Total:{{$total_price}}DH</span>
                                                    @endguest
                                                 </a>
                                              
@@ -230,14 +230,14 @@
                                 
                                    <div class="hover_category">
                                         <select class="select_option" name="id" id="categori"  >
-                                            <option selected >All cataegorirees</option>
+                                            <option selected >Toutes catégories</option>
                                             @foreach($categorie as $row)<!--Done-->       
                                             <option  value="{{$row['id'] }}" name='id'> {{$row['name'] }}</option>
                                             @endforeach
                                         </select>
                                    </div>
                                     <div class="search_box">
-                                        <input name='name' placeholder="Search product..." type="text"  >
+                                        <input name='name' placeholder="recherche..." type="text"  >
                                         <button type="submit" ><i class="zmdi zmdi-search"></i></button>
                                     </div>
                                 </form>
@@ -248,10 +248,10 @@
                                 <a href="{{url('details_cart')}}"><i class="zmdi zmdi-shopping-basket"></i> 
                                     @guest
                                     @if (Route::has('login'))
-                                    <span>0_Produit total:0Dh </span> 
+                                    <span>0_Produits total:0Dh </span> 
                                     @endif
                                     @else
-                                    <span class="count_product">{{$products_cards}}_Produit Total:{{$total_price}}DH</span>
+                                    <span class="count_product">{{$products_cards}}_Produits Total:{{$total_price}}DH</span>
                                    @endguest
                                 </a>
                              
