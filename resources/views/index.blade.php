@@ -17,14 +17,14 @@
                                    
                                   Prix imbattables sur vos produits préférés</span>
                                 <h4>Achetez plus pour moins cher</h4>
-                                <a href="shop.html">Acheter</a>
+                                <a href="{{url('shop')}}">Acheter</a>
                             </div>
                         </div>
                         <div class="single_slider d-flex align-items-center" data-bgimg="assets/img/slider/gg.jpg">
                             <div class="slider_content slider_content_four content_position_left " id='dr2'>
                                 <h1>le bon choix</h1>
                                 <span>bienvenue sur chamal info choisissez votre produit maintenant </span>
-                                <a href="shop.html">Acheter</a>
+                                <a href="{{url('shop')}}>Acheter</a>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                                 <a href="{{url('shop/'. $row->id)}}"><img src="{{$row->picture}}" loading="lazy"alt="" ></a>
                             </div>
                             <div class="category_product_name">
-                                <h2><a href="shop.html" >{{$row['name']}}</a></h2>
+                                <h2><a href="{{url('shop/'. $row->id)}}" >{{$row['name']}}</a></h2>
                             </div>
                         </div>
                         @endforeach
@@ -212,7 +212,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="single_banner">
                         <div class="banner_thumb">
-                            <a href="shop.html"><img src="assets/img/bg/ab.jpg" loading="lazy" alt=""></a>
+                            <a href="{{url('shop/'. $row->id)}}"><img src="assets/img/bg/ab.jpg" loading="lazy" alt=""></a>
                         </div>
 
                     </div>
@@ -220,7 +220,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="single_banner">
                         <div class="banner_thumb">
-                            <a href="shop.html"><img src="assets/img/bg/ac.jpg" loading="lazy" alt=""></a>
+                            <a href="{{url('shop/'. $row->id)}}"><img src="assets/img/bg/ac.jpg" loading="lazy" alt=""></a>
                         </div>
 
                     </div>
@@ -239,7 +239,7 @@
                 <div class="col-12">
                     <div class="single_banner">
                         <div class="banner_thumb">
-                            <a href="shop.html"><img src="assets/img/bg/ad.jpg" loading="lazy" height="200px" alt=""></a>
+                            <a href="{{url('shop/'. $row->id)}}""><img src="assets/img/bg/ad.jpg" loading="lazy" height="200px" alt=""></a>
                         </div>
 
                     </div>
