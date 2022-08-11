@@ -52,8 +52,9 @@
                                       }
                                       }
                                       ?>
+                                      @if($GetAll->count() > 0)
                                         @foreach($GetAll as $row)
-
+                  
                                         <div class="single_deals_product">
                                             <div class="product_thumb">
                                                 <a href={{url('details/'. $row->id)}}><img src="{{$row->picture}}" loading="lazy" alt=""></a>
@@ -94,7 +95,11 @@
                                             </div>
                                         </div>
                                         @endforeach
-                                      
+                                      @else
+                                      <div class="alert alert-warning m-5" role="alert">
+                                        Aucun produit trouvé
+                                      </div>
+                                    @endif
                                     </div>
                                     </div>
                                 </div>
@@ -109,6 +114,7 @@
                         <h2>meilleur  <span>dératisation</span></h2>
                     </div>
                     <div class="small_product_wrapper">
+                        @if($all_product_reduction->count() > 0)
                         @foreach($all_product_reduction as $row)
                         <div class="small_product_items">
                             <div class="product_thumb">
@@ -139,6 +145,11 @@
                             </div>
                         </div>
                         @endforeach
+                        @else
+                        <div class="alert alert-warning m-5" role="alert">
+                            Aucun produit trouvé
+                          </div>
+                        @endif
                     </div>
                 </div>
             </div>

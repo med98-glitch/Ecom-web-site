@@ -24,7 +24,7 @@
                             <div class="slider_content slider_content_four content_position_left " id='dr2'>
                                 <h1>le bon choix</h1>
                                 <span>bienvenue sur chamal info choisissez votre produit maintenant </span>
-                                <a href="{{url('shop')}}>Acheter</a>
+                                <a href="{{url('shop')}}">Acheter</a>
                             </div>
                         </div>
                     </div>
@@ -114,6 +114,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
+                        @if($cebterProducts->count() > 0)
                         @foreach($cebterProducts as $row)
                         <div class="single_product product_center">
                             <div class="product_thumb">
@@ -154,6 +155,11 @@
                             </div>
                         </div>
                         @endforeach
+                        @else
+                        <div class="alert alert-warning m-5" role="alert">
+                            Aucun produit trouvé
+                          </div>
+                        @endif
                     </div>
                     <div class="col-lg-3 col-md-12">
                        <div class="single_product_right_sidebar">
@@ -212,7 +218,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="single_banner">
                         <div class="banner_thumb">
-                            <a href="{{url('shop/'. $row->id)}}"><img src="assets/img/bg/ab.jpg" loading="lazy" alt=""></a>
+                            <a href="{{url('shop')}}"><img src="assets/img/bg/ab.jpg" loading="lazy" alt=""></a>
                         </div>
 
                     </div>
@@ -220,7 +226,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="single_banner">
                         <div class="banner_thumb">
-                            <a href="{{url('shop/'. $row->id)}}"><img src="assets/img/bg/ac.jpg" loading="lazy" alt=""></a>
+                            <a href="{{url('shop/')}}"><img src="assets/img/bg/ac.jpg" loading="lazy" alt=""></a>
                         </div>
 
                     </div>
@@ -239,7 +245,7 @@
                 <div class="col-12">
                     <div class="single_banner">
                         <div class="banner_thumb">
-                            <a href="{{url('shop/'. $row->id)}}""><img src="assets/img/bg/ad.jpg" loading="lazy" height="200px" alt=""></a>
+                            <a href="{{url('shop')}}"><img src="assets/img/bg/ad.jpg" loading="lazy" height="200px" alt=""></a>
                         </div>
 
                     </div>
@@ -259,6 +265,7 @@
                         </div>
                         <div class="small_product_wrapper">
                              <!--top reduction products-->
+                             @if($topReductionProducts->count() > 0)
                             @foreach($topReductionProducts as $row)
                             <div class="small_product_items">
                                 <div class="product_thumb">
@@ -286,6 +293,11 @@
                                 </div>
                             </div>
                            @endforeach
+                           @else
+                           <div class="alert alert-warning m-5" role="alert">
+                            Aucun produit trouvé
+                           </div>
+                          @endif
                         </div>
                     </div>
                 </div>
@@ -296,6 +308,7 @@
                         </div>
                         <div class="small_product_wrapper">
                             <!--last products-->
+                            @if($latestpr->count() > 0)
                             @foreach($latestpr as $row)
                            
                             <div class="small_product_items">
@@ -324,6 +337,10 @@
                                 </div>
                             </div>
                            @endforeach
+                           @else <div class="alert alert-warning m-5" role="alert">
+                            Aucun produit trouvé
+                          </div>
+                        @endif
                         </div>
                     </div>
                 </div>
@@ -335,6 +352,7 @@
                         </div>
                         <div class="small_product_wrapper">
                             <!--top price products-->
+                            @if($toppriceproducts->count() > 0)
                             @foreach($toppriceproducts as $row)
                             
                             <div class="small_product_items">
@@ -363,6 +381,10 @@
                                 </div>
                             </div>
                            @endforeach
+                           @else <div class="alert alert-warning m-5" role="alert">
+                            Aucun produit trouvé
+                          </div>
+                        @endif
                         </div>
                     </div>
                 </div>

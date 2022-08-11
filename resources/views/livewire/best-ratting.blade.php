@@ -45,7 +45,7 @@
                             }
                             ?>
                               <div class="row">
-                                
+                                @if($topRatedProduct->count() > 0)
                                 @foreach($topRatedProduct as $row)
                                 <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
                                         <div class="single_deals_product" id='singdl'>
@@ -92,6 +92,10 @@
                                         </div>
                                     </div>
                                         @endforeach
+                                        @else <div class="alert alert-warning m-5" role="alert">
+                                            Aucun produit trouvé
+                                          </div>
+                                        @endif
                                     </div>      
                     </div>
          </div>

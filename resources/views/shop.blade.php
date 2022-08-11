@@ -33,8 +33,8 @@
                     <aside class="sidebar_widget">
                         <div class="widget_list widget_categories">
                             <h2>categories</h2>
+                            @if($categoriesBynombreProductsproduct->count() > 0)
                             <ul>
-                               
                                @foreach($categoriesBynombreProductsproduct as $row)
                                 <li>
                                     <a href="{{url('shop/'.$row['idcat'])}}"  >{{$row['name']}} <span>{{$row['total']}}</span></a> 
@@ -42,6 +42,10 @@
                                
                                 @endforeach
                             </ul>
+                            @else <div class="alert alert-warning m-5" role="alert">
+                                Aucun Categorie trouvé
+                              </div>
+                            @endif
                         </div>
                         <div class="widget_list widget_filter">
                             <h2>FILTRER PAR PRIX</h2>
@@ -50,17 +54,14 @@
                                 <div class='slider_input'>
                                     <input type="text" name="price1" id="amount1" readonly/> 
                                     <input type="text" name="price2" id="amount2" readonly />
-                                    
                                 </div>
                                 <button type="submit">Filter</button>
                             </form> 
                         </div>
-                        
-                        
                         <div class="widget_list recent_product">
                             <h2> PRODUITS LES PLUS ÉVALUÉS</h2>
                             <div class="recent_product_container">
-                               
+                                @if($topRatedProduct->count() > 0)
                                @foreach($topRatedProduct as $row)
                                 <div class="recent_product_list">
                                     <div class="recent_product_thumb">
@@ -86,6 +87,10 @@
                                     </div>
                                 </div>
                                 @endforeach
+                                @else <div class="alert alert-warning m-5" role="alert">
+                                    Aucun produit trouvé
+                                  </div>
+                                @endif
                             </div>
                         </div>
                         
@@ -102,14 +107,10 @@
                     </div>
                     <div class="shop_toolbar_wrapper">
                         <div class="shop_toolbar_btn">
-
                             <button data-role="grid_3" type="button" class="active btn-grid-3" data-bs-toggle="tooltip" title="3"></button>
-
                             <button data-role="grid_4" type="button"  class=" btn-grid-4" data-bs-toggle="tooltip" title="4"></button>
-
                             <button data-role="grid_list" type="button"  class="btn-list" data-bs-toggle="tooltip" title="List"></button>
                         </div>
-                        
                         <!--sekection fillter
                         <div class=" niceselect_option">
                          
@@ -240,7 +241,7 @@
     @endforeach
    </div>
    @else
-   <div class="alert alert-danger" role="alert">
+   <div class="alert alert-warning" role="alert">
     Aucun produit trouvé
   </div>
    @endif 
