@@ -259,45 +259,6 @@
             </div>
         </div>
     </div>
-    <!--shop  area end-->
-    
-  <!--brand newsletter area start-->
-    <div class="brand_newsletter_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="brand_container owl-carousel">
-                        <div class="single_brand">
-                            <a href="#"><img src="{{URL('assets/img/brand/1.png')}}" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="{{URL('assets/img/brand/2.png')}}" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="{{URL('assets/img/brand/3.png')}}" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="{{URL('assets/img/brand/4.png')}}" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="{{URL('assets/img/brand/5.png')}}" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="{{URL('assets/img/brand/6.png')}}" alt=""></a>
-                        </div>
-                        <div class="single_brand">
-                            <a href="#"><img src="{{URL('assets/img/brand/1.png')}}" alt=""></a>
-                        </div>
-                    </div>
-                 
-            
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--brand area end-->
-
     <script>
 
 		/*$(document).ready(function() {
