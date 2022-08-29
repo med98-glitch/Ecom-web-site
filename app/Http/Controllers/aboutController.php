@@ -49,6 +49,27 @@ class aboutController extends Controller
 
         return view('contact',compact('categorie','products_cards','total_price','firstencategorie','lastcategories'));
     }
+    public function services()
+    {
+        $id_user=Auth::id();
+        $products_cards=Cart::where('id_user',$id_user)->get()->count();
+
+        $total_price=Cart::where('id_user',$id_user)
+        ->get()->sum('total_price');
+        $categorie=Category::all();
+      
+           //get categories on side bar 10
+           $firstencategorie=Category::take(10)->get();
+
+           //get last categorie for the side abar
+           $lastcategories=Category::get()->skip(10);
+   
+        
+
+        return view('services',compact('categorie','products_cards','total_price','firstencategorie','lastcategories'));
+    }
+
+
     //send email in contact form 
     public function sendemail(Request $request)
     {

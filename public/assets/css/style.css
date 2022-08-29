@@ -10986,7 +10986,7 @@ background-color: #FFC727;
 
 .our_services {
   padding: 50px 0 25px;
-  background: url(../img/about/service1-img1.jpg) no-repeat scroll center center/cover;
+  background: url(../img/service/bg_big.jpg) no-repeat scroll center center/cover;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .our_services {

@@ -37,6 +37,7 @@ use Illuminate\Support\Facades\Mail;
 
     //Route for go to the page about
     Route::get('/about', [aboutController::class, 'about']);
+    Route::get('services',[aboutController::class,'services']);
 
     //call controller 
     Route::get('shop', [shopCtroller::class, 'shop'])/*->middleware('verified');*/;

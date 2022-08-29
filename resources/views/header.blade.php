@@ -300,8 +300,8 @@
                                     <li class=" <?php if($page=='home'){echo 'active';}?>"><a  href="{{url('/')}}"><i class="zmdi zmdi-home"></i> Acceuil </i></a>
                                     </li>
                                     <li class="mega_items <?php if($page=='shop'){echo 'active';}?>"><a href="{{url('shop')}}"><i class="zmdi zmdi-shopping-basket"></i> Boutique </a>
-
                                     <li class="<?php if($page=='about'){echo 'active';}?>"><a href="{{url('about')}}"><i class="zmdi zmdi-comments"></i> Qui sommes-nous</a></li>
+                                    <li class="<?php if($page=='services'){echo 'active';}?>"><a href="{{url('services')}}"><i class="zmdi zmdi-view-list"></i> services</a></li>
                                     <li class="<?php if($page=='contact'){echo 'active';}?>"><a href="{{url('contact')}}"><i class="zmdi zmdi-account-box-mail"></i>  Contactez-Nous</a></li>
                                 </ul> 
                             </nav> 
